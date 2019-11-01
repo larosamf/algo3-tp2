@@ -1,0 +1,37 @@
+language: java
+jdk:
+  - openjdk8
+
+#  
+# cambiar segun ant o maven
+#
+
+install: ant
+
+addons:
+  apt:
+    sources:
+      - ubuntu-toolchain-r-test
+    packages:
+      - ant
+      - ant-optional
+
+#
+# Hay que agregar nuestro scipt
+#
+
+script:
+  - ant integracion-continua
+after_success:
+  - bash <(curl -s https://codecov.io/bash)
+
+#  
+# Agreguen su mail aca
+#
+
+notifications:
+  email:
+    recipients:
+      - jgarate89@gmail.com
+      
+    on_failure: always
