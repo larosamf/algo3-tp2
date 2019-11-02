@@ -1,37 +1,17 @@
-language: java
+lenguage: java
 jdk:
-  - openjdk8
+    - openjdk8
 
-#  
-# cambiar segun ant o maven
-#
-
-install: ant
-
-addons:
-  apt:
-    sources:
-      - ubuntu-toolchain-r-test
-    packages:
-      - ant
-      - ant-optional
-
-#
-# Hay que agregar nuestro scipt
-#
-
-script:
-  - ant integracion-continua
-after_success:
-  - bash <(curl -s https://codecov.io/bash)
-
-#  
-# Agreguen su mail aca
-#
+sudo: false
+scrip: mvn clean verify
 
 notifications:
-  email:
-    recipients:
-      - jgarate89@gmail.com
-      
-    on_failure: always
+    email:
+        recepients:
+            - jgarete89@gmail.com
+            - larosamf@gmail.com
+            - tomasyavicoli@gmail.com
+            - adrianex2@gmail.com
+
+        on_failure: always
+            
