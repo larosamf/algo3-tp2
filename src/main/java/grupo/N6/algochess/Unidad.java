@@ -12,7 +12,10 @@ public abstract class Unidad {
     public int getVida() {
         return vida;
     }
+    
     public int getCosto() {
         return costo;
     }
+    
+    
 }
