@@ -12,4 +12,12 @@ public class CreacionDeUnidadesTest {
 		
 		assertEquals(100, soldado.getVida());
 	}
+
+	@Test
+	public void test02SoldadoDeInfanteriaRecienCreadoTieneCosto1(){
+		SoldadoDeInfanteria soldado = new SoldadoDeInfanteria();
+
+		assertEquals(1, soldado.getCosto());
+	}
+
 }
