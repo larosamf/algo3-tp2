@@ -25,4 +25,8 @@ public class Jugador {
 		cantidadDeUnidades += 1;
 	}
 
+	public boolean perdio() {
+		return (cantidadDeUnidades == 0); 
+	}
+	
 }
