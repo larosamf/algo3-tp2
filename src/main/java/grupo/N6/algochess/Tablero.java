@@ -27,7 +27,7 @@ public class Tablero {
         return(getCasilleroEn(fila, columna).getUnidadEnElCasillero());
     }
 
-    public Casillero getCasilleroEn(int fila, int columna){
+    private Casillero getCasilleroEn(int fila, int columna){
         return(casillerosDelTablero[fila][columna]);
     };
 
