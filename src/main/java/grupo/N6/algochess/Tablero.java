@@ -19,8 +19,12 @@ public class Tablero {
         casillerosDelTablero[fila][columna].ocuparPor(unidad);
     };
 
-    public Unidad desocuparCasillero(int fila, int columna){
-        return(getCasilleroEn(fila,columna).desocupar());
+    public void desocuparCasillero(int fila, int columna){
+        getCasilleroEn(fila,columna).desocupar();
+    }
+
+    public Unidad getUnidadEnCasillero(int fila, int columna){
+        return(getCasilleroEn(fila, columna).getUnidadEnElCasillero());
     }
 
     public Casillero getCasilleroEn(int fila, int columna){

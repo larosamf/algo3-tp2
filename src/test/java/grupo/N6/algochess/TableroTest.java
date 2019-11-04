@@ -1,6 +1,7 @@
 package grupo.N6.algochess;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import org.junit.Test;
 
@@ -12,7 +13,10 @@ public class TableroTest {
         Tablero tablero = new Tablero();
 
         //Assert
-       assertEquals(false,  tablero.getCasilleroEn(2,2).estaOcupado() );
+        assertThrows(EsteCasilleroYaEstaDesocupadoException.class,
+                ()->{
+                    tablero.desocuparCasillero(2,2);
+                });
     }
 
     @Test
@@ -25,7 +29,7 @@ public class TableroTest {
         tablero.ubicarUnidadEnCasillero(soldadoDeInfanteria,6,8);
 
         //Assert
-        assertEquals(soldadoDeInfanteria,tablero.desocuparCasillero(6,8));
+        assertEquals(soldadoDeInfanteria,tablero.getUnidadEnCasillero(6,8));
 
     }
 }

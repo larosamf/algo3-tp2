@@ -1,6 +1,7 @@
 package grupo.N6.algochess;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import org.junit.Test;
 
@@ -9,8 +10,11 @@ public class CasilleroTest {
 
     @Test
     public void test01elCasilleroSeCreaVacio(){
-        Casillero casillero = new Casillero();
-        assertEquals(false ,casillero.estaOcupado());
+       Casillero casillero = new Casillero();
+        assertThrows(EsteCasilleroYaEstaDesocupadoException.class,
+                ()->{
+                    casillero.desocupar();;
+                });
     }
 
     @Test
@@ -20,7 +24,7 @@ public class CasilleroTest {
 
         casillero.ocuparPor(soldadoDeInfanteria);
 
-        assertEquals(soldadoDeInfanteria, casillero.desocupar());
+        assertEquals(soldadoDeInfanteria, casillero.getUnidadEnElCasillero());
     }
 
 }
