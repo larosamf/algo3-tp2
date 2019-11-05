@@ -20,7 +20,7 @@ public class TableroTest {
     }
 
     @Test
-    public void test02SePuedeAgregarUnSoldadoDeInfanteriaEnLaFila6Columna8(){
+    public void test02SePuedeAgregarUnSoldadoDeInfanteriaEnCasilleroVacioDelSectorAliado(){
         //Arrange
         Tablero tablero = new Tablero();
         SoldadoDeInfanteria soldadoDeInfanteria = new SoldadoDeInfanteria();
@@ -32,4 +32,37 @@ public class TableroTest {
         assertEquals(soldadoDeInfanteria,tablero.getUnidadEnCasillero(6,8));
 
     }
+    
+    @Test
+    public void test03NoSePuedeAgregarUnSoldadoDeInfanteriaEnCasilleroOcupadoDelSectorAliado(){
+        //Arrange
+        Tablero tablero = new Tablero();
+        SoldadoDeInfanteria soldadoDeInfanteria = new SoldadoDeInfanteria();
+        SoldadoDeInfanteria otroSoldadoDeInfanteria = new SoldadoDeInfanteria();
+        
+        //Act
+        tablero.ubicarUnidadEnCasillero(soldadoDeInfanteria,6,8);
+
+        //Assert
+        assertThrows(EsteCasilleroEstaOcupadoYNoSePuedePonerOtraUnidadException.class,
+                ()->{
+                    tablero.ubicarUnidadEnCasillero(otroSoldadoDeInfanteria,6,8);
+                });
+
+    }
+    
+    @Test
+    public void test04NoSePuedeAgregarUnSoldadoDeInfanteriaEnCasilleroDelSectorEnemigo(){
+        //Arrange
+        Tablero tablero = new Tablero();
+        SoldadoDeInfanteria soldadoDeInfanteria = new SoldadoDeInfanteria();
+
+        //Act yAssert
+        assertThrows(NoSePuedeColocarUnaUnidadEnElSectorEnemigoException.class,
+                ()->{
+                	tablero.ubicarUnidadEnCasillero(soldadoDeInfanteria,19,19);;
+                });
+
+    }
+    
 }
