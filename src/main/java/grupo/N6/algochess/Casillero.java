@@ -15,7 +15,6 @@ public class Casillero {
         this.unidad = null;
     }
 
-
     public void ponerUnidad(Unidad unidad) {
         if (this.unidad != null) {
             throw new CasilleroOcupadoException();

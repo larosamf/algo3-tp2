@@ -2,18 +2,22 @@ package grupo.N6.algochess;
 import grupo.N6.algochess.exepciones.PuntosInsuficientesParaAgregarUnidadException;
 import grupo.N6.algochess.unidades.Unidad;
 
+import java.util.ArrayList;
 import java.util.List;
 
-abstract class Jugador {
+public class Jugador {
 	
 	private int puntos;
+	protected String nombre;
 	private int cantidadDeUnidades;
     private boolean estaJugando;
     protected List<Unidad> equipo;
 
-    public Jugador() {
+    public Jugador(String nombre) {
 		puntos = 20;
 		cantidadDeUnidades = 0;
+        this.nombre = nombre;
+        this.equipo = new ArrayList<Unidad>();
 	}
 
 	public int getPuntos() {
@@ -38,7 +42,9 @@ abstract class Jugador {
 		this.estaJugando = !this.estaJugando;
 	}
 
-	abstract public boolean lePertenece(Unidad unidad);
+    public boolean lePertenece(Unidad unidad) {
+        return unidad.perteneceA(this.nombre);
+    }
 
 	public void inicializarTurno() {
 		this.estaJugando = true;
@@ -57,4 +63,14 @@ abstract class Jugador {
 			unidad.terminarTurno();
 		}
 	}
+    public void sigueParticipando() {
+        boolean sigueJugando = false;
+        for (Unidad unidad : equipo) {
+            if (unidad.estaVivo())
+                sigueJugando = true;
+        }
+        if (!sigueJugando){
+            throw new FinalException();
+        }
+    }
 }

@@ -9,7 +9,8 @@ public class Coordenada {
         this.y = y;
     }
 
-    /* Devuelve la distancia Chebyshov entre dos coordenadas del tablero  */
+    /* Devuelve la distancia Chebyshov entre dos coordenadas del tablero
+     * https://es.wikipedia.org/wiki/Distancia_de_Chebyshov */
 
     public boolean esConsecutiva(Coordenada otra) {
         return distanciaHasta(otra) <= 1;

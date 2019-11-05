@@ -1,5 +1,7 @@
 package grupo.N6.algochess;
 
+import grupo.N6.algochess.acciones.Accion;
+import grupo.N6.algochess.exepciones.JuegoNoEstaActivoException;
 import grupo.N6.algochess.unidades.Tablero;
 
 public class Partida {
@@ -27,12 +29,19 @@ public class Partida {
         terminarTurno();
     }
 
+    public Jugador obtenerJugadorActivo() {
+        if (this.jugador1.estaActivo())
+            return this.jugador1;
+        return this.jugador2;
+    }
+
     private void terminarTurno() {
         this.hayGanador();
         this.obtenerJugadorActivo().terminarTurno();
         this.jugador1.cambiarTurno();
         this.jugador2.cambiarTurno();
     }
+
 
     private void hayGanador() {
         this.jugador1.sigueParticipando();

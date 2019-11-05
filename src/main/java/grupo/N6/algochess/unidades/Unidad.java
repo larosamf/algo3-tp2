@@ -1,5 +1,7 @@
 package grupo.N6.algochess.unidades;
 
+import grupo.N6.algochess.Jugador;
+
 /**
  * 
  *
@@ -7,6 +9,7 @@ package grupo.N6.algochess.unidades;
 public abstract class Unidad {
 	
 	protected int vida;
+	protected String owner;
 	protected int costo;
 	protected int daño;
 	
@@ -37,5 +40,9 @@ public abstract class Unidad {
     public void recibirCuracion() {
     	vida = vida + 15;
     }
-    
+
+
+    public boolean perteneceA(String nombre){
+        return nombre == owner;
+    };
 }
