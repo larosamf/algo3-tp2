@@ -57,12 +57,30 @@ public class TableroTest {
         Tablero tablero = new Tablero();
         SoldadoDeInfanteria soldadoDeInfanteria = new SoldadoDeInfanteria();
 
-        //Act yAssert
+        //Act y Assert
         assertThrows(NoSePuedeColocarUnaUnidadEnElSectorEnemigoException.class,
                 ()->{
                 	tablero.ubicarUnidadEnCasillero(soldadoDeInfanteria,19,19);;
                 });
 
     }
-    
+
+    @Test
+    public void test05SePuedeRemoverUnSoldadoDeInfanteriaDelTableroYElCasilleroQuedaDesocupado(){
+        //Arrange
+        Tablero tablero = new Tablero();
+        SoldadoDeInfanteria soldadoDeInfanteria = new SoldadoDeInfanteria();
+
+        //Act
+        tablero.ubicarUnidadEnCasillero(soldadoDeInfanteria, 3,3);
+        tablero.desocuparCasillero(3,3);
+
+        assertThrows(EsteCasilleroYaEstaDesocupadoException.class,
+                ()->{
+                    tablero.desocuparCasillero(3,3);
+                });
+    }
+
+
 }
+
