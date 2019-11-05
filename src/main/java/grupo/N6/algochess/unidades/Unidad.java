@@ -1,4 +1,4 @@
-package grupo.N6.algochess;
+package grupo.N6.algochess.unidades;
 
 /**
  * 

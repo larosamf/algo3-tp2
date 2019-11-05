@@ -1,26 +1,49 @@
 package grupo.N6.algochess;
 
+import grupo.N6.algochess.Coordenada
+import grupo.N6.algochess.exepciones.CasilleroOcupadoException;
+import grupo.N6.algochess.exepciones.CasilleroVacioException;
+import grupo.N6.algochess.unidades.Unidad;
 
 public class Casillero {
 
-    EstadoCasillero estadoCasillero;
+    private Coordenada posicion;
+    private Unidad unidad;
 
-    public Casillero(){
-        estadoCasillero = new Desocupado();
+    public Casillero(Coordenada posicion) {
+        this.posicion = posicion;
+        this.unidad = null;
     }
 
-    public void ocuparPor(Unidad unidad){
-        estadoCasillero = estadoCasillero.ocuparPor(unidad);
-    };
 
-    public void desocupar(){
-        estadoCasillero = estadoCasillero.desocupar();
-    };
+    public void ponerUnidad(Unidad unidad) {
+        if (this.unidad != null) {
+            throw new CasilleroOcupadoException();
+        }
+        this.unidad = unidad;
+    }
 
-    public Unidad getUnidadEnElCasillero(){
-        return(estadoCasillero.getUnidadQueOcupaElCasillero());
+    public Unidad obtenerUnidad() {
+        if (this.unidad == null) {
+            throw new CasilleroVacioException();
+        }
+        return this.unidad;
+    }
+
+    public void sacarUnidad() {
+        if (this.unidad == null) {
+            throw new CasilleroVacioException();
+        }
+        this.unidad = null;
+    }
+
+    public boolean estaEnPosicion(Coordenada posicion) {
+        return this.posicion.equals(posicion);
+    }
+
+    public boolean hayUnidad() {
+        return !(unidad == null);
     }
 
 }
-
 

@@ -4,6 +4,9 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
+import grupo.N6.algochess.exepciones.PuntosInsuficientesParaAgregarUnidadException;
+import grupo.N6.algochess.unidades.Catapulta;
+import grupo.N6.algochess.unidades.SoldadoDeInfanteria;
 import org.junit.Test;
 
 public class AgregarUnidadAJugadorTest {

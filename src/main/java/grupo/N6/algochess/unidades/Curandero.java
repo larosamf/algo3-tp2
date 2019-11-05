@@ -1,4 +1,6 @@
-package grupo.N6.algochess;
+package grupo.N6.algochess.unidades;
+
+import grupo.N6.algochess.unidades.Unidad;
 
 public class Curandero extends Unidad {
 	

@@ -2,6 +2,7 @@ package grupo.N6.algochess;
 
 import static org.junit.Assert.assertEquals;
 
+import grupo.N6.algochess.unidades.SoldadoDeInfanteria;
 import org.junit.Test;
 
 public class CreacionDeUnidadesTest {

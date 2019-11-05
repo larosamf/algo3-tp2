@@ -3,6 +3,7 @@ package grupo.N6.algochess;
 import static org.junit.Assert.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
+import grupo.N6.algochess.unidades.SoldadoDeInfanteria;
 import org.junit.Test;
 
 
