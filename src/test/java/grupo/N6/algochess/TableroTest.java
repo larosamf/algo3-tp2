@@ -10,7 +10,7 @@ public class TableroTest {
     @Test
     public void test01ElTableroSeCreaConElCasilleroFila2Columna2Vacio() {
         //Arrange y Act
-        Tablero tablero = new Tablero();
+        Tablero tablero = Tablero.getInstanciaDeTablero();
 
         //Assert
         assertThrows(EsteCasilleroYaEstaDesocupadoException.class,
@@ -22,7 +22,7 @@ public class TableroTest {
     @Test
     public void test02SePuedeAgregarUnSoldadoDeInfanteriaEnCasilleroVacioDelSectorAliado(){
         //Arrange
-        Tablero tablero = new Tablero();
+        Tablero tablero = Tablero.getInstanciaDeTablero();
         SoldadoDeInfanteria soldadoDeInfanteria = new SoldadoDeInfanteria();
 
         //Act
@@ -36,7 +36,7 @@ public class TableroTest {
     @Test
     public void test03NoSePuedeAgregarUnSoldadoDeInfanteriaEnCasilleroOcupadoDelSectorAliado(){
         //Arrange
-        Tablero tablero = new Tablero();
+        Tablero tablero = Tablero.getInstanciaDeTablero();
         SoldadoDeInfanteria soldadoDeInfanteria = new SoldadoDeInfanteria();
         SoldadoDeInfanteria otroSoldadoDeInfanteria = new SoldadoDeInfanteria();
         
@@ -54,7 +54,7 @@ public class TableroTest {
     @Test
     public void test04NoSePuedeAgregarUnSoldadoDeInfanteriaEnCasilleroDelSectorEnemigo(){
         //Arrange
-        Tablero tablero = new Tablero();
+        Tablero tablero = Tablero.getInstanciaDeTablero();
         SoldadoDeInfanteria soldadoDeInfanteria = new SoldadoDeInfanteria();
 
         //Act y Assert
@@ -68,7 +68,7 @@ public class TableroTest {
     @Test
     public void test05SePuedeRemoverUnSoldadoDeInfanteriaDelTableroYElCasilleroQuedaDesocupado(){
         //Arrange
-        Tablero tablero = new Tablero();
+        Tablero tablero = Tablero.getInstanciaDeTablero();
         SoldadoDeInfanteria soldadoDeInfanteria = new SoldadoDeInfanteria();
 
         //Act

@@ -2,13 +2,18 @@ package grupo.N6.algochess;
 
 public class Tablero {
 
+    private static Tablero instanciaDeTablero = new Tablero();
+
     private Casillero [][] casillerosDelTablero;
     private Sector sectorDeJugador1;
     private Sector sectorDeJugador2;
     private Sector sectorAliado; /*cambia turno a turno*/
-    
 
-    public Tablero() {
+    public static Tablero getInstanciaDeTablero(){
+        return(instanciaDeTablero);
+    }
+
+   private Tablero() {
         casillerosDelTablero = new Casillero[20][20];
 
         for(int i = 0; i<20; i++){
