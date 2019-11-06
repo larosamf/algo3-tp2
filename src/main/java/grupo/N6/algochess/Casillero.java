@@ -1,12 +1,13 @@
 package grupo.N6.algochess;
 
-import grupo.N6.algochess.Coordenada
 import grupo.N6.algochess.exepciones.CasilleroOcupadoException;
 import grupo.N6.algochess.exepciones.CasilleroVacioException;
 import grupo.N6.algochess.unidades.Unidad;
 
-public class Casillero {
+import java.util.ArrayList;
 
+public class Casillero {
+    private ArrayList<Casillero> adyacencias;
     private Coordenada posicion;
     private Unidad unidad;
 
@@ -44,5 +45,13 @@ public class Casillero {
         return !(unidad == null);
     }
 
+    public void asignarAdyacencia(Casillero casillero1) {
+        if (!this.posicion.equals(casillero1.posicion) & this.posicion.esConsecutiva(casillero1.posicion))
+            this.adyacencias.add(casillero1);
+    }
+
+    public ArrayList<Casillero> obtenerAdyacencias() {
+        return this.adyacencias;
+    }
 }
 

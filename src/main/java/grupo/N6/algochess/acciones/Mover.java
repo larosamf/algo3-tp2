@@ -18,13 +18,7 @@ public class Mover implements Accion {
 
     @Override
     public void ejecutarSobre(Partida partida, Tablero tablero) {
-        if (inicio.equals(fin) || inicio.esConsecutiva(fin)) {
-            throw new MovimientoInvalidoException("El movimiento no es valido");
-        }
-        Unidad unidad;
-        unidad = tablero.unidadEnCasillero(inicio);
-        tablero.ponerUnidad(unidad, fin);
-        tablero.sacarUnidad(unidad, inicio);
+        tablero.efectuarMovimiento(this.inicio,this.fin);
     }
 }
 
