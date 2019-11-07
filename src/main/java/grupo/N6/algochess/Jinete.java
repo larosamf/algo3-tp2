@@ -1,6 +1,6 @@
 package grupo.N6.algochess;
 
-public class Jinete extends Unidad {
+public class Jinete extends UnidadMovil {
 	
 	public Jinete() {
 		vida = 100;

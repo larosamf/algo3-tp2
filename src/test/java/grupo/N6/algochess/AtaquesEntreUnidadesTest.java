@@ -47,4 +47,14 @@ public class AtaquesEntreUnidadesTest {
 		
 		assertEquals(45, catapulta.getVida());
 	}
+	
+	@Test
+	public void test05CatapultaAtacaAOtraCatapultaYEstaPierde20DeVida() {
+		Catapulta catapultaUno = new Catapulta();
+		Catapulta catapultaDos = new Catapulta();
+		
+		catapultaUno.atacar(catapultaDos, catapultaUno.getDaño());
+		
+		assertEquals(30, catapultaDos.getVida());
+	}
 }

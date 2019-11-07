@@ -1,6 +1,6 @@
 package grupo.N6.algochess;
 
-public class Curandero extends Unidad {
+public class Curandero extends UnidadMovil {
 	
 	public Curandero() {
 		vida = 75;

@@ -6,7 +6,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import org.junit.Test;
 
-public class AgregarUnidadAJugadorTest {
+public class JugadorTest {
 	
 	@Test
 	public void test01JugadorRecienCreadoTieneUnPuntoMenosDespuesAgregarUnSoldadoDeInfanteria() {
@@ -34,6 +34,14 @@ public class AgregarUnidadAJugadorTest {
     			()->{
     				jugador.agregarUnidad(soldado);;
     			});
+		
+	}
+	
+	@Test
+	public void test03JugadorSinUnidadesEsElPerdedor() {
+		Jugador jugador = new Jugador();
+		
+		assertEquals(true, jugador.perdio());
 		
 	}
 

@@ -9,6 +9,11 @@ public abstract class Unidad {
 	protected int vida;
 	protected int costo;
 	protected int daño;
+	protected Coordenada coordenada;
+	
+	public Unidad() {
+		coordenada = new Coordenada(0, 0);
+	}
 	
     public int getVida() {
         return vida;
@@ -20,6 +25,10 @@ public abstract class Unidad {
     
     public int getDaño() {
     	return daño;
+    }
+    
+    public int getCoordenadaX() {
+    	return coordenada.getX();
     }
     
     public void recibirDaño(int daño) {

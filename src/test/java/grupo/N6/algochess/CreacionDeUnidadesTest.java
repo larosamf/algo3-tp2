@@ -19,5 +19,19 @@ public class CreacionDeUnidadesTest {
 
 		assertEquals(1, soldado.getCosto());
 	}
+	
+	@Test
+	public void test03SoldadoDeInfanteriaRecienCreadoTieneDaño10(){
+		SoldadoDeInfanteria soldado = new SoldadoDeInfanteria();
+
+		assertEquals(10, soldado.getDaño());
+	}
+	
+	@Test
+	public void test04SoldadoDeInfanteriaRecienCreadoTieneCoordenada0X(){
+		SoldadoDeInfanteria soldado = new SoldadoDeInfanteria();
+
+		assertEquals(0, soldado.getCoordenadaX());
+	}
 
 }
