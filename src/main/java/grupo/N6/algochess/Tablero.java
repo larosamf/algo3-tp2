@@ -16,7 +16,7 @@ public class Tablero {
         for (int i = 1; i <= largoX; ++i)
             for (int j = 1; j <= largoX; ++j)
                 casilleros.add(new Casillero(new Coordenada(i, j)));
-        asignarAdyacencias();
+        this.asignarAdyacencias();
     }
 
     private void asignarAdyacencias() {
@@ -32,7 +32,13 @@ public class Tablero {
         throw new PosicionInvalidaExeption("La coordenada es invalida.");
     }
 
-    private Unidad unidadEnCasillero(Coordenada ubicacion) {
+    public void ponerUnidad(Unidad unidad, Coordenada ubicacion) {
+        localizarCasillero(ubicacion).ponerUnidad(unidad);
+    }
+    public int cantidadCasilleros(){
+        return casilleros.size();
+    }
+    public Unidad unidadEnCasillero(Coordenada ubicacion) {
         return localizarCasillero(ubicacion).obtenerUnidad();
     }
 

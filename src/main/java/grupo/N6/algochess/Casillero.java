@@ -46,7 +46,7 @@ public class Casillero {
     }
 
     public void asignarAdyacencia(Casillero casillero1) {
-        if (!this.posicion.equals(casillero1.posicion) & this.posicion.esConsecutiva(casillero1.posicion))
+        if (!(this.posicion.equals(casillero1.posicion)) & (this.posicion.esConsecutiva(casillero1.posicion)))
             this.adyacencias.add(casillero1);
     }
 
