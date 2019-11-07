@@ -33,7 +33,7 @@ public class TableroTest {
 
     }
     
-    /*@Test
+    @Test
     public void test03NoSePuedeAgregarUnSoldadoDeInfanteriaEnCasilleroOcupadoDelSectorAliado(){
         //Arrange
         Tablero tablero = Tablero.getInstanciaDeTablero();
@@ -41,15 +41,15 @@ public class TableroTest {
         SoldadoDeInfanteria otroSoldadoDeInfanteria = new SoldadoDeInfanteria();
         
         //Act
-        tablero.ubicarUnidadEnCasillero(soldadoDeInfanteria,6,8);
+        tablero.ubicarUnidadEnCasillero(soldadoDeInfanteria,10,10);
 
         //Assert
         assertThrows(EsteCasilleroEstaOcupadoYNoSePuedePonerOtraUnidadException.class,
                 ()->{
-                    tablero.ubicarUnidadEnCasillero(otroSoldadoDeInfanteria,6,8);
+                    tablero.ubicarUnidadEnCasillero(otroSoldadoDeInfanteria,10,10);
                 });
 
-    }*/
+    }
     
     @Test
     public void test04NoSePuedeAgregarUnSoldadoDeInfanteriaEnCasilleroDelSectorEnemigo(){
