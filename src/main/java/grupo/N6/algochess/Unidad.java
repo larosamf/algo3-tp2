@@ -1,9 +1,5 @@
 package grupo.N6.algochess;
 
-/**
- * 
- *
- */
 public abstract class Unidad {
 	
 	protected int vida;
@@ -13,6 +9,10 @@ public abstract class Unidad {
 	
 	public Unidad() {
 		coordenada = new Coordenada(0, 0);
+	}
+	
+	public void ubicarEn(int fila, int columna) {
+		coordenada = new Coordenada(fila, columna);
 	}
 	
     public int getVida() {
@@ -45,6 +45,10 @@ public abstract class Unidad {
     
     public void recibirCuracion() {
     	vida = vida + 15;
+    }
+    
+    public void mover(int fila, int columna) {
+    	throw new EstaUnidadNoSePuedeMoverException();
     }
     
 }

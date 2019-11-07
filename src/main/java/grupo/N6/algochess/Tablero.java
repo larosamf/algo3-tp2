@@ -35,6 +35,7 @@ public class Tablero {
     	
         Casillero casillero = casillerosDelTablero[fila][columna];
         sectorAliado.ubicarUnidadEnCasillero(unidad, columna, casillero);
+        unidad.ubicarEn(fila, columna);
     }
 
     public void desocuparCasillero(int fila, int columna){
@@ -47,6 +48,13 @@ public class Tablero {
 
     private Casillero getCasilleroEn(int fila, int columna){
         return(casillerosDelTablero[fila][columna]);
+    }
+    
+    public void moverUnidadDePosicionADestino(int posicionFila, int posicionColumna, int filaDestino, int columnaDestino) {
+    	Unidad unidad = getUnidadEnCasillero(posicionFila, posicionColumna);
+    	unidad.mover(filaDestino, columnaDestino);
+    	desocuparCasillero(posicionFila, posicionColumna);
+    	ubicarUnidadEnCasillero(unidad, filaDestino, columnaDestino);
     }
 
 }
