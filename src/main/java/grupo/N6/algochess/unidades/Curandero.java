@@ -1,10 +1,9 @@
 package grupo.N6.algochess.unidades;
 
-import grupo.N6.algochess.Coordenada;
 import grupo.N6.algochess.exepciones.DistanciaInvalidaExepcion;
 import grupo.N6.algochess.exepciones.JugadaInvalidaExepcion;
 
-public class Curandero extends UnidadMovible {
+public class Curandero extends UnidadMovible implements Atacable, Curable {
 
     int curacion;
 

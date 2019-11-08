@@ -7,7 +7,7 @@ import grupo.N6.algochess.exepciones.JugadaInvalidaExepcion;
  * 
  *
  */
-public class SoldadoDeInfanteria extends UnidadMovible {
+public class SoldadoDeInfanteria extends UnidadMovible implements Atacable, Curable {
 
 	public SoldadoDeInfanteria() {
 		vida = 100;

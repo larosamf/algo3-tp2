@@ -1,8 +1,6 @@
 package grupo.N6.algochess.unidades;
 
-import grupo.N6.algochess.Coordenada;
-
-public class Jinete extends UnidadMovible {
+public class Jinete extends UnidadMovible implements Atacable, Curable{
 
     @Override
     public void atacar(Unidad unidad, int distancia) {

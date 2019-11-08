@@ -11,7 +11,8 @@ import java.util.ArrayList;
  * 
  *
  */
-public abstract class Unidad {
+public abstract class Unidad implements Colocable{
+
     protected ArrayList<Coordenada> adyacencias;
 	protected int distanciaAccion;
 	protected int vida;
