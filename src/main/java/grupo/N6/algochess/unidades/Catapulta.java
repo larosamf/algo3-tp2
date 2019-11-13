@@ -12,7 +12,7 @@ public class Catapulta extends Unidad {
 		distanciaAccion = 6;
 		vida = 50;
 		costo = 5;
-		daño = 20;
+		dano = 20;
 	}
 
 	@Override
@@ -20,7 +20,7 @@ public class Catapulta extends Unidad {
 		if(distancia<distanciaAccion) {
 			throw new DistanciaInvalidaExepcion("No ataca a corta distancia");
 		}
-		atacado.recibirDaño(daño);
+		atacado.recibirAtaque(dano);
 	}
 
 	@Override

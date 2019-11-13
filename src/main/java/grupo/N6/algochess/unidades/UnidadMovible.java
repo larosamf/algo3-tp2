@@ -4,7 +4,7 @@ import grupo.N6.algochess.Casillero;
 import grupo.N6.algochess.Coordenada;
 import grupo.N6.algochess.exepciones.MovimientoInvalidoException;
 
-public abstract class UnidadMovible extends Unidad implements Movible {
+public abstract class UnidadMovible extends Unidad {
 
     @Override
     public void mover(Casillero casillero, Coordenada inicio, Coordenada fin) {

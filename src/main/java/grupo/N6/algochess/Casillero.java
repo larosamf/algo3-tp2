@@ -7,7 +7,7 @@ import grupo.N6.algochess.unidades.Unidad;
 import java.util.ArrayList;
 
 public class Casillero {
-    private ArrayList<Casillero> adyacencias;
+    private ArrayList<Casillero> adyacencias = new ArrayList<>();
     private Coordenada posicion;
     private Unidad unidad;
 

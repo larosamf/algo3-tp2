@@ -13,12 +13,12 @@ import java.util.ArrayList;
  */
 public abstract class Unidad implements Colocable{
 
-    protected ArrayList<Coordenada> adyacencias;
-	protected int distanciaAccion;
+    protected int distanciaAccion;
 	protected int vida;
+    protected int _VIDAMAXIMA_;
 	protected String owner;
 	protected int costo;
-	protected int daño;
+	protected int dano;
 	
     public int getVida() {
         return vida;
@@ -28,17 +28,21 @@ public abstract class Unidad implements Colocable{
         return costo;
     }
     
-    public int getDaño() {
-    	return daño;
+    public int getDano() {
+    	return dano;
     }
 
 
-    
     public abstract void atacar(Unidad unidad, int distancia) ;
     
-    public void recibirCuracion(int cura) {	vida = vida + cura; }
+    public void recibirCuracion(int cura) {
+        if (vida+cura > _VIDAMAXIMA_)
+            vida = _VIDAMAXIMA_;
+        else
+            vida = vida + cura;
+    }
 
-    public void recibirDaño(int daño) {vida = vida - daño; }
+    public void recibirAtaque(int dano) { vida = vida - dano; }
 
     public boolean perteneceA(String nombre){
         return nombre == owner;
