@@ -41,12 +41,12 @@ public class TableroTest {
         SoldadoDeInfanteria otroSoldadoDeInfanteria = new SoldadoDeInfanteria();
         
         //Act
-        tablero.ubicarUnidadEnCasillero(soldadoDeInfanteria,10,10);
+        tablero.ubicarUnidadEnCasillero(soldadoDeInfanteria,9,1);
 
         //Assert
         assertThrows(EsteCasilleroEstaOcupadoYNoSePuedePonerOtraUnidadException.class,
                 ()->{
-                    tablero.ubicarUnidadEnCasillero(otroSoldadoDeInfanteria,10,10);
+                    tablero.ubicarUnidadEnCasillero(otroSoldadoDeInfanteria,9,1);
                 });
 
     }

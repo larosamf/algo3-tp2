@@ -11,7 +11,7 @@ public class CasilleroTest {
     @Test
     public void test01elCasilleroSeCreaVacio(){
         //Arrange
-        Casillero casillero = new Casillero(1,1);
+        Casillero casillero = new Casillero(1,1,"Bando1");
 
         //Act y Assert
         assertThrows(EsteCasilleroYaEstaDesocupadoException.class,
@@ -23,11 +23,11 @@ public class CasilleroTest {
     @Test
     public void test02SePuedeAgregarUnSoldadoDeInfanteriaAlCasillero(){
        //Arrange
-        Casillero casillero = new Casillero(2,2);
+        Casillero casillero = new Casillero(2,2,"Bando1");
         SoldadoDeInfanteria soldadoDeInfanteria = new SoldadoDeInfanteria();
 
         //Act
-        casillero.ocuparPor(soldadoDeInfanteria);
+        casillero.ocuparPor(soldadoDeInfanteria, "Bando1");
 
         //Assert
         assertEquals(soldadoDeInfanteria, casillero.getUnidadEnElCasillero());

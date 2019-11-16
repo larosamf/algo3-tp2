@@ -6,16 +6,21 @@ public class Casillero {
     boolean casilleroOcupado;
     Coordenada coordenada;
     Unidad unidad;
+    String bando;
 
-    public Casillero(int x, int y){
+    public Casillero(int x, int y, String bandoDelCasillero){
         casilleroOcupado = false;
         coordenada = new Coordenada(x,y);
         unidad = null;
+        bando = bandoDelCasillero;
     }
 
-    public void ocuparPor(Unidad unidadAUbicar){
+    public void ocuparPor(Unidad unidadAUbicar, String bandoDelJugador){
     	if (casilleroOcupado) {
     		throw new EsteCasilleroEstaOcupadoYNoSePuedePonerOtraUnidadException();
+    	}
+    	if (bandoDelJugador != bando) {
+    		throw new NoSePuedeColocarUnaUnidadEnElSectorEnemigoException();
     	}
         unidad = unidadAUbicar;
         casilleroOcupado = true;
