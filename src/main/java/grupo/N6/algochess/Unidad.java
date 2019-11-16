@@ -5,10 +5,8 @@ public abstract class Unidad implements Posicionable {
 	protected int vida;
 	protected int costo;
 	protected int daño;
-	protected Coordenada coordenada;
 	
 	public Unidad() {
-		coordenada = new Coordenada(0, 0);
 	}
 	
 	
@@ -20,10 +18,6 @@ public abstract class Unidad implements Posicionable {
         return costo;
     }
     
-    public int getCoordenadaX() {
-    	return coordenada.getX();
-    }
-    
     public void recibirDaño(int daño) {
     	vida = vida - daño;
     }
@@ -32,7 +26,7 @@ public abstract class Unidad implements Posicionable {
     	vida = vida + 15;
     }
     
-    public void mover(int fila, int columna) {
+    public void mover(int distancia) {
     	throw new EstaUnidadNoSePuedeMoverException();
     }
     

@@ -17,7 +17,7 @@ public class MovilidadDeUnidadesTest {
         //Act y Assert
         assertThrows(MovimientoInvalidoException.class,
                 ()->{
-                    soldado.mover(4,4);
+                    soldado.mover(4);
                 });
     }
     
@@ -55,14 +55,14 @@ public class MovilidadDeUnidadesTest {
        //Arrange y Act
        Tablero tablero = Tablero.getInstanciaDeTablero();
        SoldadoDeInfanteria soldado = new SoldadoDeInfanteria(); 
-       tablero.ubicarUnidadEnCasillero(soldado,5,5);
+       tablero.ubicarUnidadEnCasillero(soldado,3,4);
        SoldadoDeInfanteria soldadoOcupandoPosicionDestino = new SoldadoDeInfanteria(); 
        tablero.ubicarUnidadEnCasillero(soldadoOcupandoPosicionDestino,4,4);
        
        //Act y Assert
        assertThrows(EsteCasilleroEstaOcupadoYNoSePuedePonerOtraUnidadException.class,
                ()->{
-               	tablero.moverUnidadDePosicionADestino(5,5, 4,4);;
+               	tablero.moverUnidadDePosicionADestino(3,4, 4,4);;
                });
    }
    

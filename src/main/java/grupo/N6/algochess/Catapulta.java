@@ -11,9 +11,5 @@ public class Catapulta extends Unidad implements Atacante {
 	public void atacar(Unidad otraUnidad) {
     	otraUnidad.recibirDaño(daño);
     }
-	
-	public void ubicarEn(int fila, int columna) {
-		coordenada = new Coordenada(fila, columna);
-	}
 
 }

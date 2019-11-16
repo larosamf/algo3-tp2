@@ -12,19 +12,10 @@ public class Jinete extends Unidad implements Atacante, Movible {
     	otraUnidad.recibirDaño(daño);
     }
 	
-	public void mover(int fila, int columna) {
-		Coordenada coordenadaNueva = new Coordenada(fila, columna);
-		
-		if (!(this.coordenada.esConsecutiva(coordenadaNueva))) {
+	public void mover(int distancia) {		
+		if (distancia > 1) {
 			throw new MovimientoInvalidoException();
 		}
-		
-		this.coordenada = coordenadaNueva;
 	}
-	
-	public void ubicarEn(int fila, int columna) {
-		coordenada = new Coordenada(fila, columna);
-	}
-	
 	
 }

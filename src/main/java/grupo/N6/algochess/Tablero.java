@@ -18,7 +18,7 @@ public class Tablero {
 
         for(int i = 0; i<20; i++){
             for(int j = 0; j<20; j++){
-                Casillero casillero = new Casillero();
+                Casillero casillero = new Casillero(i,j);
                 casillerosDelTablero[i][j] = casillero;
             }
         }
@@ -35,7 +35,6 @@ public class Tablero {
     	
         Casillero casillero = casillerosDelTablero[fila][columna];
         sectorAliado.ubicarUnidadEnCasillero(unidad, columna, casillero);
-        unidad.ubicarEn(fila, columna);
     }
 
     public void desocuparCasillero(int fila, int columna){
@@ -52,7 +51,8 @@ public class Tablero {
     
     public void moverUnidadDePosicionADestino(int posicionFila, int posicionColumna, int filaDestino, int columnaDestino) {
     	Unidad unidad = getUnidadEnCasillero(posicionFila, posicionColumna);
-    	unidad.mover(filaDestino, columnaDestino);
+    	int distanciaAMoverse = getCasilleroEn(posicionFila, posicionColumna).distanciaACasillero(filaDestino, columnaDestino);
+    	unidad.mover(distanciaAMoverse);
     	desocuparCasillero(posicionFila, posicionColumna);
     	ubicarUnidadEnCasillero(unidad, filaDestino, columnaDestino);
     }
