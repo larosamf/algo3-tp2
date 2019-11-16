@@ -2,16 +2,12 @@ package grupo.N6.algochess.unidades;
 
 import grupo.N6.algochess.Casillero;
 import grupo.N6.algochess.Coordenada;
-import grupo.N6.algochess.Jugador;
-import grupo.N6.algochess.Tablero;
-
-import java.util.ArrayList;
 
 /**
  * 
  *
  */
-public abstract class Unidad implements Colocable{
+public abstract class Unidad implements Posicionable {
 
     protected int distanciaAccion;
 	protected int vida;

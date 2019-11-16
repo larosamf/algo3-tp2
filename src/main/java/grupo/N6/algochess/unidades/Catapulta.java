@@ -20,7 +20,7 @@ public class Catapulta extends Unidad {
 		if(distancia<distanciaAccion) {
 			throw new DistanciaInvalidaExepcion("No ataca a corta distancia");
 		}
-		atacado.recibirAtaque(dano);
+		atacado.recibirAtaque(dano);//ataque ataque.recibirAtaque
 	}
 
 	@Override

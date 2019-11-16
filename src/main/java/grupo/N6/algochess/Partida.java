@@ -16,7 +16,6 @@ public class Partida {
         this.jugador2 = jugador2;
         this.tablero = new Tablero(20, 20);
 
-        tablero.inicializarJuego(this.jugador1.obtenerUnidades(), this.jugador2.obtenerUnidades());
 
         this.jugando = true;
     }
@@ -46,5 +45,9 @@ public class Partida {
     private void hayGanador() {
         this.jugador1.sigueParticipando();
         this.jugador2.sigueParticipando();
+    }
+
+    private void inicializarPartida(Tablero tablero,Jugador jugador1, Jugador jugador2){
+
     }
 }
