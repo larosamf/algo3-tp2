@@ -12,9 +12,22 @@ public class AtaquesEntreUnidadesTest {
 		SoldadoDeInfanteria soldado = new SoldadoDeInfanteria();
 		Catapulta catapulta = new Catapulta();
 		
-		soldado.atacar(catapulta);
+		soldado.atacar(catapulta, 1);
 		
 		assertEquals(40, catapulta.getVida());
+	}
+	
+	@Test
+	public void test02CatapultaNoPuedeSerCuradaPorElCurandero() {
+		//Arrange
+		Catapulta catapulta = new Catapulta();
+		Curandero curandero = new Curandero();
+		
+		//Act y Assert
+        assertThrows(NoSePuedeCurarUnaCatapultaException.class,
+                ()->{
+                	curandero.curar(catapulta);
+                });
 	}
 	
 	@Test
@@ -32,7 +45,7 @@ public class AtaquesEntreUnidadesTest {
 		Jinete jinete = new Jinete();
 		Catapulta catapulta = new Catapulta();
 		
-		jinete.atacar(catapulta);
+		jinete.atacar(catapulta, 1);
 		
 		assertEquals(45, catapulta.getVida());
 	}
@@ -42,7 +55,7 @@ public class AtaquesEntreUnidadesTest {
 		Catapulta catapultaUno = new Catapulta();
 		Catapulta catapultaDos = new Catapulta();
 		
-		catapultaUno.atacar(catapultaDos);
+		catapultaUno.atacar(catapultaDos, 5);
 		
 		assertEquals(30, catapultaDos.getVida());
 	}

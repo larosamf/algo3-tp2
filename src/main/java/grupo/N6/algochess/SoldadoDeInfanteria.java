@@ -8,7 +8,7 @@ public class SoldadoDeInfanteria extends Unidad implements Atacante, Movible {
 		daño = 10;
 	}
 	
-	public void atacar(Unidad otraUnidad) {
+	public void atacar(Unidad otraUnidad, int distanciaAlAtacado) {
     	otraUnidad.recibirDaño(daño);
     }
 	

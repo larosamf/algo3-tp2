@@ -8,7 +8,7 @@ public class Jinete extends Unidad implements Atacante, Movible {
 		daño = 5;
 	}
 
-	public void atacar(Unidad otraUnidad) {
+	public void atacar(Unidad otraUnidad, int distanciaAlAtacado) {
     	otraUnidad.recibirDaño(daño);
     }
 	
