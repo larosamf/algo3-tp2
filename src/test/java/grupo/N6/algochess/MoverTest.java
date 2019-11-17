@@ -1,7 +1,7 @@
 package grupo.N6.algochess;
 
-import grupo.N6.algochess.acciones.Mover;
-import grupo.N6.algochess.unidades.SoldadoDeInfanteria;
+import grupo.N6.algochess.accionesDePartida.Mover;
+import grupo.N6.algochess.posicionables.unidades.SoldadoDeInfanteria;
 import org.junit.Assert;
 import org.junit.Test;
 

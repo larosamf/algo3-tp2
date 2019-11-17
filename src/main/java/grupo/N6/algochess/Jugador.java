@@ -1,7 +1,7 @@
 package grupo.N6.algochess;
 import grupo.N6.algochess.exepciones.FinalException;
 import grupo.N6.algochess.exepciones.PuntosInsuficientesParaAgregarUnidadException;
-import grupo.N6.algochess.unidades.Unidad;
+import grupo.N6.algochess.posicionables.unidades.Unidad;
 
 import java.util.ArrayList;
 import java.util.List;

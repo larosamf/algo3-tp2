@@ -1,8 +1,10 @@
-package grupo.N6.algochess.unidades;
+package grupo.N6.algochess.posicionables.unidades;
 
 import grupo.N6.algochess.modos.JineteArco;
 import grupo.N6.algochess.modos.JineteEspada;
 import grupo.N6.algochess.modos.ModoJinete;
+import grupo.N6.algochess.posicionables.unidades.Unidad;
+import grupo.N6.algochess.posicionables.unidades.UnidadMovible;
 
 public class Jinete extends UnidadMovible {
 

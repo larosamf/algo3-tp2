@@ -1,9 +1,9 @@
 package grupo.N6.algochess;
 
-import grupo.N6.algochess.acciones.Atacar;
+import grupo.N6.algochess.accionesDePartida.Atacar;
 import grupo.N6.algochess.exepciones.DistanciaInvalidaExepcion;
-import grupo.N6.algochess.unidades.Jinete;
-import grupo.N6.algochess.unidades.SoldadoDeInfanteria;
+import grupo.N6.algochess.posicionables.unidades.Jinete;
+import grupo.N6.algochess.posicionables.unidades.SoldadoDeInfanteria;
 import org.junit.Assert;
 import org.junit.Test;
 

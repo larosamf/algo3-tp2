@@ -1,4 +1,4 @@
-package grupo.N6.algochess.acciones;
+package grupo.N6.algochess.accionesDePartida;
 
 import grupo.N6.algochess.Coordenada;
 import grupo.N6.algochess.Partida;

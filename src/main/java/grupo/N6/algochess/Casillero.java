@@ -1,12 +1,16 @@
 package grupo.N6.algochess;
 
+import grupo.N6.algochess.accionesDeJuego.Ataque;
+import grupo.N6.algochess.accionesDeJuego.Cura;
 import grupo.N6.algochess.exepciones.CasilleroOcupadoException;
 import grupo.N6.algochess.exepciones.CasilleroVacioException;
-import grupo.N6.algochess.unidades.Unidad;
+import grupo.N6.algochess.posicionables.Curable;
+import grupo.N6.algochess.posicionables.Atacable;
+import grupo.N6.algochess.posicionables.unidades.Unidad;
 
 import java.util.ArrayList;
 
-public class Casillero {
+public class Casillero implements Atacable, Curable {
     private ArrayList<Casillero> adyacencias = new ArrayList<>();
     private Coordenada posicion;
     private Unidad unidad;
@@ -52,6 +56,16 @@ public class Casillero {
 
     public ArrayList<Casillero> obtenerAdyacencias() {
         return this.adyacencias;
+    }
+
+    @Override
+    public void recibirAtaque(Ataque ataque) {
+
+    }
+
+    @Override
+    public void recibirCuracion(Cura cura) {
+
     }
 }
 

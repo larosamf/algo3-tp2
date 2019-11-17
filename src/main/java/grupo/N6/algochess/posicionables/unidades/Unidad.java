@@ -1,7 +1,8 @@
-package grupo.N6.algochess.unidades;
+package grupo.N6.algochess.posicionables.unidades;
 
-import grupo.N6.algochess.Casillero;
 import grupo.N6.algochess.Coordenada;
+import grupo.N6.algochess.Casillero;
+import grupo.N6.algochess.posicionables.Posicionable;
 
 /**
  * 

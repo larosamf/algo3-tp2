@@ -1,12 +1,15 @@
 package grupo.N6.algochess;
 
-import grupo.N6.algochess.acciones.Atacar;
-import grupo.N6.algochess.acciones.Curar;
+import grupo.N6.algochess.accionesDePartida.Atacar;
+import grupo.N6.algochess.accionesDePartida.Curar;
 import grupo.N6.algochess.exepciones.DistanciaInvalidaExepcion;
-import grupo.N6.algochess.unidades.Curandero;
-import grupo.N6.algochess.unidades.SoldadoDeInfanteria;
+import grupo.N6.algochess.posicionables.unidades.Catapulta;
+import grupo.N6.algochess.posicionables.unidades.Curandero;
+import grupo.N6.algochess.posicionables.unidades.SoldadoDeInfanteria;
 import org.junit.Assert;
 import org.junit.Test;
+
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class CurarTest {
     @Test
@@ -56,5 +59,12 @@ public class CurarTest {
         Curar curar = new Curar(ubicacionInicial, ubicacionFinal);
         curar.ejecutarSobre(new Partida(new Jugador("Pedro"), new Jugador("Juan")), tablero);
         Assert.assertEquals(tablero.unidadEnCasillero(ubicacionFinal).getVida(), 100);
+    }
+    @Test(expected = DistanciaInvalidaExepcion.class)
+    public void test04CatapultaNoPuedeSerCuradaPorElCurandero() {
+        //Arrange
+        Catapulta catapulta = new Catapulta();
+        Curandero curandero = new Curandero();
+        curandero.curar(catapulta,1);
     }
 }

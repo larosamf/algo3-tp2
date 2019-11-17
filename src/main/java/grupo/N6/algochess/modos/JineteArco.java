@@ -1,8 +1,5 @@
 package grupo.N6.algochess.modos;
 
-import grupo.N6.algochess.modos.ModoJinete;
-import grupo.N6.algochess.unidades.Unidad;
-
 
 public class JineteArco extends ModoJinete {
 

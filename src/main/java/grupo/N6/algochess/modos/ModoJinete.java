@@ -1,7 +1,7 @@
 package grupo.N6.algochess.modos;
 
 import grupo.N6.algochess.exepciones.DistanciaInvalidaExepcion;
-import grupo.N6.algochess.unidades.Unidad;
+import grupo.N6.algochess.posicionables.unidades.Unidad;
 
 public abstract class ModoJinete {
 

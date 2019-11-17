@@ -1,8 +1,7 @@
 package grupo.N6.algochess;
 
-import grupo.N6.algochess.acciones.Accion;
+import grupo.N6.algochess.accionesDePartida.Accion;
 import grupo.N6.algochess.exepciones.JuegoNoEstaActivoException;
-import grupo.N6.algochess.Tablero;
 
 public class Partida {
 
