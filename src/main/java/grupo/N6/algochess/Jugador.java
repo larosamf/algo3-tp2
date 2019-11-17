@@ -1,14 +1,24 @@
 package grupo.N6.algochess;
+import grupo.N6.algochess.exepciones.FinalException;
+import grupo.N6.algochess.exepciones.PuntosInsuficientesParaAgregarUnidadException;
+import grupo.N6.algochess.unidades.Unidad;
 
+import java.util.ArrayList;
+import java.util.List;
 
 public class Jugador {
 	
 	private int puntos;
+	protected String nombre;
 	private int cantidadDeUnidades;
-	
-	public Jugador() {
+    private boolean estaJugando;
+    protected List<Unidad> equipo;
+
+    public Jugador(String nombre) {
 		puntos = 20;
 		cantidadDeUnidades = 0;
+        this.nombre = nombre;
+        this.equipo = new ArrayList<Unidad>();
 	}
 
 	public int getPuntos() {
@@ -16,7 +26,6 @@ public class Jugador {
 	}
 	
 	public void agregarUnidad(Unidad unidad) {
-		
 		if (puntos < unidad.getCosto()) {
 			throw new PuntosInsuficientesParaAgregarUnidadException();
 		}
@@ -25,8 +34,39 @@ public class Jugador {
 		cantidadDeUnidades += 1;
 	}
 
-	public boolean perdio() {
-		return (cantidadDeUnidades == 0); 
+	public void cambiarTurno() {
+		this.estaJugando = !this.estaJugando;
 	}
-	
+
+    public boolean lePertenece(Unidad unidad) {
+        return unidad.perteneceA(this.nombre);
+    }
+
+	public void inicializarTurno() {
+		this.estaJugando = true;
+	}
+
+	public List<Unidad> obtenerUnidades() {
+		return this.equipo;
+	}
+
+	public boolean estaActivo() {
+		return this.estaJugando;
+	}
+
+	public void terminarTurno() {
+		for (Unidad unidad : equipo) {
+			unidad.terminarTurno();
+		}
+	}
+    public void sigueParticipando() {
+        boolean sigueJugando = false;
+        for (Unidad unidad : equipo) {
+            if (unidad.estaVivo())
+                sigueJugando = true;
+        }
+        if (!sigueJugando){
+            throw new FinalException();
+        }
+    }
 }

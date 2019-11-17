@@ -1,58 +1,69 @@
 package grupo.N6.algochess;
 
+import grupo.N6.algochess.exepciones.PosicionInvalidaExeption;
+import grupo.N6.algochess.unidades.Unidad;
+
+import java.util.ArrayList;
+import java.util.List;
+
+
 public class Tablero {
 
-    private static Tablero instanciaDeTablero = new Tablero();
+    private ArrayList<Casillero> casilleros;
 
-    private Casillero [][] casillerosDelTablero;
-    private String bandoAliado; /*cambia turno a turno*/
-
-    public static Tablero getInstanciaDeTablero(){
-        return(instanciaDeTablero);
+    public Tablero(int largoX, int largoY) {
+        casilleros = new ArrayList<Casillero>(largoX * largoY);
+        for (int i = 1; i <= largoX; ++i)
+            for (int j = 1; j <= largoX; ++j)
+                casilleros.add(new Casillero(new Coordenada(i, j)));
+        this.asignarAdyacencias();
     }
 
-   private Tablero() {
-        casillerosDelTablero = new Casillero[20][20];
-
-        for(int i = 0; i<20; i++){
-        	String bando = "Bando1";
-        	if (i > 9) {	
-        		bando = "Bando2";
-        	}
-            for(int j = 0; j<20; j++){
-                Casillero casillero = new Casillero(i,j, bando);
-                casillerosDelTablero[i][j] = casillero;
-            }
-        }
-        
-        bandoAliado = "Bando1";
-
-    }
-    
-    public void ubicarUnidadEnCasillero(Unidad unidad, int fila, int columna){
-    	
-        Casillero casillero = casillerosDelTablero[fila][columna];
-        casillero.ocuparPor(unidad, bandoAliado);
+    private void asignarAdyacencias() {
+        for (Casillero casillero : casilleros)
+            for (Casillero casillero1 : casilleros)
+                casillero.asignarAdyacencia(casillero1);
     }
 
-    public void desocuparCasillero(int fila, int columna){
-        getCasilleroEn(fila,columna).desocupar();
+    private Casillero localizarCasillero(Coordenada ubicacion) {
+        for (Casillero casillero : casilleros)
+            if (casillero.estaEnPosicion(ubicacion))
+                return casillero;
+        throw new PosicionInvalidaExeption("La coordenada es invalida.");
     }
 
-    public Unidad getUnidadEnCasillero(int fila, int columna){
-        return(getCasilleroEn(fila, columna).getUnidadEnElCasillero());
+    public void ponerUnidad(Unidad unidad, Coordenada ubicacion) {
+        localizarCasillero(ubicacion).ponerUnidad(unidad);
+    }
+    public int cantidadCasilleros(){
+        return casilleros.size();
+    }
+    public Unidad unidadEnCasillero(Coordenada ubicacion) {
+        return localizarCasillero(ubicacion).obtenerUnidad();
     }
 
-    private Casillero getCasilleroEn(int fila, int columna){
-        return(casillerosDelTablero[fila][columna]);
+    /* INICIO DE JUEGO */
+
+    public void inicializarJuego(List<Unidad> unidades1, List<Unidad> unidades2) {
     }
-    
-    public void moverUnidadDePosicionADestino(int posicionFila, int posicionColumna, int filaDestino, int columnaDestino) {
-    	Unidad unidad = getUnidadEnCasillero(posicionFila, posicionColumna);
-    	int distanciaAMoverse = getCasilleroEn(posicionFila, posicionColumna).distanciaACasillero(filaDestino, columnaDestino);
-    	unidad.mover(distanciaAMoverse);
-    	desocuparCasillero(posicionFila, posicionColumna);
-    	ubicarUnidadEnCasillero(unidad, filaDestino, columnaDestino);
+
+    /* ACCIONES */
+
+    public void efectuarMovimiento(Coordenada inicio, Coordenada fin) {
+        Unidad unidad = this.unidadEnCasillero(inicio);
+        unidad.mover(localizarCasillero(inicio),inicio, fin);
+    }
+
+    public void efectuarAtaque(Coordenada inicio, Coordenada fin) {
+        Unidad atacante = unidadEnCasillero(inicio);
+        Unidad atacado = unidadEnCasillero(fin);
+        atacante.atacar(atacado, inicio.distanciaHasta(fin));
+    }
+
+    public void efectuarCuracion(Coordenada inicio, Coordenada fin) {
+        Unidad curador = unidadEnCasillero(inicio);
+        Unidad curado = unidadEnCasillero(fin);
+        curador.curar(curado, inicio.distanciaHasta(fin));
     }
 
 }

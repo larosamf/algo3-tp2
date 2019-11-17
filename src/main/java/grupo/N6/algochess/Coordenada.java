@@ -9,12 +9,14 @@ public class Coordenada {
         this.y = y;
     }
 
+    /* Devuelve la distancia Chebyshov entre dos coordenadas del tablero
+     * https://es.wikipedia.org/wiki/Distancia_de_Chebyshov */
+
     public boolean esConsecutiva(Coordenada otra) {
         return distanciaHasta(otra) <= 1;
     }
-    
     public int distanciaHasta(Coordenada otra){
-        return Math.max(Math.abs(this.x - otra.x), Math.abs(this.y - otra.y));
+        return Math.max (Math.abs(this.x - otra.x), Math.abs(this.y - otra.y));
     }
 
     @Override
@@ -27,11 +29,11 @@ public class Coordenada {
         }
     }
 
-    public int getX(){
+    public int obtenerX(){
         return this.x;
     }
 
-    public int getY(){
+    public int obtenerY(){
         return this.y;
     }
 
