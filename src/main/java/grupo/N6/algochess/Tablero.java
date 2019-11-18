@@ -66,7 +66,8 @@ public class Tablero {
     /* ACCIONES */
 
     public void efectuarMovimiento(Coordenada inicio, Coordenada fin) {
-    	localizarCasillero(inicio).moverUnidadA(localizarCasillero(fin));
+    	Unidad unidadAMover = localizarCasillero(inicio).obtenerUnidad();
+    	unidadAMover.mover(localizarCasillero(inicio), localizarCasillero(fin));
     }
 
     public void efectuarAtaque(Coordenada inicio, Coordenada fin) {

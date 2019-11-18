@@ -34,7 +34,7 @@ public class Catapulta extends Unidad {
 	}
 
     @Override
-    public void mover(Casillero casillero, Coordenada inicio, Coordenada fin) {
+    public void mover(Casillero inicio, Casillero fin) {
         throw new JugadaInvalidaExepcion("La unidad no se mueve");
     }
 

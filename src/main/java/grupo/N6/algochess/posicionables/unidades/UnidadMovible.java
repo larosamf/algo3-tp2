@@ -7,8 +7,8 @@ import grupo.N6.algochess.Casillero;
 public abstract class UnidadMovible extends Unidad {
 
     @Override
-    public void mover(Casillero casillero, Coordenada inicio, Coordenada fin) {
-
+    public void mover(Casillero casilleroInicio, Casillero casilleroFin) {
+    	casilleroInicio.moverUnidadA(casilleroFin);
     }
 }
 
