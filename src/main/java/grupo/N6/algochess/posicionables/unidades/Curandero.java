@@ -35,7 +35,7 @@ public class Curandero extends UnidadMovible {
 		curado.recibirCuracion(curacion);
 	}
     
-    public void actualizarEstado(ArrayList<Unidad> unidadesAliadasACortaDistancia, ArrayList<Unidad> unidadesEnemigasACortaDistancia) {
+    public void actualizarEstado(ArrayList<Unidad> aliadosACortaDistancia, ArrayList<Unidad> enemigosACortaDistancia, ArrayList<Unidad> batallon) {
     	
     }
 

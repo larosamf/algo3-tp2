@@ -77,24 +77,57 @@ public class Casillero implements Atacable, Curable {
         return this.adyacencias;
     }
     
-    public void actualizarEstadoDeUnidad() {
-    	ArrayList<Unidad> unidadesAliadasACortaDistancia = new ArrayList<>();
-    	ArrayList<Unidad> unidadesEnemigasACortaDistancia = new ArrayList<>();
+    private ArrayList<Unidad> buscarUnidadesAliadasADistanciaCortaDelBando(String bandoUnidades) {
+    	ArrayList<Unidad> unidades = new ArrayList<>();
     	
     	for (Casillero adyacencia : adyacencias) {
-    		if (adyacencia.hayUnidad() && adyacencia.bando == this.bando)
-    			unidadesAliadasACortaDistancia.add(adyacencia.unidad);
-    		if (adyacencia.hayUnidad() && adyacencia.bando != this.bando)
-    			unidadesEnemigasACortaDistancia.add(adyacencia.unidad);
+    		if (adyacencia.hayUnidad() && adyacencia.bando == bandoUnidades)
+    			unidades.add(adyacencia.unidad);
     		for (Casillero adyacencia2 : adyacencia.adyacencias) {
-    			if (adyacencia2.hayUnidad() && adyacencia2.bando == this.bando)
-        			unidadesAliadasACortaDistancia.add(adyacencia2.unidad);
-        		if (adyacencia2.hayUnidad() && adyacencia2.bando != this.bando)
-        			unidadesEnemigasACortaDistancia.add(adyacencia2.unidad);
+    			if (adyacencia2.hayUnidad() && adyacencia2.bando == bandoUnidades)
+        			unidades.add(adyacencia2.unidad);
+    		}
+    	}
+    	return unidades;
+    }
+    
+    private ArrayList<Unidad> buscarUnidadesEnemigasADistanciaCortaDelBando(String bandoUnidades) {
+    	ArrayList<Unidad> unidades = new ArrayList<>();
+    	
+    	for (Casillero adyacencia : adyacencias) {
+    		if (adyacencia.hayUnidad() && adyacencia.bando != bandoUnidades)
+    			unidades.add(adyacencia.unidad);
+    		for (Casillero adyacencia2 : adyacencia.adyacencias) {
+    			if (adyacencia2.hayUnidad() && adyacencia2.bando != bandoUnidades)
+        			unidades.add(adyacencia2.unidad);
+    		}
+    	}
+    	return unidades;
+    }
+    
+    private ArrayList<Unidad> buscarBatallon(String bando) {
+    	ArrayList<Unidad> soldados = new ArrayList<>();
+    	if (!this.obtenerUnidad().esSoldado()) return soldados;
+    	
+    	for (Casillero adyacencia : adyacencias) {
+    		if (adyacencia.hayUnidad() && adyacencia.bando == bando && adyacencia.obtenerUnidad().esSoldado()) {
+    			soldados.add(adyacencia.unidad);
+    			for (Casillero adyacencia2 : adyacencia.adyacencias) {
+    	    		if (adyacencia.hayUnidad() && adyacencia.bando == bando && adyacencia.obtenerUnidad().esSoldado())
+    	    			soldados.add(adyacencia2.unidad);
+    			}
     		}
     	}
     	
-    	unidad.actualizarEstado(unidadesAliadasACortaDistancia, unidadesEnemigasACortaDistancia);
+    	return soldados;
+    }
+    
+    public void actualizarEstadoDeUnidad() {
+    	ArrayList<Unidad> unidadesAliadas = buscarUnidadesAliadasADistanciaCortaDelBando(this.bando);
+    	ArrayList<Unidad> unidadesEnemigas = buscarUnidadesEnemigasADistanciaCortaDelBando(this.bando);
+    	ArrayList<Unidad> soldadosContiguos = buscarBatallon(this.bando);
+    	
+    	unidad.actualizarEstado(unidadesAliadas, unidadesEnemigas, soldadosContiguos);
     	
     }
 

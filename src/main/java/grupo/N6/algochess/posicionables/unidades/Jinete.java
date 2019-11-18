@@ -54,8 +54,8 @@ public class Jinete extends UnidadMovible {
     	return false;
     }
     
-    public void actualizarEstado(ArrayList<Unidad> unidadesAliadasACortaDistancia, ArrayList<Unidad> unidadesEnemigasACortaDistancia) {
-    	if (haySoldado(unidadesAliadasACortaDistancia) && unidadesEnemigasACortaDistancia.isEmpty()) {
+    public void actualizarEstado(ArrayList<Unidad> aliadosACortaDistancia, ArrayList<Unidad> enemigosACortaDistancia, ArrayList<Unidad> batallon) {
+    	if (haySoldado(aliadosACortaDistancia) && enemigosACortaDistancia.isEmpty()) {
     		modoActivo = modoArco;
     		modoInactivo = modoEspada;
     	}else{

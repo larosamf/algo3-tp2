@@ -50,8 +50,8 @@ public abstract class Unidad implements Posicionable {
 
     public abstract void mover(Casillero casilleroInicio, Casillero casilleroFin);
     
-    public abstract void actualizarEstado(ArrayList<Unidad> unidadesAliadasACortaDistancia, ArrayList<Unidad> unidadesEnemigasACortaDistancia);
-
+    public abstract void actualizarEstado(ArrayList<Unidad> aliadosACortaDistancia, ArrayList<Unidad> enemigosACortaDistancia, ArrayList<Unidad> batallon); 
+    
     public boolean esSoldado() {
     	return false;
     }

@@ -46,7 +46,7 @@ public class Catapulta extends Unidad {
     	throw new JugadaInvalidaExepcion("La unidad no puede recibir curacion");
     }
     
-    public void actualizarEstado(ArrayList<Unidad> unidadesAliadasACortaDistancia, ArrayList<Unidad> unidadesEnemigasACortaDistancia) {
+    public void actualizarEstado(ArrayList<Unidad> aliadosACortaDistancia, ArrayList<Unidad> enemigosACortaDistancia, ArrayList<Unidad> batallon) {
     	
     }
 

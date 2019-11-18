@@ -8,6 +8,8 @@ import grupo.N6.algochess.posicionables.unidades.Unidad;
 import grupo.N6.algochess.posicionables.unidades.UnidadMovible;
 
 public class SoldadoDeInfanteria extends UnidadMovible {
+	
+	ArrayList<Unidad> batallon = new ArrayList<>();
 
 	public SoldadoDeInfanteria() {
         _VIDAMAXIMA_ = 100;
@@ -15,7 +17,6 @@ public class SoldadoDeInfanteria extends UnidadMovible {
 		costo = 1;
 		dano = 10;
 		distanciaAccion = 1;
-
 	}
 
 	@Override
@@ -44,7 +45,7 @@ public class SoldadoDeInfanteria extends UnidadMovible {
     	return true;
     }
     
-    public void actualizarEstado(ArrayList<Unidad> unidadesAliadasACortaDistancia, ArrayList<Unidad> unidadesEnemigasACortaDistancia) {
-    	
+    public void actualizarEstado(ArrayList<Unidad> aliados, ArrayList<Unidad> enemigos, ArrayList<Unidad> batallon) {
+    	this.batallon = batallon;
     }
 }
