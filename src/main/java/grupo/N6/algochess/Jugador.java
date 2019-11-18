@@ -58,6 +58,10 @@ public class Jugador {
 		return this.estaJugando;
 	}
 
+	public boolean tienePuntos(){
+    	return(puntos>=1);
+	}
+
 	public void terminarTurno() {
 		for (Unidad unidad : equipo) {
 			unidad.terminarTurno();
