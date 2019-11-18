@@ -1,5 +1,7 @@
 package grupo.N6.algochess.posicionables.unidades;
 
+import java.util.ArrayList;
+
 import grupo.N6.algochess.exepciones.DistanciaInvalidaExepcion;
 import grupo.N6.algochess.exepciones.JugadaInvalidaExepcion;
 import grupo.N6.algochess.posicionables.unidades.Unidad;
@@ -35,5 +37,14 @@ public class SoldadoDeInfanteria extends UnidadMovible {
             throw new JugadaInvalidaExepcion("La unidad no cura");
         }
 
+    }
+    
+    @Override
+    public boolean esSoldado() {
+    	return true;
+    }
+    
+    public void actualizarEstado(ArrayList<Unidad> unidadesAliadasACortaDistancia, ArrayList<Unidad> unidadesEnemigasACortaDistancia) {
+    	
     }
 }

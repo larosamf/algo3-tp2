@@ -56,4 +56,11 @@ public class Partida {
         this.tablero = tablero;
 
     }
+
+    public void actualizarEstadoDeUnidades() {
+    	tablero.actualizarEstadoDeUnidades();
+    }
+
+
+
 }

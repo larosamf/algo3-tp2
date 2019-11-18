@@ -1,5 +1,7 @@
 package grupo.N6.algochess.posicionables.unidades;
 
+import java.util.ArrayList;
+
 import grupo.N6.algochess.exepciones.DistanciaInvalidaExepcion;
 import grupo.N6.algochess.exepciones.JugadaInvalidaExepcion;
 import grupo.N6.algochess.posicionables.unidades.Unidad;
@@ -32,5 +34,9 @@ public class Curandero extends UnidadMovible {
 		}
 		curado.recibirCuracion(curacion);
 	}
+    
+    public void actualizarEstado(ArrayList<Unidad> unidadesAliadasACortaDistancia, ArrayList<Unidad> unidadesEnemigasACortaDistancia) {
+    	
+    }
 
 }

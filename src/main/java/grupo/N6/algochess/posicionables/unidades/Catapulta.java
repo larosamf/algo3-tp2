@@ -3,6 +3,9 @@ package grupo.N6.algochess.posicionables.unidades;
 import grupo.N6.algochess.Coordenada;
 import grupo.N6.algochess.exepciones.DistanciaInvalidaExepcion;
 import grupo.N6.algochess.exepciones.JugadaInvalidaExepcion;
+
+import java.util.ArrayList;
+
 import grupo.N6.algochess.Casillero;
 
 
@@ -36,6 +39,10 @@ public class Catapulta extends Unidad {
     @Override
     public void mover(Casillero inicio, Casillero fin) {
         throw new JugadaInvalidaExepcion("La unidad no se mueve");
+    }
+    
+    public void actualizarEstado(ArrayList<Unidad> unidadesAliadasACortaDistancia, ArrayList<Unidad> unidadesEnemigasACortaDistancia) {
+    	
     }
 
 }

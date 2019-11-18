@@ -15,7 +15,7 @@ public abstract class ModoJinete {
         this.distAtaqueHasta = hasta;
     }
     public void atacar(Unidad atacado, int distancia){
-        if (distAtaqueHasta < distancia & distAtaqueDesde > distancia)
+        if (distAtaqueHasta < distancia || distAtaqueDesde > distancia)
             throw new DistanciaInvalidaExepcion("Esta fuera de rango.");
         atacado.recibirAtaque(ptosAtaque);
     }

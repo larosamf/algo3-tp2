@@ -22,8 +22,8 @@ public class Casillero implements Atacable, Curable {
         this.posicion = posicion;
         this.unidad = null;
         this.bando = bando;
-
     }
+    
     public void ponerUnidad(Unidad unidad, String bandoDelJugador) {
         if (this.unidad != null) {
             throw new CasilleroOcupadoException();
@@ -75,6 +75,27 @@ public class Casillero implements Atacable, Curable {
 
     public ArrayList<Casillero> obtenerAdyacencias() {
         return this.adyacencias;
+    }
+    
+    public void actualizarEstadoDeUnidad() {
+    	ArrayList<Unidad> unidadesAliadasACortaDistancia = new ArrayList<>();
+    	ArrayList<Unidad> unidadesEnemigasACortaDistancia = new ArrayList<>();
+    	
+    	for (Casillero adyacencia : adyacencias) {
+    		if (adyacencia.hayUnidad() && adyacencia.bando == this.bando)
+    			unidadesAliadasACortaDistancia.add(adyacencia.unidad);
+    		if (adyacencia.hayUnidad() && adyacencia.bando != this.bando)
+    			unidadesEnemigasACortaDistancia.add(adyacencia.unidad);
+    		for (Casillero adyacencia2 : adyacencia.adyacencias) {
+    			if (adyacencia2.hayUnidad() && adyacencia2.bando == this.bando)
+        			unidadesAliadasACortaDistancia.add(adyacencia2.unidad);
+        		if (adyacencia2.hayUnidad() && adyacencia2.bando != this.bando)
+        			unidadesEnemigasACortaDistancia.add(adyacencia2.unidad);
+    		}
+    	}
+    	
+    	unidad.actualizarEstado(unidadesAliadasACortaDistancia, unidadesEnemigasACortaDistancia);
+    	
     }
 
     @Override

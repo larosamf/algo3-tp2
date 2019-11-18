@@ -19,7 +19,7 @@ public class Tablero {
         
         for (int i = 1; i <= largoX; i++) {
         	String bando = "Bando1";
-    		if (i > 10) {	
+    		if (i > largoX / 2) {	
     			bando = "Bando2";
     		}
             for (int j = 1; j <= largoX; j++) {
@@ -56,6 +56,12 @@ public class Tablero {
     
     public Unidad unidadEnCasillero(Coordenada ubicacion) {
         return localizarCasillero(ubicacion).obtenerUnidad();
+    }
+    
+    public void actualizarEstadoDeUnidades() {
+    	for (Casillero casillero : casilleros) {
+    		casillero.actualizarEstadoDeUnidad();
+    	}
     }
 
     /* INICIO DE JUEGO */

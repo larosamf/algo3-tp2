@@ -1,6 +1,9 @@
 package grupo.N6.algochess.posicionables.unidades;
 
 import grupo.N6.algochess.Coordenada;
+
+import java.util.ArrayList;
+
 import grupo.N6.algochess.Casillero;
 import grupo.N6.algochess.posicionables.Posicionable;
 
@@ -21,11 +24,6 @@ public abstract class Unidad implements Posicionable {
     public int getCosto() {
         return costo;
     }
-    
-    public int getDano() {
-    	return dano;
-    }
-
 
     public abstract void atacar(Unidad unidad, int distancia) ;
     
@@ -51,4 +49,10 @@ public abstract class Unidad implements Posicionable {
     public abstract void curar(Unidad curado, int distanciaHasta);
 
     public abstract void mover(Casillero casilleroInicio, Casillero casilleroFin);
+    
+    public abstract void actualizarEstado(ArrayList<Unidad> unidadesAliadasACortaDistancia, ArrayList<Unidad> unidadesEnemigasACortaDistancia);
+
+    public boolean esSoldado() {
+    	return false;
+    }
 }
