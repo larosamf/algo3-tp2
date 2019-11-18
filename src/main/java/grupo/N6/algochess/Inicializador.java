@@ -7,7 +7,10 @@ import java.util.Scanner;
 
 public class Inicializador {
 
-    public void inicializarJugadores(Jugador jugador1, Jugador jugador2){
+    Jugador jugador1 = new Jugador();
+    Jugador jugador2 = new Jugador();
+
+    public void inicializarJugadores(){
 
         Scanner scanner = new Scanner(System.in);
 
@@ -24,7 +27,12 @@ public class Inicializador {
 
     };
 
-        public Unidad comprarUnidad(Jugador jugador){
+    public Partida crearPartida(){
+        Partida nuevaPartida = new Partida(jugador1, jugador2);
+        return(nuevaPartida);
+    }
+
+    public Unidad comprarUnidad(Jugador jugador){
         Scanner scanner = new Scanner(System.in);
 
         System.out.println("Que unidad desea comprar?");
@@ -39,24 +47,28 @@ public class Inicializador {
         if(leer == 'A'){
             System.out.println("Ha comprado un Soldado de Infanteria");
             SoldadoDeInfanteria soldadoDeInfanteria = new SoldadoDeInfanteria();
+            jugador.agregarUnidad(soldadoDeInfanteria);
             return(soldadoDeInfanteria);
         }
 
         if(leer == 'B'){
             System.out.println("Ha comprado un Jinete");
             Jinete jinete = new Jinete();
+            jugador.agregarUnidad(jinete);
             return(jinete);
         }
 
         if(leer == 'C'){
             System.out.println("Ha comprado una Catapulta");
             Catapulta catapulta = new Catapulta();
+            jugador.agregarUnidad(catapulta);
             return(catapulta);
         }
 
 
             System.out.println("Ha comprado un Curandero");
             Curandero curandero = new Curandero();
+            jugador.agregarUnidad(curandero);
             return(curandero);
 
 
@@ -64,22 +76,30 @@ public class Inicializador {
 
     public void iniciarEtapaDePosicionamiento(Partida partida){
 
-        Unidad unidadComprada = comprarUnidad(partida.obtenerJugadorActivo());
-
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Ingrese la posicion x de su ficha");
-        Integer x = scanner.nextInt();
-
-        System.out.println("Ingrese la posicion y de su ficha");
-        Integer y = scanner.nextInt();
-
-        System.out.println("Su unidad sera ubicada en " +x + " "+y);
-
-        Coordenada posicion = new Coordenada(x, y);
-        Posicionar posicionar = new Posicionar(unidadComprada,posicion);
-        posicionar.ejecutarSobre(partida);
+        posicionarUnidadesDe(jugador1, partida);
+        posicionarUnidadesDe(jugador2, partida);
 
     }
 
+    public void posicionarUnidadesDe(Jugador jugador, Partida partida){
+        while(jugador.tienePuntos()) {
+
+            System.out.println("Usted tiene " + jugador.getPuntos() +" puntos");
+            Unidad unidadComprada = comprarUnidad(jugador);
+
+            Scanner scanner = new Scanner(System.in);
+            System.out.println("Ingrese la posicion x de su ficha");
+            Integer x = scanner.nextInt();
+
+            System.out.println("Ingrese la posicion y de su ficha");
+            Integer y = scanner.nextInt();
+
+            System.out.println("Su unidad sera ubicada en " + x + " " + y);
+
+            Coordenada posicion = new Coordenada(x, y);
+            Posicionar posicionar = new Posicionar(unidadComprada, posicion);
+            posicionar.ejecutarSobre(partida);
+        }
+    }
 
 }

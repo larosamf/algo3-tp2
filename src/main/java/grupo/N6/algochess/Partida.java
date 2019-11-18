@@ -33,7 +33,7 @@ public class Partida {
         return this.jugador2;
     }
 
-    private void terminarTurno() {
+    public void terminarTurno() {
         this.hayGanador();
         this.jugador1.terminarTurno();
         this.jugador2.terminarTurno();
