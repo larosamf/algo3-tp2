@@ -111,14 +111,14 @@ public class Casillero implements Atacable, Curable {
     	
     	for (Casillero adyacencia : adyacencias) {
     		if (adyacencia.hayUnidad() && adyacencia.bando == bando && adyacencia.obtenerUnidad().esSoldado()) {
-    			soldados.add(adyacencia.unidad);
     			for (Casillero adyacencia2 : adyacencia.adyacencias) {
     	    		if (adyacencia.hayUnidad() && adyacencia.bando == bando && adyacencia.obtenerUnidad().esSoldado())
     	    			soldados.add(adyacencia2.unidad);
+    	    			soldados.add(adyacencia.unidad);
+    	    			return soldados; /*Batallon son 3 soldados*/
     			}
     		}
     	}
-    	
     	return soldados;
     }
     

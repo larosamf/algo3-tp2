@@ -2,6 +2,7 @@ package grupo.N6.algochess.posicionables.unidades;
 
 import java.util.ArrayList;
 
+import grupo.N6.algochess.Casillero;
 import grupo.N6.algochess.exepciones.DistanciaInvalidaExepcion;
 import grupo.N6.algochess.exepciones.JugadaInvalidaExepcion;
 import grupo.N6.algochess.posicionables.unidades.Unidad;
@@ -17,6 +18,7 @@ public class SoldadoDeInfanteria extends UnidadMovible {
 		costo = 1;
 		dano = 10;
 		distanciaAccion = 1;
+		batallon = null;
 	}
 
 	@Override
@@ -48,4 +50,21 @@ public class SoldadoDeInfanteria extends UnidadMovible {
     public void actualizarEstado(ArrayList<Unidad> aliados, ArrayList<Unidad> enemigos, ArrayList<Unidad> batallon) {
     	this.batallon = batallon;
     }
+    
+    @Override
+    public void mover(Casillero casilleroInicio, Casillero casilleroFin) {
+    	if (batallon != null) {
+    		for (Unidad soldado : batallon) {
+    			/*soldado.mover(desdeCasillero, hastaCasillero);*/
+    		}	
+    	}
+    	
+    	casilleroInicio.moverUnidadA(casilleroFin);
+    }
+   
+    
+    
+    
+    
+    
 }
