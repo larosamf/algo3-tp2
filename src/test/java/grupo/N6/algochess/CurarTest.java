@@ -3,6 +3,7 @@ package grupo.N6.algochess;
 import grupo.N6.algochess.accionesDePartida.Atacar;
 import grupo.N6.algochess.accionesDePartida.Curar;
 import grupo.N6.algochess.exepciones.DistanciaInvalidaExepcion;
+import grupo.N6.algochess.exepciones.JugadaInvalidaExepcion;
 import grupo.N6.algochess.posicionables.unidades.Catapulta;
 import grupo.N6.algochess.posicionables.unidades.Curandero;
 import grupo.N6.algochess.posicionables.unidades.SoldadoDeInfanteria;
@@ -68,11 +69,27 @@ public class CurarTest {
         Assert.assertEquals(tablero.unidadEnCasillero(ubicacionFinal).getVida(), 100);
     }
     
-    /*@Test(expected = DistanciaInvalidaExepcion.class)
+    @Test(expected = JugadaInvalidaExepcion.class)
     public void test04CatapultaNoPuedeSerCuradaPorElCurandero() {
         //Arrange
+    	Tablero tablero = new Tablero(10, 10);
         Catapulta catapulta = new Catapulta();
         Curandero curandero = new Curandero();
-        curandero.curar(catapulta,1);
-    }*/
+        SoldadoDeInfanteria soldado = new SoldadoDeInfanteria();
+        Coordenada ubicacionSoldado = new Coordenada(1, 1);
+        Coordenada ubicacionInicial = new Coordenada(1, 2);
+        Coordenada ubicacionFinal = new Coordenada(2, 1);
+        tablero.ponerUnidad(curandero, ubicacionInicial);
+        tablero.ponerUnidad(soldado, ubicacionSoldado);
+        tablero.ponerUnidad(catapulta, ubicacionFinal);
+
+        //Act:
+        Atacar atacar = new Atacar(ubicacionSoldado, ubicacionFinal);
+        atacar.ejecutarSobre(new Partida(new Jugador(), new Jugador()), tablero);
+        Curar curar = new Curar(ubicacionInicial, ubicacionFinal);
+        curar.ejecutarSobre(new Partida(new Jugador(), new Jugador()), tablero);
+
+        //Assert:
+        Assert.assertEquals(tablero.unidadEnCasillero(ubicacionFinal).getVida(), 40);
+    }
 }

@@ -33,12 +33,17 @@ public class Catapulta extends Unidad {
 
 	@Override
 	public void curar(Unidad curado, int distanciaHasta) {
-	    throw new JugadaInvalidaExepcion("La unidad no ataca");
+	    throw new JugadaInvalidaExepcion("La unidad no cura");
 	}
 
     @Override
     public void mover(Casillero inicio, Casillero fin) {
         throw new JugadaInvalidaExepcion("La unidad no se mueve");
+    }
+    
+    @Override
+    public void recibirCuracion(int cura) {
+    	throw new JugadaInvalidaExepcion("La unidad no puede recibir curacion");
     }
     
     public void actualizarEstado(ArrayList<Unidad> unidadesAliadasACortaDistancia, ArrayList<Unidad> unidadesEnemigasACortaDistancia) {

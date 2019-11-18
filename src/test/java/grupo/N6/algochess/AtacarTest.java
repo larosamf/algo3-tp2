@@ -58,7 +58,7 @@ public class AtacarTest {
     }
 
     @Test
-    public void test03JineteAtacaModoArco() {
+    public void test04JineteAtacaModoArco() {
 
         Tablero tablero = new Tablero(10, 10);
         Jinete jinete = new Jinete();
@@ -70,6 +70,26 @@ public class AtacarTest {
         tablero.ponerUnidad(soldado, ubicacionFinal);
         Atacar atacar = new Atacar(ubicacionInicial, ubicacionFinal);
         atacar.ejecutarSobre(new Partida(new Jugador(), new Jugador()), tablero);
+        Assert.assertEquals(tablero.unidadEnCasillero(ubicacionFinal).getVida(), 85);
+    }
+    
+    @Test(expected = DistanciaInvalidaExepcion.class)
+    public void test05JineteCambiaDeModoEspadaAModoArcoDespuesDeQueSeActualizoLaPartida() {
+
+        Tablero tablero = new Tablero(10, 10);
+        Jinete jinete = new Jinete();
+        SoldadoDeInfanteria soldado = new SoldadoDeInfanteria();
+        Coordenada ubicacionInicial = new Coordenada(1, 1);
+        Coordenada ubicacionFinal = new Coordenada(1, 4);
+        tablero.ponerUnidad(jinete, ubicacionInicial);
+        tablero.ponerUnidad(soldado, ubicacionFinal);
+        Partida partida = new Partida(new Jugador(), new Jugador());
+        
+        Atacar atacar = new Atacar(ubicacionInicial, ubicacionFinal);
+        atacar.ejecutarSobre(partida, tablero);
+        partida.actualizarEstadoDeUnidades();
+        atacar.ejecutarSobre(partida, tablero);
+        
         Assert.assertEquals(tablero.unidadEnCasillero(ubicacionFinal).getVida(), 85);
     }
 }
