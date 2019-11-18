@@ -5,10 +5,6 @@ import grupo.N6.algochess.exepciones.JugadaInvalidaExepcion;
 import grupo.N6.algochess.posicionables.unidades.Unidad;
 import grupo.N6.algochess.posicionables.unidades.UnidadMovible;
 
-/**
- * 
- *
- */
 public class SoldadoDeInfanteria extends UnidadMovible {
 
 	public SoldadoDeInfanteria() {

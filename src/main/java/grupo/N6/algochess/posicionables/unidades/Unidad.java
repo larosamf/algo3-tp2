@@ -4,10 +4,7 @@ import grupo.N6.algochess.Coordenada;
 import grupo.N6.algochess.Casillero;
 import grupo.N6.algochess.posicionables.Posicionable;
 
-/**
- * 
- *
- */
+
 public abstract class Unidad implements Posicionable {
 
     protected int distanciaAccion;

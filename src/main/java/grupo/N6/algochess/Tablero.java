@@ -10,13 +10,27 @@ import java.util.List;
 public class Tablero {
 
     private ArrayList<Casillero> casilleros;
+    private String bandoAliado; /*cambia turno a turno*/
+    private String bandoEnemigo;
 
     public Tablero(int largoX, int largoY) {
+    	
         casilleros = new ArrayList<Casillero>(largoX * largoY);
-        for (int i = 1; i <= largoX; ++i)
-            for (int j = 1; j <= largoX; ++j)
-                casilleros.add(new Casillero(new Coordenada(i, j)));
+        
+        for (int i = 1; i <= largoX; i++) {
+        	String bando = "Bando1";
+    		if (i > 10) {	
+    			bando = "Bando2";
+    		}
+            for (int j = 1; j <= largoX; j++) {
+                casilleros.add(new Casillero(new Coordenada(i, j), bando));
+            }
+        } 
+           
         this.asignarAdyacencias();
+        
+        bandoAliado = "Bando1";
+        bandoEnemigo = "Bando2";
     }
 
     private void asignarAdyacencias() {
@@ -33,11 +47,13 @@ public class Tablero {
     }
 
     public void ponerUnidad(Unidad unidad, Coordenada ubicacion) {
-        localizarCasillero(ubicacion).ponerUnidad(unidad);
+        localizarCasillero(ubicacion).ponerUnidad(unidad, bandoAliado);
     }
+    
     public int cantidadCasilleros(){
         return casilleros.size();
     }
+    
     public Unidad unidadEnCasillero(Coordenada ubicacion) {
         return localizarCasillero(ubicacion).obtenerUnidad();
     }
@@ -50,8 +66,7 @@ public class Tablero {
     /* ACCIONES */
 
     public void efectuarMovimiento(Coordenada inicio, Coordenada fin) {
-        Unidad unidad = this.unidadEnCasillero(inicio);
-        unidad.mover(localizarCasillero(inicio),inicio, fin);
+    	localizarCasillero(inicio).moverUnidadA(localizarCasillero(fin));
     }
 
     public void efectuarAtaque(Coordenada inicio, Coordenada fin) {

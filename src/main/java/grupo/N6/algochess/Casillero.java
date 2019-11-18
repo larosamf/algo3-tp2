@@ -4,6 +4,8 @@ import grupo.N6.algochess.accionesDeJuego.Ataque;
 import grupo.N6.algochess.accionesDeJuego.Cura;
 import grupo.N6.algochess.exepciones.CasilleroOcupadoException;
 import grupo.N6.algochess.exepciones.CasilleroVacioException;
+import grupo.N6.algochess.exepciones.MovimientoInvalidoException;
+import grupo.N6.algochess.exepciones.NoSePuedeColocarUnaUnidadEnElSectorEnemigoException;
 import grupo.N6.algochess.posicionables.Curable;
 import grupo.N6.algochess.posicionables.Atacable;
 import grupo.N6.algochess.posicionables.unidades.Unidad;
@@ -14,17 +16,34 @@ public class Casillero implements Atacable, Curable {
     private ArrayList<Casillero> adyacencias = new ArrayList<>();
     private Coordenada posicion;
     private Unidad unidad;
+    private String bando;
 
-    public Casillero(Coordenada posicion) {
+    public Casillero(Coordenada posicion, String bando) {
         this.posicion = posicion;
         this.unidad = null;
+        this.bando = bando;
 
     }
-    public void ponerUnidad(Unidad unidad) {
+    public void ponerUnidad(Unidad unidad, String bandoDelJugador) {
         if (this.unidad != null) {
             throw new CasilleroOcupadoException();
         }
+        if (bandoDelJugador != bando) {
+    		throw new NoSePuedeColocarUnaUnidadEnElSectorEnemigoException();
+    	}
         this.unidad = unidad;
+    }
+    
+    public void moverUnidadA(Casillero casilleroDestino) {
+    	Coordenada fin = casilleroDestino.posicion;
+    	 if (posicion.equals(fin) || !posicion.esConsecutiva(fin)) {
+             throw new MovimientoInvalidoException("El movimiento no es valido");
+         }
+         for (Casillero casillero1: this.obtenerAdyacencias())
+             if (casillero1.estaEnPosicion(fin)) {
+                 casillero1.unidad = unidad;
+                 this.unidad = null;
+             }
     }
 
     public Unidad obtenerUnidad() {
