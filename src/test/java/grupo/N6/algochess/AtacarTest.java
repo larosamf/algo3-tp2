@@ -21,7 +21,7 @@ public class AtacarTest {
         Assert.assertEquals(tablero.unidadEnCasillero(ubicacionInicial),soldado1);
         Assert.assertEquals(tablero.unidadEnCasillero(ubicacionFinal),soldado2);
         Atacar atacar = new Atacar(ubicacionInicial, ubicacionFinal);
-        atacar.ejecutarSobre(new Partida(new Jugador("Pedro"), new Jugador("Juan")), tablero);
+        atacar.ejecutarSobre(new Partida(new Jugador(), new Jugador()), tablero);
         Assert.assertEquals(tablero.unidadEnCasillero(ubicacionFinal).getVida(),90);
     }
 
@@ -38,7 +38,7 @@ public class AtacarTest {
         Assert.assertEquals(tablero.unidadEnCasillero(ubicacionInicial), soldado1);
         Assert.assertEquals(tablero.unidadEnCasillero(ubicacionFinal), soldado2);
         Atacar atacar = new Atacar(ubicacionInicial, ubicacionFinal);
-        atacar.ejecutarSobre(new Partida(new Jugador("Pedro"), new Jugador("Juan")), tablero);
+        atacar.ejecutarSobre(new Partida(new Jugador(), new Jugador()), tablero);
         Assert.assertEquals(tablero.unidadEnCasillero(ubicacionFinal).getVida(), 100);
     }
 
@@ -53,7 +53,7 @@ public class AtacarTest {
         tablero.ponerUnidad(jinete, ubicacionInicial);
         tablero.ponerUnidad(soldado, ubicacionFinal);
         Atacar atacar = new Atacar(ubicacionInicial, ubicacionFinal);
-        atacar.ejecutarSobre(new Partida(new Jugador("Pedro"), new Jugador("Juan")), tablero);
+        atacar.ejecutarSobre(new Partida(new Jugador(), new Jugador()), tablero);
         Assert.assertEquals(tablero.unidadEnCasillero(ubicacionFinal).getVida(), 95);
     }
 
@@ -69,7 +69,7 @@ public class AtacarTest {
         tablero.ponerUnidad(jinete, ubicacionInicial);
         tablero.ponerUnidad(soldado, ubicacionFinal);
         Atacar atacar = new Atacar(ubicacionInicial, ubicacionFinal);
-        atacar.ejecutarSobre(new Partida(new Jugador("Pedro"), new Jugador("Juan")), tablero);
+        atacar.ejecutarSobre(new Partida(new Jugador(), new Jugador()), tablero);
         Assert.assertEquals(tablero.unidadEnCasillero(ubicacionFinal).getVida(), 85);
     }
 }

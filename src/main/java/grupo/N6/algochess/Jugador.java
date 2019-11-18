@@ -14,11 +14,15 @@ public class Jugador {
     private boolean estaJugando;
     protected List<Unidad> equipo;
 
-    public Jugador(String nombre) {
+    public Jugador() {
 		puntos = 20;
 		cantidadDeUnidades = 0;
         this.nombre = nombre;
         this.equipo = new ArrayList<Unidad>();
+	}
+
+	public void setNombre(String nombre){
+    	this.nombre = nombre;
 	}
 
 	public int getPuntos() {

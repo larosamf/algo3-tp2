@@ -46,7 +46,14 @@ public class Partida {
         this.jugador2.sigueParticipando();
     }
 
+    public Tablero getTablero(){
+        return(this.tablero);
+    }
+
     private void inicializarPartida(Tablero tablero,Jugador jugador1, Jugador jugador2){
+        this.jugador1 = jugador1;
+        this.jugador2 = jugador2;
+        this.tablero = tablero;
 
     }
 }

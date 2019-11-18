@@ -14,7 +14,7 @@ public class JugadorTest {
 	
 	@Test
 	public void test01JugadorRecienCreadoTieneUnPuntoMenosDespuesAgregarUnSoldadoDeInfanteria() {
-		Jugador jugador = new Jugador("pedro");
+		Jugador jugador = new Jugador();
 		SoldadoDeInfanteria soldado = new SoldadoDeInfanteria();
 		
 		jugador.agregarUnidad(soldado);
@@ -25,7 +25,7 @@ public class JugadorTest {
 	
 	@Test
 	public void test02JugadorQueGastoTodosSusPuntosEnUnidadesNoPuedeAgregarNingunaMas() {
-		Jugador jugador = new Jugador("pedro");
+		Jugador jugador = new Jugador();
 		
 		jugador.agregarUnidad(new Catapulta());
 		jugador.agregarUnidad(new Catapulta());
@@ -43,7 +43,7 @@ public class JugadorTest {
 	
 	@Test(expected = FinalException.class)
 	public void test03JugadorSinUnidadesEsElPerdedor() {
-		Jugador jugador = new Jugador("pedro");
+		Jugador jugador = new Jugador();
 		jugador.sigueParticipando();
 	}
 

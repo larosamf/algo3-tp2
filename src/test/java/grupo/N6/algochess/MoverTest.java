@@ -16,7 +16,7 @@ public class MoverTest {
         tablero.ponerUnidad(soldado, ubicacionInicial);
         Assert.assertEquals(tablero.unidadEnCasillero(ubicacionInicial),soldado);
         Mover mover = new Mover(ubicacionInicial, ubicacionFinal);
-        mover.ejecutarSobre(new Partida(new Jugador("Pedro"), new Jugador("Juan")), tablero);
+        mover.ejecutarSobre(new Partida(new Jugador(), new Jugador()), tablero);
         Assert.assertEquals(tablero.unidadEnCasillero(ubicacionFinal),soldado);
     }
 }
