@@ -14,6 +14,7 @@ import java.util.ArrayList;
 
 public class Casillero implements Atacable, Curable {
     private ArrayList<Casillero> adyacencias = new ArrayList<>();
+
     private Coordenada posicion;
     private Unidad unidad;
     private String bando;
@@ -23,7 +24,44 @@ public class Casillero implements Atacable, Curable {
         this.unidad = null;
         this.bando = bando;
     }
-    
+
+
+
+    public Casillero obtenerAdyacenteDerecha(){
+        Casillero casilleroBuscado = null;
+        for(Casillero casilleroAdyacente: this.adyacencias){
+            if( this.posicion.obtenerY() == (casilleroAdyacente.posicion.obtenerY()) &&
+                    this.posicion.obtenerX() == (casilleroAdyacente.posicion.obtenerX()-1)){
+                casilleroBuscado = casilleroAdyacente;
+            }
+        }
+        return(casilleroBuscado);
+    }
+
+    public Casillero obtenerAdyacenteIzquierda(){
+        Casillero casilleroBuscado = null;
+        for(Casillero casilleroAdyacente: this.adyacencias){
+            if( this.posicion.obtenerY() == (casilleroAdyacente.posicion.obtenerY()) &&
+                    this.posicion.obtenerX() == (casilleroAdyacente.posicion.obtenerX()+1)){
+                casilleroBuscado = casilleroAdyacente;
+            }
+        }
+        return(casilleroBuscado);
+    }
+
+    public Casillero obtenerAdyacenteArriba(){
+        Casillero casilleroBuscado = null;
+        for(Casillero casilleroAdyacente: this.adyacencias){
+            if( this.posicion.obtenerY() == (casilleroAdyacente.posicion.obtenerY()+1) &&
+                    this.posicion.obtenerX() == (casilleroAdyacente.posicion.obtenerX())){
+                casilleroBuscado = casilleroAdyacente;
+            }
+        }
+        return(casilleroBuscado);
+    }
+
+
+
     public void ponerUnidad(Unidad unidad, String bandoDelJugador) {
         if (this.unidad != null) {
             throw new CasilleroOcupadoException();

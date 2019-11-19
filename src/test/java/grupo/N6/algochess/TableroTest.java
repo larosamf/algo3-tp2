@@ -20,5 +20,31 @@ public class TableroTest {
         tablero.ponerUnidad(soldado, ubicacionInicial);
         Assert.assertEquals(tablero.unidadEnCasillero(ubicacionInicial),soldado);
     }
+
+    @Test
+    public void testSeObtienerElCasilleroDeArriba() {
+        Tablero tablero = new Tablero(10,10);
+        Coordenada ubicacionCasilleroInicial = new Coordenada(2,2);
+        Coordenada ubicacionCasilleroArriba = new Coordenada(2,1);
+        Assert.assertEquals(true, tablero.obtenerCasilleroDeArribaDe(ubicacionCasilleroInicial).estaEnPosicion(ubicacionCasilleroArriba));
+
+    }
+
+    @Test
+    public void testSeObtienerElCasilleroDeLaDerecha() {
+        Tablero tablero = new Tablero(10,10);
+        Coordenada ubicacionCasilleroInicial = new Coordenada(2,2);
+        Coordenada ubicacionCasilleroDerecha = new Coordenada(3,2);
+        Assert.assertEquals(true, tablero.obtenerCasilleroDeDerechaDe(ubicacionCasilleroInicial).estaEnPosicion(ubicacionCasilleroDerecha));
+    }
+
+    @Test
+    public void testSeObtienerElCasilleroDeLaIzquierda() {
+        Tablero tablero = new Tablero(10,10);
+        Coordenada ubicacionCasilleroInicial = new Coordenada(2,2);
+        Coordenada ubicacionCasilleroIzquierda = new Coordenada(1,2);
+        Assert.assertEquals(true, tablero.obtenerCasilleroDeIzquierdaDe(ubicacionCasilleroInicial).estaEnPosicion(ubicacionCasilleroIzquierda));
+    }
+
 }
 

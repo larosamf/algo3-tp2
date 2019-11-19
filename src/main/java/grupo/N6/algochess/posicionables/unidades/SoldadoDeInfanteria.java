@@ -50,21 +50,27 @@ public class SoldadoDeInfanteria extends UnidadMovible {
     public void actualizarEstado(ArrayList<Unidad> aliados, ArrayList<Unidad> enemigos, ArrayList<Unidad> batallon) {
     	this.batallon = batallon;
     }
-    
+
+    public void setBatallon(ArrayList<Unidad> batallon){
+	    this.batallon = batallon;
+    }
+
     @Override
     public void mover(Casillero casilleroInicio, Casillero casilleroFin) {
     	if (batallon != null) {
-    		for (Unidad soldado : batallon) {
-    			/*soldado.mover(desdeCasillero, hastaCasillero);*/
-    		}	
-    	}
-    	
-    	casilleroInicio.moverUnidadA(casilleroFin);
+    	    if(casilleroFin == casilleroInicio.obtenerAdyacenteArriba()) {
+    	        casilleroInicio.obtenerAdyacenteIzquierda().moverUnidadA(casilleroFin.obtenerAdyacenteIzquierda());
+                casilleroInicio.moverUnidadA(casilleroFin);
+                casilleroInicio.obtenerAdyacenteDerecha().moverUnidadA(casilleroFin.obtenerAdyacenteDerecha());
+            }
+    	}else {
+            casilleroInicio.moverUnidadA(casilleroFin);
+        }
     }
    
     
     
     
-    
+
     
 }

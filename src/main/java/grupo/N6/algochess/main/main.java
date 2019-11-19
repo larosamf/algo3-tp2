@@ -7,7 +7,6 @@ import grupo.N6.algochess.Partida;
 public class main {
     public static void main(String[] args){
 
-
         Inicializador inicializador = new Inicializador();
 
         inicializador.inicializarJugadores();

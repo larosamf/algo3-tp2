@@ -39,6 +39,18 @@ public class Tablero {
                 casillero.asignarAdyacencia(casillero1);
     }
 
+    public Casillero obtenerCasilleroDeArribaDe(Coordenada coordenadaActual){
+        return(this.localizarCasillero(coordenadaActual).obtenerAdyacenteArriba());
+    }
+
+    public Casillero obtenerCasilleroDeDerechaDe(Coordenada coordenadaActual){
+        return(this.localizarCasillero(coordenadaActual).obtenerAdyacenteDerecha());
+    }
+
+    public Casillero obtenerCasilleroDeIzquierdaDe(Coordenada coordenadaActual){
+        return(this.localizarCasillero(coordenadaActual).obtenerAdyacenteIzquierda());
+    }
+
     private Casillero localizarCasillero(Coordenada ubicacion) {
         for (Casillero casillero : casilleros)
             if (casillero.estaEnPosicion(ubicacion))

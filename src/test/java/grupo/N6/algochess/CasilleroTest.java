@@ -12,4 +12,5 @@ public class CasilleroTest {
         Assert.assertTrue(casillero.estaEnPosicion(coordenada));
     }
 
+
 }

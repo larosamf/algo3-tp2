@@ -49,7 +49,7 @@ public abstract class Unidad implements Posicionable {
     public abstract void curar(Unidad curado, int distanciaHasta);
 
     public abstract void mover(Casillero casilleroInicio, Casillero casilleroFin);
-    
+        
     public abstract void actualizarEstado(ArrayList<Unidad> aliadosACortaDistancia, ArrayList<Unidad> enemigosACortaDistancia, ArrayList<Unidad> batallon); 
     
     public boolean esSoldado() {
