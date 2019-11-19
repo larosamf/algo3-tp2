@@ -39,6 +39,15 @@ public class TableroTest {
     }
 
     @Test
+    public void testSeObtienerElCasilleroDeAbajo() {
+        Tablero tablero = new Tablero(10,10);
+        Coordenada ubicacionCasilleroInicial = new Coordenada(2,2);
+        Coordenada ubicacionCasilleroDerecha = new Coordenada(2,3);
+        Assert.assertEquals(true, tablero.obtenerCasilleroDeAbajoDe(ubicacionCasilleroInicial).estaEnPosicion(ubicacionCasilleroDerecha));
+    }
+
+
+    @Test
     public void testSeObtienerElCasilleroDeLaIzquierda() {
         Tablero tablero = new Tablero(10,10);
         Coordenada ubicacionCasilleroInicial = new Coordenada(2,2);

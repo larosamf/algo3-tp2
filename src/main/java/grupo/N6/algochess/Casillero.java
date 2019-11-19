@@ -25,8 +25,6 @@ public class Casillero implements Atacable, Curable {
         this.bando = bando;
     }
 
-
-
     public Casillero obtenerAdyacenteDerecha(){
         Casillero casilleroBuscado = null;
         for(Casillero casilleroAdyacente: this.adyacencias){
@@ -60,6 +58,16 @@ public class Casillero implements Atacable, Curable {
         return(casilleroBuscado);
     }
 
+    public Casillero obtenerAdyacenteAbajo(){
+        Casillero casilleroBuscado = null;
+        for(Casillero casilleroAdyacente: this.adyacencias){
+            if( this.posicion.obtenerY() == (casilleroAdyacente.posicion.obtenerY()-1) &&
+                    this.posicion.obtenerX() == (casilleroAdyacente.posicion.obtenerX())){
+                casilleroBuscado = casilleroAdyacente;
+            }
+        }
+        return(casilleroBuscado);
+    }
 
 
     public void ponerUnidad(Unidad unidad, String bandoDelJugador) {

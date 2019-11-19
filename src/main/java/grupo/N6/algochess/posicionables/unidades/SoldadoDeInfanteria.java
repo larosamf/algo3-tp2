@@ -11,6 +11,7 @@ import grupo.N6.algochess.posicionables.unidades.UnidadMovible;
 public class SoldadoDeInfanteria extends UnidadMovible {
 	
 	ArrayList<Unidad> batallon = new ArrayList<>();
+	SoldadoDeInfanteria liderDelBatallon = null;
 
 	public SoldadoDeInfanteria() {
         _VIDAMAXIMA_ = 100;
@@ -58,17 +59,35 @@ public class SoldadoDeInfanteria extends UnidadMovible {
     @Override
     public void mover(Casillero casilleroInicio, Casillero casilleroFin) {
     	if (batallon != null) {
-    	    if(casilleroFin == casilleroInicio.obtenerAdyacenteArriba()) {
-    	        casilleroInicio.obtenerAdyacenteIzquierda().moverUnidadA(casilleroFin.obtenerAdyacenteIzquierda());
-                casilleroInicio.moverUnidadA(casilleroFin);
-                casilleroInicio.obtenerAdyacenteDerecha().moverUnidadA(casilleroFin.obtenerAdyacenteDerecha());
-            }
-    	}else {
-            casilleroInicio.moverUnidadA(casilleroFin);
+    	        moverBatallon(casilleroInicio, casilleroFin);
+    	}else{
+    	    casilleroInicio.moverUnidadA(casilleroFin);
         }
     }
-   
-    
+
+    public void moverBatallon(Casillero casilleroInicio, Casillero casilleroFin){
+	    if(casilleroFin == casilleroInicio.obtenerAdyacenteDerecha()) {
+           moverBatallonALaDerecha(casilleroInicio, casilleroFin);
+        }else if(casilleroFin == casilleroInicio.obtenerAdyacenteIzquierda()){
+	       moverBatallonALaIzquierda(casilleroInicio, casilleroFin);
+        }else {
+            casilleroInicio.obtenerAdyacenteIzquierda().moverUnidadA(casilleroFin.obtenerAdyacenteIzquierda());
+            casilleroInicio.moverUnidadA(casilleroFin);
+            casilleroInicio.obtenerAdyacenteDerecha().moverUnidadA(casilleroFin.obtenerAdyacenteDerecha());
+        }
+    }
+
+    public void moverBatallonALaDerecha(Casillero casilleroInicio, Casillero casilleroFin){
+        casilleroInicio.obtenerAdyacenteDerecha().moverUnidadA(casilleroFin.obtenerAdyacenteDerecha());
+        casilleroInicio.moverUnidadA(casilleroFin);
+        casilleroInicio.obtenerAdyacenteIzquierda().moverUnidadA(casilleroFin.obtenerAdyacenteIzquierda());
+	}
+
+    public void moverBatallonALaIzquierda(Casillero casilleroInicio, Casillero casilleroFin){
+        casilleroInicio.obtenerAdyacenteIzquierda().moverUnidadA(casilleroFin.obtenerAdyacenteIzquierda());
+        casilleroInicio.moverUnidadA(casilleroFin);
+	    casilleroInicio.obtenerAdyacenteDerecha().moverUnidadA(casilleroFin.obtenerAdyacenteDerecha());
+    }
     
     
 

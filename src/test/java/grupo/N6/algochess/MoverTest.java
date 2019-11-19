@@ -24,7 +24,7 @@ public class MoverTest {
     }
 
     @Test
-    public void test02MoverBatallon(){
+    public void test02MoverBatallonArriba(){
         Tablero tablero = new Tablero(20, 20);
         SoldadoDeInfanteria soldado1 = new SoldadoDeInfanteria();
         SoldadoDeInfanteria soldado2 = new SoldadoDeInfanteria();
@@ -38,6 +38,114 @@ public class MoverTest {
 
         Coordenada ubicacionInicial3 = new Coordenada(4,2);
         Coordenada ubicacionFinal3 = new Coordenada(4,1);
+
+        tablero.ponerUnidad(soldado1, ubicacionInicial1);
+        tablero.ponerUnidad(soldado2, ubicacionInicial2);
+        tablero.ponerUnidad(soldado3, ubicacionInicial3);
+
+        ArrayList<Unidad> batallon = new ArrayList<Unidad>();
+        batallon.add(soldado1);
+        batallon.add(soldado2);
+        batallon.add(soldado3);
+
+        soldado2.setBatallon(batallon);
+
+        Mover mover = new Mover(ubicacionInicial2, ubicacionFinal2);
+        mover.ejecutarSobre(new Partida(new Jugador(), new Jugador()), tablero);
+
+        Assert.assertEquals(tablero.unidadEnCasillero(ubicacionFinal1),soldado1);
+        Assert.assertEquals(tablero.unidadEnCasillero(ubicacionFinal2),soldado2);
+        Assert.assertEquals(tablero.unidadEnCasillero(ubicacionFinal3),soldado3);
+
+    }
+
+    @Test
+    public void test02MoverBatallonAbajo(){
+        Tablero tablero = new Tablero(20, 20);
+        SoldadoDeInfanteria soldado1 = new SoldadoDeInfanteria();
+        SoldadoDeInfanteria soldado2 = new SoldadoDeInfanteria();
+        SoldadoDeInfanteria soldado3 = new SoldadoDeInfanteria();
+
+        Coordenada ubicacionInicial1 = new Coordenada(2,2);
+        Coordenada ubicacionFinal1 = new Coordenada(2,3);
+
+        Coordenada ubicacionInicial2 = new Coordenada(3,2);
+        Coordenada ubicacionFinal2 = new Coordenada(3,3);
+
+        Coordenada ubicacionInicial3 = new Coordenada(4,2);
+        Coordenada ubicacionFinal3 = new Coordenada(4,3);
+
+        tablero.ponerUnidad(soldado1, ubicacionInicial1);
+        tablero.ponerUnidad(soldado2, ubicacionInicial2);
+        tablero.ponerUnidad(soldado3, ubicacionInicial3);
+
+        ArrayList<Unidad> batallon = new ArrayList<Unidad>();
+        batallon.add(soldado1);
+        batallon.add(soldado2);
+        batallon.add(soldado3);
+
+        soldado2.setBatallon(batallon);
+
+        Mover mover = new Mover(ubicacionInicial2, ubicacionFinal2);
+        mover.ejecutarSobre(new Partida(new Jugador(), new Jugador()), tablero);
+
+        Assert.assertEquals(tablero.unidadEnCasillero(ubicacionFinal1),soldado1);
+        Assert.assertEquals(tablero.unidadEnCasillero(ubicacionFinal2),soldado2);
+        Assert.assertEquals(tablero.unidadEnCasillero(ubicacionFinal3),soldado3);
+
+    }
+
+    @Test
+    public void test02MoverBatallonDerecha(){
+        Tablero tablero = new Tablero(20, 20);
+        SoldadoDeInfanteria soldado1 = new SoldadoDeInfanteria();
+        SoldadoDeInfanteria soldado2 = new SoldadoDeInfanteria();
+        SoldadoDeInfanteria soldado3 = new SoldadoDeInfanteria();
+
+        Coordenada ubicacionInicial1 = new Coordenada(2,2);
+        Coordenada ubicacionFinal1 = new Coordenada(3,2);
+
+        Coordenada ubicacionInicial2 = new Coordenada(3,2);
+        Coordenada ubicacionFinal2 = new Coordenada(4,2);
+
+        Coordenada ubicacionInicial3 = new Coordenada(4,2);
+        Coordenada ubicacionFinal3 = new Coordenada(5,2);
+
+        tablero.ponerUnidad(soldado1, ubicacionInicial1);
+        tablero.ponerUnidad(soldado2, ubicacionInicial2);
+        tablero.ponerUnidad(soldado3, ubicacionInicial3);
+
+        ArrayList<Unidad> batallon = new ArrayList<Unidad>();
+        batallon.add(soldado1);
+        batallon.add(soldado2);
+        batallon.add(soldado3);
+
+        soldado2.setBatallon(batallon);
+
+        Mover mover = new Mover(ubicacionInicial2, ubicacionFinal2);
+        mover.ejecutarSobre(new Partida(new Jugador(), new Jugador()), tablero);
+
+        Assert.assertEquals(tablero.unidadEnCasillero(ubicacionFinal1),soldado1);
+        Assert.assertEquals(tablero.unidadEnCasillero(ubicacionFinal2),soldado2);
+        Assert.assertEquals(tablero.unidadEnCasillero(ubicacionFinal3),soldado3);
+
+    }
+
+    @Test
+    public void test02MoverBatallonIzquierda(){
+        Tablero tablero = new Tablero(20, 20);
+        SoldadoDeInfanteria soldado1 = new SoldadoDeInfanteria();
+        SoldadoDeInfanteria soldado2 = new SoldadoDeInfanteria();
+        SoldadoDeInfanteria soldado3 = new SoldadoDeInfanteria();
+
+        Coordenada ubicacionInicial1 = new Coordenada(2,2);
+        Coordenada ubicacionFinal1 = new Coordenada(1,2);
+
+        Coordenada ubicacionInicial2 = new Coordenada(3,2);
+        Coordenada ubicacionFinal2 = new Coordenada(2,2);
+
+        Coordenada ubicacionInicial3 = new Coordenada(4,2);
+        Coordenada ubicacionFinal3 = new Coordenada(3,2);
 
         tablero.ponerUnidad(soldado1, ubicacionInicial1);
         tablero.ponerUnidad(soldado2, ubicacionInicial2);
