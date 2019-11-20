@@ -2,12 +2,12 @@ package grupo.N6.algochess.posicionables.unidades;
 
 import java.util.ArrayList;
 
+import grupo.N6.algochess.Casillero;
 import grupo.N6.algochess.exepciones.DistanciaInvalidaExepcion;
 import grupo.N6.algochess.exepciones.JugadaInvalidaExepcion;
 import grupo.N6.algochess.posicionables.unidades.Unidad;
-import grupo.N6.algochess.posicionables.unidades.UnidadMovible;
 
-public class Curandero extends UnidadMovible {
+public class Curandero extends Unidad {
 
     private int curacion;
 
@@ -26,6 +26,10 @@ public class Curandero extends UnidadMovible {
     @Override
     public void terminarTurno() {
 
+    }
+    
+    public void mover(Casillero casilleroInicio, Casillero casilleroFin) {
+    	casilleroInicio.moverUnidadA(casilleroFin);
     }
 
     public void curar(Unidad curado, int distancia) {

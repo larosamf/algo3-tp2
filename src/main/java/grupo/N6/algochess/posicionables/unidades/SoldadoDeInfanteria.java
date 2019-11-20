@@ -6,9 +6,8 @@ import grupo.N6.algochess.Casillero;
 import grupo.N6.algochess.exepciones.DistanciaInvalidaExepcion;
 import grupo.N6.algochess.exepciones.JugadaInvalidaExepcion;
 import grupo.N6.algochess.posicionables.unidades.Unidad;
-import grupo.N6.algochess.posicionables.unidades.UnidadMovible;
 
-public class SoldadoDeInfanteria extends UnidadMovible {
+public class SoldadoDeInfanteria extends Unidad {
 	
 	ArrayList<Unidad> batallon = new ArrayList<>();
 	SoldadoDeInfanteria liderDelBatallon = null;
@@ -56,7 +55,6 @@ public class SoldadoDeInfanteria extends UnidadMovible {
 	    this.batallon = batallon;
     }
 
-    @Override
     public void mover(Casillero casilleroInicio, Casillero casilleroFin) {
     	if (batallon != null) {
     	        moverBatallon(casilleroInicio, casilleroFin);
