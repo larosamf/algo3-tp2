@@ -1,6 +1,11 @@
 package grupo.N6.algochess;
 
+import grupo.N6.algochess.exepciones.CasilleroOcupadoException;
+import grupo.N6.algochess.exepciones.NoSePuedeColocarUnaUnidadEnElSectorEnemigoException;
 import grupo.N6.algochess.posicionables.unidades.SoldadoDeInfanteria;
+
+import static org.junit.jupiter.api.Assertions.assertThrows;
+
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -17,7 +22,7 @@ public class TableroTest {
     }
 
     @Test
-    public void test02PonerUnidad() {
+    public void test02SePuedeAgregarUnSoldadoDeInfanteriaEnCasilleroVacioDelSectorAliado() {
         
     	//Arrange:
     	Tablero tablero = new Tablero(10, 10);
@@ -30,9 +35,43 @@ public class TableroTest {
         //Assert:
         Assert.assertEquals(tablero.unidadEnCasillero(ubicacionInicial),soldado);
     }
+    
+    @Test
+    public void test03NoSePuedeAgregarUnSoldadoDeInfanteriaEnCasilleroOcupadoDelSectorAliado(){
+        //Arrange
+        Tablero tablero = new Tablero(10,10);
+        SoldadoDeInfanteria soldadoDeInfanteria = new SoldadoDeInfanteria();
+        SoldadoDeInfanteria otroSoldadoDeInfanteria = new SoldadoDeInfanteria();
+        Coordenada ubicacion1 = new Coordenada(2,2);
+        
+        //Act
+        tablero.ponerUnidad(soldadoDeInfanteria,ubicacion1);
+
+        //Assert
+        assertThrows(CasilleroOcupadoException.class,
+                ()->{
+                    tablero.ponerUnidad(otroSoldadoDeInfanteria,ubicacion1);
+                });
+
+    }
+    
+    @Test
+    public void test04NoSePuedeAgregarUnSoldadoDeInfanteriaEnCasilleroDelSectorEnemigo(){
+        //Arrange
+        Tablero tablero = new Tablero(10,10);
+        SoldadoDeInfanteria soldado = new SoldadoDeInfanteria();
+        Coordenada ubicacion1 = new Coordenada(10,10);
+        
+        //Act y Assert
+        assertThrows(NoSePuedeColocarUnaUnidadEnElSectorEnemigoException.class,
+                ()->{
+                    tablero.ponerUnidad(soldado,ubicacion1);
+                });
+
+    }
 
     @Test
-    public void test03SeObtienerElCasilleroDeArriba() {
+    public void test05SeObtienerElCasilleroDeArriba() {
         
     	//Arrange y Act:
     	Tablero tablero = new Tablero(10,10);
@@ -45,7 +84,7 @@ public class TableroTest {
     }
 
     @Test
-    public void test04SeObtienerElCasilleroDeLaDerecha() {
+    public void test06SeObtienerElCasilleroDeLaDerecha() {
         
     	//Arrange y Act:
     	Tablero tablero = new Tablero(10,10);
@@ -57,7 +96,7 @@ public class TableroTest {
     }
 
     @Test
-    public void test05SeObtienerElCasilleroDeAbajo() {
+    public void test07SeObtienerElCasilleroDeAbajo() {
         
     	//Arrange y Act:
     	Tablero tablero = new Tablero(10,10);
@@ -70,7 +109,7 @@ public class TableroTest {
 
 
     @Test
-    public void test06SeObtienerElCasilleroDeLaIzquierda() {
+    public void test08SeObtienerElCasilleroDeLaIzquierda() {
         
     	//Arrange y Act:
     	Tablero tablero = new Tablero(10,10);

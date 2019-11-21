@@ -1,10 +1,13 @@
 package grupo.N6.algochess;
 
 import grupo.N6.algochess.accionesDePartida.Mover;
+import grupo.N6.algochess.exepciones.MovimientoInvalidoException;
 import grupo.N6.algochess.posicionables.unidades.SoldadoDeInfanteria;
 import grupo.N6.algochess.posicionables.unidades.Unidad;
 import org.junit.Assert;
 import org.junit.Test;
+
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import java.util.ArrayList;
 
@@ -181,4 +184,22 @@ public class MoverTest {
 
     }
 
+    @Test
+    public void test01SoldadoNoSePuedeMoverAUnCasilleroNoAdyacente() {
+        //Arrange
+    	Tablero tablero = new Tablero(10, 10);
+        SoldadoDeInfanteria soldado = new SoldadoDeInfanteria();
+        Coordenada ubicacionInicial = new Coordenada(3,3);
+        Coordenada ubicacionFinal = new Coordenada(1,4);
+        Casillero casilleroInicio = new Casillero(ubicacionInicial, "Bando1");
+        Casillero casilleroFinal = new Casillero(ubicacionFinal, "Bando1");
+        tablero.ponerUnidad(soldado, ubicacionInicial);
+
+        //Act y Assert
+        assertThrows(MovimientoInvalidoException.class,
+                ()->{
+                    soldado.mover(casilleroInicio, casilleroFinal);
+                });
+    }
+    
 }
