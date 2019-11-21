@@ -1,6 +1,8 @@
 package grupo.N6.algochess.modos;
 
+import grupo.N6.algochess.accionesDeJuego.AtaqueNormal;
 import grupo.N6.algochess.exepciones.DistanciaInvalidaExepcion;
+import grupo.N6.algochess.posicionables.Atacable;
 import grupo.N6.algochess.posicionables.unidades.Unidad;
 
 public abstract class ModoJinete {
@@ -14,9 +16,9 @@ public abstract class ModoJinete {
         this.distAtaqueDesde = desde;
         this.distAtaqueHasta = hasta;
     }
-    public void atacar(Unidad atacado, int distancia){
+    public void atacar(Atacable atacado, int distancia){
         if (distAtaqueHasta < distancia || distAtaqueDesde > distancia)
             throw new DistanciaInvalidaExepcion("Esta fuera de rango.");
-        atacado.recibirAtaque(ptosAtaque);
+        atacado.recibirAtaque(new AtaqueNormal(ptosAtaque));
     }
 }

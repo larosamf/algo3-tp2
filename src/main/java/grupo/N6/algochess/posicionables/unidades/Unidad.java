@@ -1,14 +1,19 @@
 package grupo.N6.algochess.posicionables.unidades;
 
-import grupo.N6.algochess.Coordenada;
-
 import java.util.ArrayList;
 
 import grupo.N6.algochess.Casillero;
+import grupo.N6.algochess.accionesDeJuego.AtaqueExpansivo;
+import grupo.N6.algochess.accionesDeJuego.AtaqueNormal;
+import grupo.N6.algochess.exepciones.UnidadAfectadaExeption;
+import grupo.N6.algochess.modos.EstadoAtacado;
+import grupo.N6.algochess.modos.EstadoNormal;
+import grupo.N6.algochess.modos.EstadoUnidad;
+import grupo.N6.algochess.posicionables.Atacable;
 import grupo.N6.algochess.posicionables.Posicionable;
 
 
-public abstract class Unidad implements Posicionable {
+public abstract class Unidad implements Posicionable, Atacable {
 
     protected int distanciaAccion;
 	protected int vida;
@@ -16,7 +21,9 @@ public abstract class Unidad implements Posicionable {
 	protected String owner;
 	protected int costo;
 	protected int dano;
-	
+	protected EstadoUnidad estadoActivoUnidad = new EstadoNormal();
+    protected EstadoUnidad estadoInactivoUnidad = new EstadoAtacado();
+
     public int getVida() {
         return vida;
     }
@@ -25,7 +32,7 @@ public abstract class Unidad implements Posicionable {
         return costo;
     }
 
-    public abstract void atacar(Unidad unidad, int distancia) ;
+    public abstract void atacar(Atacable atacable, int distancia) ;
     
     public void recibirCuracion(int cura) {
         if (vida+cura > _VIDAMAXIMA_)
@@ -33,8 +40,10 @@ public abstract class Unidad implements Posicionable {
         else
             vida = vida + cura;
     }
-
-    public void recibirAtaque(int dano) { vida = vida - dano; }
+    @Override
+    public void recibirAtaque(AtaqueNormal unAtaque) { unAtaque.efectuarSobre(this); }
+    @Override
+    public void recibirAtaque(AtaqueExpansivo unAtaque) { unAtaque.efectuarSobre(this); }
 
     public boolean perteneceA(String nombre){
         return nombre == owner;
@@ -55,4 +64,16 @@ public abstract class Unidad implements Posicionable {
     public boolean esSoldado() {
     	return false;
     }
+
+    @Override
+    public void recibirDano(int dmg){
+        if (estadoActivoUnidad.estaAtacado()){
+            throw new UnidadAfectadaExeption();
+        }
+        vida = estadoActivoUnidad.aplicar(dmg, vida);
+        EstadoUnidad aux = estadoActivoUnidad;
+        estadoActivoUnidad = estadoInactivoUnidad;
+        estadoInactivoUnidad = aux;
+    }
+
 }

@@ -1,5 +1,6 @@
 package grupo.N6.algochess;
 
+import grupo.N6.algochess.accionesDeJuego.AtaqueExpansivo;
 import grupo.N6.algochess.accionesDePartida.Atacar;
 import grupo.N6.algochess.exepciones.DistanciaInvalidaExepcion;
 import grupo.N6.algochess.posicionables.unidades.Jinete;
@@ -92,4 +93,28 @@ public class AtacarTest {
         
         Assert.assertEquals(tablero.unidadEnCasillero(ubicacionFinal).getVida(), 85);
     }
+
+    @Test
+    public void test06AtaqueExplosivoSePropaga() {
+
+        Tablero tablero = new Tablero(10, 10);
+        Jinete jinete1 = new Jinete();
+        Jinete jinete2 = new Jinete();
+        Jinete jinete3 = new Jinete();
+        Jinete jinete4 = new Jinete();
+        SoldadoDeInfanteria soldado = new SoldadoDeInfanteria();
+        tablero.ponerUnidad(jinete1, new Coordenada(1,2));
+        tablero.ponerUnidad(jinete2, new Coordenada(2,1));
+        tablero.ponerUnidad(jinete3, new Coordenada(3,1));
+        tablero.ponerUnidad(jinete4, new Coordenada(4,4));
+        AtaqueExpansivo ataque = new AtaqueExpansivo(20);
+        tablero.localizarCasillero(new Coordenada(1,2)).recibirAtaque(ataque);
+        Assert.assertEquals(tablero.unidadEnCasillero(new Coordenada(1,2)).getVida(), 80);
+        Assert.assertEquals(tablero.unidadEnCasillero(new Coordenada(2,1)).getVida(), 80);
+        Assert.assertEquals(tablero.unidadEnCasillero(new Coordenada(3,1)).getVida(), 80);
+        Assert.assertEquals(tablero.unidadEnCasillero(new Coordenada(4,4)).getVida(), 100);
+    }
+
+
+
 }

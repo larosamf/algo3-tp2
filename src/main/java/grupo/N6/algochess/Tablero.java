@@ -39,7 +39,7 @@ public class Tablero {
                 casillero.asignarAdyacencia(casillero1);
     }
 
-    private Casillero localizarCasillero(Coordenada ubicacion) {
+    public Casillero localizarCasillero(Coordenada ubicacion) {
         for (Casillero casillero : casilleros)
             if (casillero.estaEnPosicion(ubicacion))
                 return casillero;

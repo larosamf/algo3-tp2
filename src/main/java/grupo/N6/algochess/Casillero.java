@@ -1,6 +1,8 @@
 package grupo.N6.algochess;
 
 import grupo.N6.algochess.accionesDeJuego.Ataque;
+import grupo.N6.algochess.accionesDeJuego.AtaqueExpansivo;
+import grupo.N6.algochess.accionesDeJuego.AtaqueNormal;
 import grupo.N6.algochess.accionesDeJuego.Cura;
 import grupo.N6.algochess.exepciones.CasilleroOcupadoException;
 import grupo.N6.algochess.exepciones.CasilleroVacioException;
@@ -131,9 +133,20 @@ public class Casillero implements Atacable, Curable {
     	
     }
 
-    @Override
-    public void recibirAtaque(Ataque ataque) {
 
+
+    @Override
+    public void recibirAtaque(AtaqueNormal ataqueNormal) {
+    }
+
+    @Override
+    public void recibirDano(int dmg) {
+
+    }
+
+    @Override
+    public void recibirAtaque(AtaqueExpansivo ataqueExpansivo) {
+        ataqueExpansivo.efectuarSobre(this);
     }
 
     @Override

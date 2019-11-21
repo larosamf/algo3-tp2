@@ -5,8 +5,7 @@ import java.util.ArrayList;
 import grupo.N6.algochess.modos.JineteArco;
 import grupo.N6.algochess.modos.JineteEspada;
 import grupo.N6.algochess.modos.ModoJinete;
-import grupo.N6.algochess.posicionables.unidades.Unidad;
-import grupo.N6.algochess.posicionables.unidades.UnidadMovible;
+import grupo.N6.algochess.posicionables.Atacable;
 
 public class Jinete extends UnidadMovible {
 
@@ -26,8 +25,8 @@ public class Jinete extends UnidadMovible {
     }
 
     @Override
-    public void atacar(Unidad unidad, int distancia) {
-        this.modoActivo.atacar(unidad,distancia);
+    public void atacar(Atacable atacable, int distancia) {
+        this.modoActivo.atacar(atacable,distancia);
     }
 
     @Override

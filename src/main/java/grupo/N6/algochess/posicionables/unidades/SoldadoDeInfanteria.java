@@ -3,10 +3,10 @@ package grupo.N6.algochess.posicionables.unidades;
 import java.util.ArrayList;
 
 import grupo.N6.algochess.Casillero;
+import grupo.N6.algochess.accionesDeJuego.AtaqueNormal;
 import grupo.N6.algochess.exepciones.DistanciaInvalidaExepcion;
 import grupo.N6.algochess.exepciones.JugadaInvalidaExepcion;
-import grupo.N6.algochess.posicionables.unidades.Unidad;
-import grupo.N6.algochess.posicionables.unidades.UnidadMovible;
+import grupo.N6.algochess.posicionables.Atacable;
 
 public class SoldadoDeInfanteria extends UnidadMovible {
 	
@@ -22,11 +22,11 @@ public class SoldadoDeInfanteria extends UnidadMovible {
 	}
 
 	@Override
-	public void atacar(Unidad atacado, int distancia) {
+	public void atacar(Atacable atacado, int distancia) {
 		if(distancia>distanciaAccion) {
             throw new DistanciaInvalidaExepcion("maximo de 1");
         }
-        atacado.recibirAtaque(dano);
+        atacado.recibirAtaque(new AtaqueNormal(dano));
 	}
 
     @Override

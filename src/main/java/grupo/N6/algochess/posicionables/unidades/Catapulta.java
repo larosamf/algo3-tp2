@@ -1,12 +1,13 @@
 package grupo.N6.algochess.posicionables.unidades;
 
-import grupo.N6.algochess.Coordenada;
+import grupo.N6.algochess.accionesDeJuego.AtaqueExpansivo;
 import grupo.N6.algochess.exepciones.DistanciaInvalidaExepcion;
 import grupo.N6.algochess.exepciones.JugadaInvalidaExepcion;
 
 import java.util.ArrayList;
 
 import grupo.N6.algochess.Casillero;
+import grupo.N6.algochess.posicionables.Atacable;
 
 
 public class Catapulta extends Unidad {
@@ -19,11 +20,12 @@ public class Catapulta extends Unidad {
 	}
 
 	@Override
-	public void atacar(Unidad atacado, int distancia) {
+	public void atacar(Atacable atacado, int distancia) {
 		if(distancia<distanciaAccion) {
 			throw new DistanciaInvalidaExepcion("No ataca a corta distancia");
 		}
-		atacado.recibirAtaque(dano);//ataque ataque.recibirAtaque
+		AtaqueExpansivo ataque = new AtaqueExpansivo(dano);
+		atacado.recibirAtaque(ataque);//ataque ataque.recibirAtaque
 	}
 
 	@Override

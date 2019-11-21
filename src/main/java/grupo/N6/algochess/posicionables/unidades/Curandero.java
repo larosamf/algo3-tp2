@@ -4,8 +4,7 @@ import java.util.ArrayList;
 
 import grupo.N6.algochess.exepciones.DistanciaInvalidaExepcion;
 import grupo.N6.algochess.exepciones.JugadaInvalidaExepcion;
-import grupo.N6.algochess.posicionables.unidades.Unidad;
-import grupo.N6.algochess.posicionables.unidades.UnidadMovible;
+import grupo.N6.algochess.posicionables.Atacable;
 
 public class Curandero extends UnidadMovible {
 
@@ -19,7 +18,7 @@ public class Curandero extends UnidadMovible {
 		distanciaAccion = 2;
 	}
 	@Override
-	public void atacar(Unidad atacado, int distancia) {
+	public void atacar(Atacable atacable, int distancia) {
 			throw new JugadaInvalidaExepcion("La unidad no ataca");
 	}
 
