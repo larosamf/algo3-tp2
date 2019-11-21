@@ -7,10 +7,12 @@ import grupo.N6.algochess.accionesDeJuego.AtaqueNormal;
 import grupo.N6.algochess.exepciones.DistanciaInvalidaExepcion;
 import grupo.N6.algochess.exepciones.JugadaInvalidaExepcion;
 import grupo.N6.algochess.posicionables.Atacable;
+import grupo.N6.algochess.posicionables.unidades.Unidad;
 
-public class SoldadoDeInfanteria extends UnidadMovible {
+public class SoldadoDeInfanteria extends Unidad {
 	
 	ArrayList<Unidad> batallon = new ArrayList<>();
+	SoldadoDeInfanteria liderDelBatallon = null;
 
 	public SoldadoDeInfanteria() {
         _VIDAMAXIMA_ = 100;
@@ -50,21 +52,44 @@ public class SoldadoDeInfanteria extends UnidadMovible {
     public void actualizarEstado(ArrayList<Unidad> aliados, ArrayList<Unidad> enemigos, ArrayList<Unidad> batallon) {
     	this.batallon = batallon;
     }
-    
-    @Override
+
+    public void setBatallon(ArrayList<Unidad> batallon){
+	    this.batallon = batallon;
+    }
+
     public void mover(Casillero casilleroInicio, Casillero casilleroFin) {
     	if (batallon != null) {
-    		for (Unidad soldado : batallon) {
-    			/*soldado.mover(desdeCasillero, hastaCasillero);*/
-    		}	
-    	}
-    	
-    	casilleroInicio.moverUnidadA(casilleroFin);
+    	        moverBatallon(casilleroInicio, casilleroFin);
+    	}else{
+    	    casilleroInicio.moverUnidadA(casilleroFin);
+        }
     }
-   
+
+    public void moverBatallon(Casillero casilleroInicio, Casillero casilleroFin){
+	    if(casilleroFin == casilleroInicio.obtenerAdyacenteDerecha()) {
+           moverBatallonALaDerecha(casilleroInicio, casilleroFin);
+        }else if(casilleroFin == casilleroInicio.obtenerAdyacenteIzquierda()){
+	       moverBatallonALaIzquierda(casilleroInicio, casilleroFin);
+        }else {
+            casilleroInicio.obtenerAdyacenteIzquierda().moverUnidadA(casilleroFin.obtenerAdyacenteIzquierda());
+            casilleroInicio.moverUnidadA(casilleroFin);
+            casilleroInicio.obtenerAdyacenteDerecha().moverUnidadA(casilleroFin.obtenerAdyacenteDerecha());
+        }
+    }
+
+    public void moverBatallonALaDerecha(Casillero casilleroInicio, Casillero casilleroFin){
+        casilleroInicio.obtenerAdyacenteDerecha().moverUnidadA(casilleroFin.obtenerAdyacenteDerecha());
+        casilleroInicio.moverUnidadA(casilleroFin);
+        casilleroInicio.obtenerAdyacenteIzquierda().moverUnidadA(casilleroFin.obtenerAdyacenteIzquierda());
+	}
+
+    public void moverBatallonALaIzquierda(Casillero casilleroInicio, Casillero casilleroFin){
+        casilleroInicio.obtenerAdyacenteIzquierda().moverUnidadA(casilleroFin.obtenerAdyacenteIzquierda());
+        casilleroInicio.moverUnidadA(casilleroFin);
+	    casilleroInicio.obtenerAdyacenteDerecha().moverUnidadA(casilleroFin.obtenerAdyacenteDerecha());
+    }
     
     
-    
-    
-    
+
+
 }

@@ -16,21 +16,27 @@ public class CurarTest {
     @Test
     public void test01CurarUnidadMaximaVida() {
 
-        Tablero tablero = new Tablero(10, 10);
+        //Arrange:
+    	Tablero tablero = new Tablero(10, 10);
         Curandero curandero = new Curandero();
         SoldadoDeInfanteria soldado = new SoldadoDeInfanteria();
         Coordenada ubicacionInicial = new Coordenada(1,1);
         Coordenada ubicacionFinal = new Coordenada(1,2);
         tablero.ponerUnidad(curandero, ubicacionInicial);
         tablero.ponerUnidad(soldado,ubicacionFinal);
+        
+        //Act:
         Curar curar = new Curar(ubicacionInicial, ubicacionFinal);
         curar.ejecutarSobre(new Partida(new Jugador(), new Jugador()), tablero);
+        
+        //Assert:
         Assert.assertEquals(tablero.unidadEnCasillero(ubicacionFinal).getVida(),100);
     }
     @Test
     public void test02CurarUnidadConDano() {
 
-        Partida partida = new Partida(new Jugador(), new Jugador());
+        //Arrange:
+    	Partida partida = new Partida(new Jugador(), new Jugador());
         Tablero tablero = new Tablero(10, 10);
         Curandero curandero = new Curandero();
         SoldadoDeInfanteria soldado = new SoldadoDeInfanteria();
@@ -39,14 +45,12 @@ public class CurarTest {
         tablero.ponerUnidad(curandero, ubicacionInicial);
         tablero.ponerUnidad(soldado,ubicacionFinal);
 
-
+        //Act y Assert:
         Atacar atacar = new Atacar(ubicacionFinal,ubicacionInicial);
         atacar.ejecutarSobre(partida,tablero);
-
         Assert.assertEquals(tablero.unidadEnCasillero(ubicacionInicial).getVida(),65);
         Curar curar = new Curar(ubicacionInicial, ubicacionInicial);
         curar.ejecutarSobre(partida, tablero);
-
         Assert.assertEquals(75,tablero.unidadEnCasillero(ubicacionInicial).getVida());
     }
     @Test(expected = DistanciaInvalidaExepcion.class)
@@ -71,7 +75,8 @@ public class CurarTest {
     
     @Test(expected = JugadaInvalidaExepcion.class)
     public void test04CatapultaNoPuedeSerCuradaPorElCurandero() {
-        //Arrange
+        
+    	//Arrange
     	Tablero tablero = new Tablero(10, 10);
         Catapulta catapulta = new Catapulta();
         Curandero curandero = new Curandero();
