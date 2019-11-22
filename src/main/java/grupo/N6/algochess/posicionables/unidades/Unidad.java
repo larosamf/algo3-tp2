@@ -5,10 +5,6 @@ import java.util.ArrayList;
 import grupo.N6.algochess.Casillero;
 import grupo.N6.algochess.accionesDeJuego.AtaqueExpansivo;
 import grupo.N6.algochess.accionesDeJuego.AtaqueNormal;
-import grupo.N6.algochess.exepciones.UnidadAfectadaExeption;
-import grupo.N6.algochess.modos.EstadoAtacado;
-import grupo.N6.algochess.modos.EstadoNormal;
-import grupo.N6.algochess.modos.EstadoUnidad;
 import grupo.N6.algochess.posicionables.Atacable;
 import grupo.N6.algochess.posicionables.Posicionable;
 
@@ -21,8 +17,6 @@ public abstract class Unidad implements Posicionable, Atacable {
 	protected String owner;
 	protected int costo;
 	protected int dano;
-	protected EstadoUnidad estadoActivoUnidad = new EstadoNormal();
-    protected EstadoUnidad estadoInactivoUnidad = new EstadoAtacado();
 
     public int getVida() {
         return vida;
@@ -67,13 +61,11 @@ public abstract class Unidad implements Posicionable, Atacable {
 
     @Override
     public void recibirDano(int dmg){
-        if (estadoActivoUnidad.estaAtacado()){
-            throw new UnidadAfectadaExeption();
-        }
-        vida = estadoActivoUnidad.aplicar(dmg, vida);
-        EstadoUnidad aux = estadoActivoUnidad;
-        estadoActivoUnidad = estadoInactivoUnidad;
-        estadoInactivoUnidad = aux;
+        if (vida-dmg < 0)
+            vida = 0;
+        else
+            vida = vida - dmg;
     }
+
 
 }

@@ -25,7 +25,7 @@ public class Catapulta extends Unidad {
 			throw new DistanciaInvalidaExepcion("No ataca a corta distancia");
 		}
 		AtaqueExpansivo ataque = new AtaqueExpansivo(dano);
-		atacado.recibirAtaque(ataque);//ataque ataque.recibirAtaque
+		atacado.recibirAtaque(ataque);
 	}
 
 	@Override

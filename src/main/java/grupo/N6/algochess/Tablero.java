@@ -25,8 +25,7 @@ public class Tablero {
             for (int j = 1; j <= largoX; j++) {
                 casilleros.add(new Casillero(new Coordenada(i, j), bando));
             }
-        } 
-           
+        }
         this.asignarAdyacencias();
         
         bandoAliado = "Bando1";

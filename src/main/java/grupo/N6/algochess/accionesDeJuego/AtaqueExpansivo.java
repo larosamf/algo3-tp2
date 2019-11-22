@@ -9,6 +9,7 @@ import java.util.ArrayList;
 
 public class AtaqueExpansivo extends Ataque {
 
+    ArrayList<Casillero> afectados = new ArrayList<Casillero>();
 
     public AtaqueExpansivo(int dmg) {
         super(dmg);
@@ -26,12 +27,15 @@ public class AtaqueExpansivo extends Ataque {
     }
 
 
-    public static void aplicarDmg(final Casillero casillero, final int DMG) {
+    public void aplicarDmg(final Casillero casillero, final int DMG) {
+        if (afectados.contains(casillero))
+            return;
         try {
             casillero.obtenerUnidad().recibirDano(DMG);
-        } catch (CasilleroVacioException | UnidadAfectadaExeption e) {
+        } catch (CasilleroVacioException e) {
             return;
         }
+        afectados.add(casillero);
         for (Casillero cas : casillero.obtenerAdyacencias())
             aplicarDmg(cas, DMG);
     }
