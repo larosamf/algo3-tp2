@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import grupo.N6.algochess.Casillero;
 import grupo.N6.algochess.accionesDeJuego.AtaqueNormal;
+import grupo.N6.algochess.accionesDePartida.MoverBatallon;
 import grupo.N6.algochess.exepciones.DistanciaInvalidaExepcion;
 import grupo.N6.algochess.exepciones.JugadaInvalidaExepcion;
 import grupo.N6.algochess.posicionables.Atacable;
@@ -11,8 +12,7 @@ import grupo.N6.algochess.posicionables.unidades.Unidad;
 
 public class SoldadoDeInfanteria extends Unidad {
 	
-	ArrayList<Unidad> batallon = new ArrayList<>();
-	SoldadoDeInfanteria liderDelBatallon = null;
+	Batallon batallon = null;
 
 	public SoldadoDeInfanteria() {
         _VIDAMAXIMA_ = 100;
@@ -50,46 +50,21 @@ public class SoldadoDeInfanteria extends Unidad {
     }
     
     public void actualizarEstado(ArrayList<Unidad> aliados, ArrayList<Unidad> enemigos, ArrayList<Unidad> batallon) {
-    	this.batallon = batallon;
+    	this.batallon = new Batallon(batallon, "HORIZONTAL"); //POR AHORA LO DEJO ASI PARA Q COMPILE
     }
 
-    public void setBatallon(ArrayList<Unidad> batallon){
+    public void setBatallon(Batallon batallon){
 	    this.batallon = batallon;
     }
 
     public void mover(Casillero casilleroInicio, Casillero casilleroFin) {
     	if (batallon != null) {
-    	        moverBatallon(casilleroInicio, casilleroFin);
+    	    MoverBatallon moverBatallon = new MoverBatallon(this.batallon, casilleroInicio, casilleroFin);
+    	    moverBatallon.mover();
     	}else{
     	    casilleroInicio.moverUnidadA(casilleroFin);
         }
     }
-
-    public void moverBatallon(Casillero casilleroInicio, Casillero casilleroFin){
-	    if(casilleroFin == casilleroInicio.obtenerAdyacenteDerecha()) {
-           moverBatallonALaDerecha(casilleroInicio, casilleroFin);
-        }else if(casilleroFin == casilleroInicio.obtenerAdyacenteIzquierda()){
-	       moverBatallonALaIzquierda(casilleroInicio, casilleroFin);
-        }else {
-            casilleroInicio.obtenerAdyacenteIzquierda().moverUnidadA(casilleroFin.obtenerAdyacenteIzquierda());
-            casilleroInicio.moverUnidadA(casilleroFin);
-            casilleroInicio.obtenerAdyacenteDerecha().moverUnidadA(casilleroFin.obtenerAdyacenteDerecha());
-        }
-    }
-
-    public void moverBatallonALaDerecha(Casillero casilleroInicio, Casillero casilleroFin){
-        casilleroInicio.obtenerAdyacenteDerecha().moverUnidadA(casilleroFin.obtenerAdyacenteDerecha());
-        casilleroInicio.moverUnidadA(casilleroFin);
-        casilleroInicio.obtenerAdyacenteIzquierda().moverUnidadA(casilleroFin.obtenerAdyacenteIzquierda());
-	}
-
-    public void moverBatallonALaIzquierda(Casillero casilleroInicio, Casillero casilleroFin){
-        casilleroInicio.obtenerAdyacenteIzquierda().moverUnidadA(casilleroFin.obtenerAdyacenteIzquierda());
-        casilleroInicio.moverUnidadA(casilleroFin);
-	    casilleroInicio.obtenerAdyacenteDerecha().moverUnidadA(casilleroFin.obtenerAdyacenteDerecha());
-    }
-    
-    
 
 
 }
