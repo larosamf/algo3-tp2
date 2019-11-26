@@ -13,7 +13,7 @@ public class MoverBatallon {
     Casillero casilleroFin;
     String tipoDeBatalllon;
 
-    public MoverBatallon(Batallon batallon, Casillero casilleroInicio, Casillero casilleroFin){
+    public MoverBatallon(Batallon batallon, Casillero casilleroInicio, Casillero casilleroFin) {
         soldadoDelMedio = batallon.getSoldadoDelMedio();
         this.casilleroInicio = casilleroInicio;
         this.casilleroFin = casilleroFin;
@@ -21,28 +21,47 @@ public class MoverBatallon {
         this.tipoDeBatalllon = batallon.getTipo();
     }
 
-    public void mover(){
-        if(casilleroFin == casilleroInicio.obtenerAdyacenteDerecha()) {
+    public void mover() {
+        if (casilleroFin == casilleroInicio.obtenerAdyacenteDerecha()) {
             moverBatallonALaDerecha();
-        }else if(casilleroFin == casilleroInicio.obtenerAdyacenteIzquierda()){
+        } else if (casilleroFin == casilleroInicio.obtenerAdyacenteIzquierda()) {
             moverBatallonALaIzquierda();
-        }else if(casilleroFin == casilleroInicio.obtenerAdyacenteArriba()){
-           moverBatallonArriba();
-        }else if(casilleroFin == casilleroInicio.obtenerAdyacenteAbajo()){
+        } else if (casilleroFin == casilleroInicio.obtenerAdyacenteArriba()) {
+            moverBatallonArriba();
+        } else if (casilleroFin == casilleroInicio.obtenerAdyacenteAbajo()) {
             moverBatallonAbajo();
+        } else if (casilleroFin == casilleroInicio.obtenerAdyacenteDerecha().obtenerAdyacenteArriba()) {
+            moverBatallonArribaYDerecha();
         }
     }
 
-    private void moverBatallonALaDerecha(){
+    private void moverBatallonArribaYDerecha() {
+        Casillero casilleroDestinoDelSoldadoDelMedio = casilleroDelSoldadoDelMedio.obtenerAdyacenteDerecha().obtenerAdyacenteArriba();
+
+        if (tipoDeBatalllon == "HORIZONTAL") {
+            casilleroDelSoldadoDelMedio.obtenerAdyacenteDerecha().moverUnidadA(casilleroDestinoDelSoldadoDelMedio.obtenerAdyacenteDerecha());
+            casilleroDelSoldadoDelMedio.moverUnidadA(casilleroDestinoDelSoldadoDelMedio);
+            casilleroDelSoldadoDelMedio.obtenerAdyacenteIzquierda().moverUnidadA(casilleroDestinoDelSoldadoDelMedio.obtenerAdyacenteIzquierda().obtenerAdyacenteArriba());
+        }
+
+        if (tipoDeBatalllon == "VERTICAL") {
+            casilleroDelSoldadoDelMedio.moverUnidadA(casilleroDestinoDelSoldadoDelMedio);
+            casilleroDelSoldadoDelMedio.obtenerAdyacenteArriba().moverUnidadA(casilleroDestinoDelSoldadoDelMedio.obtenerAdyacenteArriba());
+            casilleroDelSoldadoDelMedio.obtenerAdyacenteAbajo().moverUnidadA(casilleroDestinoDelSoldadoDelMedio.obtenerAdyacenteAbajo());
+        }
+
+    }
+
+    private void moverBatallonALaDerecha() {
         Casillero casilleroDestinoDelSoldadoDelMedio = casilleroDelSoldadoDelMedio.obtenerAdyacenteDerecha();
 
-        if(tipoDeBatalllon == "HORIZONTAL") {
+        if (tipoDeBatalllon == "HORIZONTAL") {
             casilleroDelSoldadoDelMedio.obtenerAdyacenteDerecha().moverUnidadA(casilleroDestinoDelSoldadoDelMedio.obtenerAdyacenteDerecha());
             casilleroDelSoldadoDelMedio.moverUnidadA(casilleroDestinoDelSoldadoDelMedio);
             casilleroDelSoldadoDelMedio.obtenerAdyacenteIzquierda().moverUnidadA(casilleroDestinoDelSoldadoDelMedio.obtenerAdyacenteIzquierda());
         }
 
-        if(tipoDeBatalllon == "VERTICAL"){
+        if (tipoDeBatalllon == "VERTICAL") {
             casilleroDelSoldadoDelMedio.moverUnidadA(casilleroDestinoDelSoldadoDelMedio);
             casilleroDelSoldadoDelMedio.obtenerAdyacenteArriba().moverUnidadA(casilleroDestinoDelSoldadoDelMedio.obtenerAdyacenteArriba());
             casilleroDelSoldadoDelMedio.obtenerAdyacenteAbajo().moverUnidadA(casilleroDestinoDelSoldadoDelMedio.obtenerAdyacenteAbajo());
@@ -50,15 +69,15 @@ public class MoverBatallon {
 
     }
 
-    private void moverBatallonALaIzquierda(){
+    private void moverBatallonALaIzquierda() {
         Casillero casilleroDestinoDelSoldadoDelMedio = casilleroDelSoldadoDelMedio.obtenerAdyacenteIzquierda();
 
-        if(tipoDeBatalllon == "HORIZONTAL") {
+        if (tipoDeBatalllon == "HORIZONTAL") {
             casilleroDelSoldadoDelMedio.obtenerAdyacenteIzquierda().moverUnidadA(casilleroDestinoDelSoldadoDelMedio.obtenerAdyacenteIzquierda());
             casilleroDelSoldadoDelMedio.moverUnidadA(casilleroDestinoDelSoldadoDelMedio);
             casilleroDelSoldadoDelMedio.obtenerAdyacenteDerecha().moverUnidadA(casilleroDestinoDelSoldadoDelMedio.obtenerAdyacenteDerecha());
         }
-        if(tipoDeBatalllon == "VERTICAL"){
+        if (tipoDeBatalllon == "VERTICAL") {
             casilleroDelSoldadoDelMedio.moverUnidadA(casilleroDestinoDelSoldadoDelMedio);
             casilleroDelSoldadoDelMedio.obtenerAdyacenteArriba().moverUnidadA(casilleroDestinoDelSoldadoDelMedio.obtenerAdyacenteArriba());
             casilleroDelSoldadoDelMedio.obtenerAdyacenteAbajo().moverUnidadA(casilleroDestinoDelSoldadoDelMedio.obtenerAdyacenteAbajo());
@@ -66,16 +85,16 @@ public class MoverBatallon {
 
     }
 
-    private void moverBatallonArriba(){
+    private void moverBatallonArriba() {
         Casillero casilleroDestinoDelSoldadoDelMedio = casilleroDelSoldadoDelMedio.obtenerAdyacenteArriba();
 
-        if(tipoDeBatalllon == "HORIZONTAL") {
+        if (tipoDeBatalllon == "HORIZONTAL") {
             casilleroDelSoldadoDelMedio.obtenerAdyacenteIzquierda().moverUnidadA(casilleroDestinoDelSoldadoDelMedio.obtenerAdyacenteIzquierda());
             casilleroDelSoldadoDelMedio.moverUnidadA(casilleroDestinoDelSoldadoDelMedio);
             casilleroDelSoldadoDelMedio.obtenerAdyacenteDerecha().moverUnidadA(casilleroDestinoDelSoldadoDelMedio.obtenerAdyacenteDerecha());
         }
 
-        if(tipoDeBatalllon == "VERTICAL"){
+        if (tipoDeBatalllon == "VERTICAL") {
             casilleroDelSoldadoDelMedio.obtenerAdyacenteArriba().moverUnidadA(casilleroDestinoDelSoldadoDelMedio.obtenerAdyacenteArriba());
             casilleroDelSoldadoDelMedio.moverUnidadA(casilleroDestinoDelSoldadoDelMedio);
             casilleroDelSoldadoDelMedio.obtenerAdyacenteAbajo().moverUnidadA(casilleroDestinoDelSoldadoDelMedio.obtenerAdyacenteAbajo());
@@ -83,16 +102,16 @@ public class MoverBatallon {
 
     }
 
-    private void moverBatallonAbajo(){
+    private void moverBatallonAbajo() {
         Casillero casilleroDestinoDelSoldadoDelMedio = casilleroDelSoldadoDelMedio.obtenerAdyacenteAbajo();
 
-        if(tipoDeBatalllon == "HORIZONTAL") {
+        if (tipoDeBatalllon == "HORIZONTAL") {
             casilleroDelSoldadoDelMedio.obtenerAdyacenteIzquierda().moverUnidadA(casilleroDestinoDelSoldadoDelMedio.obtenerAdyacenteIzquierda());
             casilleroDelSoldadoDelMedio.moverUnidadA(casilleroDestinoDelSoldadoDelMedio);
             casilleroDelSoldadoDelMedio.obtenerAdyacenteDerecha().moverUnidadA(casilleroDestinoDelSoldadoDelMedio.obtenerAdyacenteDerecha());
         }
 
-        if(tipoDeBatalllon == "VERTICAL"){
+        if (tipoDeBatalllon == "VERTICAL") {
             casilleroDelSoldadoDelMedio.obtenerAdyacenteAbajo().moverUnidadA(casilleroDestinoDelSoldadoDelMedio.obtenerAdyacenteAbajo());
             casilleroDelSoldadoDelMedio.moverUnidadA(casilleroDestinoDelSoldadoDelMedio);
             casilleroDelSoldadoDelMedio.obtenerAdyacenteArriba().moverUnidadA(casilleroDestinoDelSoldadoDelMedio.obtenerAdyacenteArriba());
@@ -102,39 +121,49 @@ public class MoverBatallon {
 
     }
 
-    private Casillero obtenerCasilleroDelSoldadoDelMedio(Casillero casilleroInicio){
+
+    private Casillero obtenerCasilleroDelSoldadoDelMedio(Casillero casilleroInicio) {
 
         Casillero casilleroBuscado = null;
 
-        if(casilleroInicio.obtenerUnidad() == soldadoDelMedio){
+        if (casilleroInicio.obtenerUnidad() == soldadoDelMedio) {
             casilleroBuscado = casilleroInicio;
         }
 
-        try{
-           if (casilleroInicio.obtenerAdyacenteDerecha().obtenerUnidad() == soldadoDelMedio) {
-                 casilleroBuscado = casilleroInicio.obtenerAdyacenteDerecha();
-           }
-        }catch(CasilleroVacioException e){;}
+        try {
+            if (casilleroInicio.obtenerAdyacenteDerecha().obtenerUnidad() == soldadoDelMedio) {
+                casilleroBuscado = casilleroInicio.obtenerAdyacenteDerecha();
+            }
+        } catch (CasilleroVacioException e0) {
+            ;
+        }
 
-        try{
+        try {
             if (casilleroInicio.obtenerAdyacenteIzquierda().obtenerUnidad() == soldadoDelMedio) {
                 casilleroBuscado = casilleroInicio.obtenerAdyacenteIzquierda();
             }
-        }catch(CasilleroVacioException e){;}
+        } catch (CasilleroVacioException e1) {
+           ;
+        }
 
-        try{
+        try {
             if (casilleroInicio.obtenerAdyacenteArriba().obtenerUnidad() == soldadoDelMedio) {
-                casilleroBuscado = casilleroInicio.obtenerAdyacenteArriba();
+                 casilleroBuscado = casilleroInicio.obtenerAdyacenteArriba();
             }
-        }catch(CasilleroVacioException e){;}
+        } catch (CasilleroVacioException e2) {
+            ;
+        }
 
-        try{
+        try {
             if (casilleroInicio.obtenerAdyacenteAbajo().obtenerUnidad() == soldadoDelMedio) {
                 casilleroBuscado = casilleroInicio.obtenerAdyacenteAbajo();
             }
-        }catch(CasilleroVacioException e){;}
+        } catch (CasilleroVacioException e3) {
+             ;
+        }
 
-        return(casilleroBuscado);
+            return (casilleroBuscado);
+        }
+
     }
 
-}

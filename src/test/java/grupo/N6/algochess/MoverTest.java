@@ -192,7 +192,7 @@ public class MoverTest {
         soldado3.setBatallon(unBatallon);
 
         //Act:
-        Mover mover = new Mover(ubicacionInicial2, ubicacionFinal2);
+        Mover mover = new Mover(ubicacionInicial1, ubicacionFinal1);
         mover.ejecutarSobre(new Partida(new Jugador(), new Jugador()), tablero);
 
         //Assert:
@@ -397,8 +397,8 @@ public class MoverTest {
 
     }
 
-}    @Test
-    public void test07MoverBatallonVerticalArriba() {
+    @Test
+    public void test07MoverBatallonVerticalArribaALaDerecha() {
 
         //Arrange:
         Tablero tablero = new Tablero(20, 20);
@@ -407,13 +407,13 @@ public class MoverTest {
         SoldadoDeInfanteria soldado3 = new SoldadoDeInfanteria();
 
         Coordenada ubicacionInicial1 = new Coordenada(2, 2);
-        Coordenada ubicacionFinal1 = new Coordenada(2, 3);
+        Coordenada ubicacionFinal1 = new Coordenada(3, 3);
 
         Coordenada ubicacionInicial2 = new Coordenada(2, 3);
-        Coordenada ubicacionFinal2 = new Coordenada(2, 4);
+        Coordenada ubicacionFinal2 = new Coordenada(3, 4);
 
         Coordenada ubicacionInicial3 = new Coordenada(2, 4);
-        Coordenada ubicacionFinal3 = new Coordenada(2, 5);
+        Coordenada ubicacionFinal3 = new Coordenada(3, 5);
 
         tablero.ponerUnidad(soldado1, ubicacionInicial1);
         tablero.ponerUnidad(soldado2, ubicacionInicial2);
@@ -431,7 +431,7 @@ public class MoverTest {
         soldado3.setBatallon(unBatallon);
 
         //Act:
-        Mover mover = new Mover(ubicacionInicial1, ubicacionFinal1);
+        Mover mover = new Mover(ubicacionInicial3, ubicacionFinal3);
         mover.ejecutarSobre(new Partida(new Jugador(), new Jugador()), tablero);
 
         //Assert:
@@ -440,3 +440,4 @@ public class MoverTest {
         Assert.assertEquals(tablero.unidadEnCasillero(ubicacionFinal3), soldado3);
 
     }
+}
