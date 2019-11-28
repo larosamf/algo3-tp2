@@ -8,6 +8,8 @@ import grupo.N6.algochess.exepciones.FinalException;
 import grupo.N6.algochess.exepciones.PuntosInsuficientesParaAgregarUnidadException;
 import grupo.N6.algochess.posicionables.unidades.Catapulta;
 import grupo.N6.algochess.posicionables.unidades.SoldadoDeInfanteria;
+import grupo.N6.algochess.posicionables.unidades.Unidad;
+
 import org.junit.Test;
 
 public class JugadorTest {
@@ -55,10 +57,19 @@ public class JugadorTest {
 		Jugador jugador = new Jugador();
 		
 		//Act y Assert:
-		assertThrows(FinalException.class,
-    			()->{
-    				jugador.sigueParticipando();;
-    			});
+		assertEquals(jugador.sigueParticipando(), false);
 	}
 
+	@Test
+	public void test04JugadorConUnidadesNoPerdio() {
+		
+		//Arrange:
+		Jugador jugador = new Jugador();
+		Unidad catapulta = new Catapulta();
+		jugador.agregarUnidad(catapulta);
+		
+		//Act y Assert:
+		assertEquals(jugador.sigueParticipando(), true);
+	}
+	
 }

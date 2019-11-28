@@ -16,11 +16,7 @@ public class Posicionar implements Accion {
 
     @Override
     public void ejecutarSobre(Partida partida, Tablero tablero) {
-
-    }
-
-    public void ejecutarSobre(Partida partida){
-        partida.getTablero().ponerUnidad(unidad, posicion);
+       tablero.ponerUnidad(unidad, posicion);
     }
 
 }

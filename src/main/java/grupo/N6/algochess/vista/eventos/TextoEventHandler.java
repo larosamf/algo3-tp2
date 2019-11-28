@@ -1,4 +1,4 @@
-package grupo.N6.algochess.vista.eventos;
+/*package grupo.N6.algochess.vista.eventos;
 
 import javafx.event.ActionEvent;
 import javafx.event.Event;
@@ -22,4 +22,4 @@ public class TextoEventHandler implements EventHandler<KeyEvent> {
             Event.fireEvent(guardar, new ActionEvent());
         }
     }
-}
+}*/

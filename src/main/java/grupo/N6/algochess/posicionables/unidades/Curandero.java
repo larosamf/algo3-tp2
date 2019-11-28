@@ -23,11 +23,6 @@ public class Curandero extends Unidad {
 			throw new JugadaInvalidaExepcion("La unidad no ataca");
 	}
 
-    @Override
-    public void terminarTurno() {
-
-    }
-
     public void mover(Casillero casilleroInicio, Casillero casilleroFin) {
     	casilleroInicio.moverUnidadA(casilleroFin);
     }

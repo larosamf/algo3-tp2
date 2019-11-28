@@ -98,7 +98,7 @@ public class Inicializador {
 
             Coordenada posicion = new Coordenada(x, y);
             Posicionar posicionar = new Posicionar(unidadComprada, posicion);
-            posicionar.ejecutarSobre(partida);
+            posicionar.ejecutarSobre(partida, partida.getTablero());
         }
     }
 

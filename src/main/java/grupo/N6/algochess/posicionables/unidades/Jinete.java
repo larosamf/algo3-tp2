@@ -32,11 +32,6 @@ public class Jinete extends Unidad {
     }
 
     @Override
-    public void terminarTurno() {
-
-    }
-
-    @Override
     public void curar(Unidad curado, int distanciaHasta) {
 
     }

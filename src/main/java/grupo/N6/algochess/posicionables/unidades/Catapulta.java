@@ -29,11 +29,6 @@ public class Catapulta extends Unidad {
 	}
 
 	@Override
-	public void terminarTurno() {
-
-	}
-
-	@Override
 	public void curar(Unidad curado, int distanciaHasta) {
 	    throw new JugadaInvalidaExepcion("La unidad no cura");
 	}

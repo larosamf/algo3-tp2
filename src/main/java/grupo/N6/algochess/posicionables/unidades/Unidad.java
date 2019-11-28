@@ -41,9 +41,7 @@ public abstract class Unidad implements Posicionable, Atacable {
 
     public boolean perteneceA(String nombre){
         return nombre == owner;
-    };
-
-    public abstract void terminarTurno();
+    }
 
     public boolean estaVivo() {
         return vida>0;

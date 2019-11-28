@@ -1,5 +1,4 @@
 package grupo.N6.algochess;
-import grupo.N6.algochess.exepciones.FinalException;
 import grupo.N6.algochess.exepciones.PuntosInsuficientesParaAgregarUnidadException;
 import grupo.N6.algochess.posicionables.unidades.Unidad;
 
@@ -10,14 +9,12 @@ public class Jugador {
 	
 	private int puntos;
 	protected String nombre;
-	private int cantidadDeUnidades;
     private boolean estaJugando;
     protected List<Unidad> equipo;
 
     public Jugador() {
 		puntos = 20;
-		cantidadDeUnidades = 0;
-        this.nombre = nombre;
+        this.nombre = null;
         this.equipo = new ArrayList<Unidad>();
 	}
 
@@ -33,9 +30,8 @@ public class Jugador {
 		if (puntos < unidad.getCosto()) {
 			throw new PuntosInsuficientesParaAgregarUnidadException();
 		}
-		
+		equipo.add(unidad);
 		puntos -= unidad.getCosto();
-		cantidadDeUnidades += 1;
 	}
 
 	public void cambiarTurno() {
@@ -63,18 +59,14 @@ public class Jugador {
 	}
 
 	public void terminarTurno() {
-		for (Unidad unidad : equipo) {
-			unidad.terminarTurno();
-		}
+		this.estaJugando = false;
 	}
-    public void sigueParticipando() {
-        boolean sigueJugando = false;
+	
+    public boolean sigueParticipando() {
         for (Unidad unidad : equipo) {
             if (unidad.estaVivo())
-                sigueJugando = true;
+                return true;
         }
-        if (!sigueJugando){
-            throw new FinalException();
-        }
+        return false;
     }
 }

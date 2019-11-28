@@ -1,4 +1,4 @@
-package grupo.N6.algochess.vista;
+/*package grupo.N6.algochess.vista;
 
 import grupo.N6.algochess.Partida;
 import grupo.N6.algochess.vista.eventos.BotonGuardarEventHandler;
@@ -65,4 +65,4 @@ public class Aplicacion extends Application {
         
         escenario.show();
     }
-}
+}*/

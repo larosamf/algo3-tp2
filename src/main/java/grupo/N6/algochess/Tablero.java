@@ -1,10 +1,10 @@
 package grupo.N6.algochess;
 
-import grupo.N6.algochess.exepciones.PosicionInvalidaExeption;
-import grupo.N6.algochess.posicionables.unidades.Unidad;
-
 import java.util.ArrayList;
 import java.util.List;
+
+import grupo.N6.algochess.exepciones.PosicionInvalidaExeption;
+import grupo.N6.algochess.posicionables.unidades.Unidad;
 
 
 public class Tablero {

@@ -15,7 +15,6 @@ public class Partida {
         this.jugador2 = jugador2;
         this.tablero = new Tablero(20, 20);
 
-
         this.jugando = true;
     }
 
@@ -32,29 +31,36 @@ public class Partida {
             return this.jugador1;
         return this.jugador2;
     }
-
+    
+    public Jugador obtenerGanador() {
+    	if (this.hayGanador()) {
+    		if (jugador1.sigueParticipando())
+    			return jugador1;
+    		return jugador2;
+    	}
+    	return null;
+    }
+    
     public void terminarTurno() {
-        this.hayGanador();
-        this.jugador1.terminarTurno();
-        this.jugador2.terminarTurno();
+        if (this.hayGanador()) {
+        	this.terminarJuego();
+        }
+        this.actualizarEstadoDeUnidades();
         this.jugador1.cambiarTurno();
         this.jugador2.cambiarTurno();
     }
 
-    private void hayGanador() {
-        this.jugador1.sigueParticipando();
-        this.jugador2.sigueParticipando();
+    private void terminarJuego() {
+		this.jugando = false;
+	}
+    
+
+	private boolean hayGanador() {
+        return (!this.jugador1.sigueParticipando() || !this.jugador2.sigueParticipando());
     }
 
     public Tablero getTablero(){
         return(this.tablero);
-    }
-
-    private void inicializarPartida(Tablero tablero,Jugador jugador1, Jugador jugador2){
-        this.jugador1 = jugador1;
-        this.jugador2 = jugador2;
-        this.tablero = tablero;
-
     }
 
     public void actualizarEstadoDeUnidades() {
