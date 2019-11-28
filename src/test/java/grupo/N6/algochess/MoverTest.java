@@ -466,9 +466,9 @@ public class MoverTest {
         mover.ejecutarSobre(new Partida(new Jugador(), new Jugador()), tablero);
 
         //Assert:
-        //Assert.assertEquals(tablero.unidadEnCasillero(ubicacionFinal1), soldado1);
-       // Assert.assertEquals(tablero.unidadEnCasillero(ubicacionFinal2), soldado2);
-      //  Assert.assertEquals(tablero.unidadEnCasillero(ubicacionFinal3), soldado3);
+        Assert.assertEquals(tablero.unidadEnCasillero(ubicacionFinal1), soldado1);
+        Assert.assertEquals(tablero.unidadEnCasillero(ubicacionFinal2), soldado2);
+        Assert.assertEquals(tablero.unidadEnCasillero(ubicacionFinal3), soldado3);
 
     }
 

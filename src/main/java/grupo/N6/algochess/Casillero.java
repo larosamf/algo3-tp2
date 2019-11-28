@@ -46,7 +46,7 @@ public class Casillero implements Atacable, Curable {
         return(casilleroBuscado);
     }
 
-    public Casillero obtenerAdyacenteArriba(){
+    public Casillero obtenerAdyacenteAbajo(){
         Casillero casilleroBuscado = null;
         for(Casillero casilleroAdyacente: this.adyacencias){
             if( this.posicion.obtenerY() == (casilleroAdyacente.posicion.obtenerY()+1) &&
@@ -57,7 +57,7 @@ public class Casillero implements Atacable, Curable {
         return(casilleroBuscado);
     }
 
-    public Casillero obtenerAdyacenteAbajo(){
+    public Casillero obtenerAdyacenteArriba(){
         Casillero casilleroBuscado = null;
         for(Casillero casilleroAdyacente: this.adyacencias){
             if( this.posicion.obtenerY() == (casilleroAdyacente.posicion.obtenerY()-1) &&

@@ -76,7 +76,7 @@ public class TableroTest {
     	//Arrange y Act:
     	Tablero tablero = new Tablero(10,10);
         Coordenada ubicacionCasilleroInicial = new Coordenada(2,2);
-        Coordenada ubicacionCasilleroArriba = new Coordenada(2,1);
+        Coordenada ubicacionCasilleroArriba = new Coordenada(2,3);
         
         //Assert:
         Assert.assertEquals(true, tablero.obtenerCasilleroDeArribaDe(ubicacionCasilleroInicial).estaEnPosicion(ubicacionCasilleroArriba));
@@ -101,7 +101,7 @@ public class TableroTest {
     	//Arrange y Act:
     	Tablero tablero = new Tablero(10,10);
         Coordenada ubicacionCasilleroInicial = new Coordenada(2,2);
-        Coordenada ubicacionCasilleroDerecha = new Coordenada(2,3);
+        Coordenada ubicacionCasilleroDerecha = new Coordenada(2,1);
         
         //Assert:
         Assert.assertEquals(true, tablero.obtenerCasilleroDeAbajoDe(ubicacionCasilleroInicial).estaEnPosicion(ubicacionCasilleroDerecha));
@@ -126,7 +126,7 @@ public class TableroTest {
         //Arrange y Act:
         Tablero tablero = new Tablero(10,10);
         Coordenada ubicacionCasilleroInicial = new Coordenada(2,2);
-        Coordenada ubicacionCasilleroDerecha = new Coordenada(3,1);
+        Coordenada ubicacionCasilleroDerecha = new Coordenada(3,3);
 
         //Assert:
         Assert.assertEquals(true, tablero.obtenerCasilleroDeArribaALaDerechaDe(ubicacionCasilleroInicial).estaEnPosicion(ubicacionCasilleroDerecha));
