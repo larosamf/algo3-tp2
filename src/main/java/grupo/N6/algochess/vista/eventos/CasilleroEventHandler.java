@@ -1,4 +1,4 @@
-/*package grupo.N6.algochess.vista.eventos;
+package grupo.N6.algochess.vista.eventos;
 
 import grupo.N6.algochess.Partida;
 import javafx.event.ActionEvent;
@@ -24,4 +24,3 @@ public class CasilleroEventHandler implements EventHandler<ActionEvent> {
         
     }
 }
-*/

@@ -1,4 +1,4 @@
-/*package grupo.N6.algochess.vista.eventos;
+package grupo.N6.algochess.vista.eventos;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -32,4 +32,4 @@ public class BotonGuardarEventHandler implements EventHandler<ActionEvent> {
             
         }
     }
-}*/
+}

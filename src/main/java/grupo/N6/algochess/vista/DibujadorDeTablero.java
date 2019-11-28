@@ -1,4 +1,4 @@
-/*package grupo.N6.algochess.vista;
+package grupo.N6.algochess.vista;
 
 import grupo.N6.algochess.Partida;
 import grupo.N6.algochess.Tablero;
@@ -37,4 +37,4 @@ public class DibujadorDeTablero {
             }
         }
     }
-}*/
+}
