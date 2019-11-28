@@ -71,7 +71,7 @@ public class TableroTest {
     }
 
     @Test
-    public void test05SeObtienerElCasilleroDeArriba() {
+    public void test05SeObtieneElCasilleroDeArriba() {
         
     	//Arrange y Act:
     	Tablero tablero = new Tablero(10,10);
@@ -84,7 +84,7 @@ public class TableroTest {
     }
 
     @Test
-    public void test06SeObtienerElCasilleroDeLaDerecha() {
+    public void test06SeObtieneElCasilleroDeLaDerecha() {
         
     	//Arrange y Act:
     	Tablero tablero = new Tablero(10,10);
@@ -96,7 +96,7 @@ public class TableroTest {
     }
 
     @Test
-    public void test07SeObtienerElCasilleroDeAbajo() {
+    public void test07SeObtieneElCasilleroDeAbajo() {
         
     	//Arrange y Act:
     	Tablero tablero = new Tablero(10,10);
@@ -109,7 +109,7 @@ public class TableroTest {
 
 
     @Test
-    public void test08SeObtienerElCasilleroDeLaIzquierda() {
+    public void test08SeObtieneElCasilleroDeLaIzquierda() {
         
     	//Arrange y Act:
     	Tablero tablero = new Tablero(10,10);
@@ -118,6 +118,18 @@ public class TableroTest {
         
         //Assert:
         Assert.assertEquals(true, tablero.obtenerCasilleroDeIzquierdaDe(ubicacionCasilleroInicial).estaEnPosicion(ubicacionCasilleroIzquierda));
+    }
+
+    @Test
+    public void test06SeObtieneElCasilleroDeArribaALaDerecha() {
+
+        //Arrange y Act:
+        Tablero tablero = new Tablero(10,10);
+        Coordenada ubicacionCasilleroInicial = new Coordenada(2,2);
+        Coordenada ubicacionCasilleroDerecha = new Coordenada(3,1);
+
+        //Assert:
+        Assert.assertEquals(true, tablero.obtenerCasilleroDeArribaALaDerechaDe(ubicacionCasilleroInicial).estaEnPosicion(ubicacionCasilleroDerecha));
     }
 
 }

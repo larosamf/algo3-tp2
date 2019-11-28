@@ -1,6 +1,7 @@
 package grupo.N6.algochess.accionesDePartida;
 
 import grupo.N6.algochess.Casillero;
+import grupo.N6.algochess.exepciones.CasilleroAlQueSeQuiereMoverEstaOcupadoException;
 import grupo.N6.algochess.exepciones.CasilleroVacioException;
 import grupo.N6.algochess.posicionables.unidades.Batallon;
 import grupo.N6.algochess.posicionables.unidades.Unidad;
@@ -22,17 +23,22 @@ public class MoverBatallon {
     }
 
     public void mover() {
-        if (casilleroFin == casilleroInicio.obtenerAdyacenteDerecha()) {
-            moverBatallonALaDerecha();
-        } else if (casilleroFin == casilleroInicio.obtenerAdyacenteIzquierda()) {
-            moverBatallonALaIzquierda();
-        } else if (casilleroFin == casilleroInicio.obtenerAdyacenteArriba()) {
-            moverBatallonArriba();
-        } else if (casilleroFin == casilleroInicio.obtenerAdyacenteAbajo()) {
-            moverBatallonAbajo();
-        } else if (casilleroFin == casilleroInicio.obtenerAdyacenteDerecha().obtenerAdyacenteArriba()) {
-            moverBatallonArribaYDerecha();
-        }
+
+           if (casilleroFin == casilleroInicio.obtenerAdyacenteDerecha()) {
+               moverBatallonALaDerecha();
+           } else if (casilleroFin == casilleroInicio.obtenerAdyacenteIzquierda()) {
+               moverBatallonALaIzquierda();
+           } else if (casilleroFin == casilleroInicio.obtenerAdyacenteArriba()) {
+               moverBatallonArriba();
+           } else if (casilleroFin == casilleroInicio.obtenerAdyacenteAbajo()) {
+               moverBatallonAbajo();
+           } else if (casilleroFin == (casilleroInicio.obtenerAdyacenteArriba()).obtenerAdyacenteDerecha()) {
+               moverBatallonArribaYDerecha();
+               System.out.println("1");
+           }else{
+               System.out.println("NO HAY MOVIMIENTO");
+           }
+
     }
 
     private void moverBatallonArribaYDerecha() {
@@ -78,7 +84,9 @@ public class MoverBatallon {
             casilleroDelSoldadoDelMedio.obtenerAdyacenteDerecha().moverUnidadA(casilleroDestinoDelSoldadoDelMedio.obtenerAdyacenteDerecha());
         }
         if (tipoDeBatalllon == "VERTICAL") {
-            casilleroDelSoldadoDelMedio.moverUnidadA(casilleroDestinoDelSoldadoDelMedio);
+           try {
+               casilleroDelSoldadoDelMedio.moverUnidadA(casilleroDestinoDelSoldadoDelMedio);
+           }catch(CasilleroAlQueSeQuiereMoverEstaOcupadoException e){;};
             casilleroDelSoldadoDelMedio.obtenerAdyacenteArriba().moverUnidadA(casilleroDestinoDelSoldadoDelMedio.obtenerAdyacenteArriba());
             casilleroDelSoldadoDelMedio.obtenerAdyacenteAbajo().moverUnidadA(casilleroDestinoDelSoldadoDelMedio.obtenerAdyacenteAbajo());
         }

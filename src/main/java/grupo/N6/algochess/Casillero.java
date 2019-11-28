@@ -4,10 +4,7 @@ import grupo.N6.algochess.accionesDeJuego.Ataque;
 import grupo.N6.algochess.accionesDeJuego.AtaqueExpansivo;
 import grupo.N6.algochess.accionesDeJuego.AtaqueNormal;
 import grupo.N6.algochess.accionesDeJuego.Cura;
-import grupo.N6.algochess.exepciones.CasilleroOcupadoException;
-import grupo.N6.algochess.exepciones.CasilleroVacioException;
-import grupo.N6.algochess.exepciones.MovimientoInvalidoException;
-import grupo.N6.algochess.exepciones.NoSePuedeColocarUnaUnidadEnElSectorEnemigoException;
+import grupo.N6.algochess.exepciones.*;
 import grupo.N6.algochess.posicionables.Curable;
 import grupo.N6.algochess.posicionables.Atacable;
 import grupo.N6.algochess.posicionables.unidades.Unidad;
@@ -89,8 +86,12 @@ public class Casillero implements Atacable, Curable {
          }
          for (Casillero casillero1: this.obtenerAdyacencias())
              if (casillero1.estaEnPosicion(fin)) {
-                 casillero1.unidad = unidad;
-                 this.unidad = null;
+                 if(casillero1.unidad != null){
+                     throw new CasilleroAlQueSeQuiereMoverEstaOcupadoException();
+                 }else {
+                     casillero1.unidad = unidad;
+                     this.unidad = null;
+                 }
              }
     }
 

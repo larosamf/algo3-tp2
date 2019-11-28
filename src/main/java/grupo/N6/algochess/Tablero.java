@@ -54,6 +54,10 @@ public class Tablero {
         return(this.localizarCasillero(coordenadaActual).obtenerAdyacenteAbajo());
     }
 
+    public Casillero obtenerCasilleroDeArribaALaDerechaDe(Coordenada coordenadaActual){
+        return(this.localizarCasillero(coordenadaActual).obtenerAdyacenteDerecha().obtenerAdyacenteArriba());
+    }
+
     public Casillero localizarCasillero(Coordenada ubicacion) {
         for (Casillero casillero : casilleros)
             if (casillero.estaEnPosicion(ubicacion))
