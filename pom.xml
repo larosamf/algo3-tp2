@@ -50,13 +50,15 @@
 			<version>${mockito.version}</version>
 			<scope>test</scope>
 		</dependency>
-		<!-- https://mvnrepository.com/artifact/org.openjfx/javafx -->
+		
 		<dependency>
-			<groupId>org.openjfx</groupId>
-			<artifactId>javafx</artifactId>
-			<version>11</version>
-			<type>pom</type>
+  			<groupId>com.oracle</groupId>
+  			<artifactId>javafx</artifactId>
+  			<version>2.2.3</version>
+  			<scope>system</scope>
+  			<systemPath>${project.basedir}/lib/jfxrt.jar</systemPath>
 		</dependency>
+		
 	</dependencies>
 
 	<build>
@@ -110,10 +112,11 @@
 					<artifactId>maven-failsafe-plugin</artifactId>
 					<version>2.22.2</version>
 				</plugin>
+				
 			</plugins>
 		</pluginManagement>
 	</build>
-
+	
 </project>
 
 
