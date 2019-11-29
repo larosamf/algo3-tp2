@@ -1,5 +1,6 @@
 package grupo.N6.algochess.vista;
 
+import grupo.N6.algochess.Jugador;
 import grupo.N6.algochess.Partida;
 import grupo.N6.algochess.vista.eventos.BotonGuardarEventHandler;
 import grupo.N6.algochess.vista.eventos.TextoEventHandler;
@@ -23,46 +24,58 @@ public class Aplicacion extends Application {
 
     @Override
     public void start(Stage escenario) {
-        
-        Button guardar = new Button("Guardar");
+        Scene escena1, escena2, escena3;
+        Button guardarNombre1, guardarNombre2;
+        Label lbljugador1,lbljugador2;
+        TextField nombreJugador1, nombreJugador2;
+        VBox contenedorNombre1, contenedorNombre2;
+        BotonGuardarEventHandler botonEnviarEventHandler1, botonEnviarEventHandler2;
+        TextoEventHandler textoEventHandler1, textoEventHandler2;
         
         //Creamos tablero
         GridPane tablero = new GridPane();
-        Partida partida = new Partida(null, null);
+        Jugador jugador1 = new Jugador();
+        Jugador jugador2 = new Jugador();
+        Partida partida = new Partida(jugador1, jugador2);
         DibujadorDeTablero vistaTablero = new DibujadorDeTablero(partida,tablero);
-
+        
+        guardarNombre1 = new Button("Guardar Nombre Jugador 1");
+        guardarNombre2 = new Button("Guardar Nombre Jugador 2");
+        
+        lbljugador1 = new Label("Nombre Jugador 1:");
+        nombreJugador1 = new TextField("");
+        contenedorNombre1 = new VBox();
+        lbljugador2 = new Label("Nombre Jugador 2:");
+        nombreJugador2 = new TextField("");
+        contenedorNombre2 = new VBox();
+        
+        escena1 = new Scene(contenedorNombre1, 350, 300);
+        escena2 = new Scene(contenedorNombre2, 350, 300);
+        escena3 = new Scene(tablero, 350, 350);
+        
+        botonEnviarEventHandler1 = new BotonGuardarEventHandler(nombreJugador1, lbljugador1, jugador1, escenario, escena2);
+        textoEventHandler1 = new TextoEventHandler(guardarNombre1);
+        botonEnviarEventHandler2 = new BotonGuardarEventHandler(nombreJugador2, lbljugador2, jugador2, escenario, escena3);
+        textoEventHandler2 = new TextoEventHandler(guardarNombre2);
+        
         //Pedimos nombre del Jugador 1
-        Label lbljugador1 = new Label("Nombre Jugador 1:");
-        TextField nombreJugador1 = new TextField("Ingrese su nombre");
         
-        VBox contenedorNombre1 = new VBox();
-        contenedorNombre1.getChildren().addAll(lbljugador1, nombreJugador1, guardar);
+        contenedorNombre1.getChildren().addAll(lbljugador1, nombreJugador1, guardarNombre1);
+        guardarNombre1.setOnAction(botonEnviarEventHandler1);
+        nombreJugador1.setOnKeyPressed(textoEventHandler1);
         
-        BotonGuardarEventHandler botonEnviarEventHandler = new BotonGuardarEventHandler(nombreJugador1, lbljugador1);
-        guardar.setOnAction(botonEnviarEventHandler);
-
-        TextoEventHandler textoEventHandler = new TextoEventHandler(guardar);
-        nombreJugador1.setOnKeyPressed(textoEventHandler);
         
-        Scene escena1 = new Scene(contenedorNombre1, 300, 250);
-        
-
         //Pedimos nombre jugador 2
-        //Label lbljugador2 = new Label("Nombre Jugador 2:");
-        //TextField nombreJugador2 = new TextField("Ingrese su nombre");
         
-        //VBox contenedorNombre2 = new VBox();
-        //contenedorNombre2.getChildren().addAll(lbljugador2, nombreJugador2);
-        
-        //Scene escena2 = new Scene(contenedorNombre2);
+        contenedorNombre2.getChildren().addAll(lbljugador2, nombreJugador2, guardarNombre2);
+        guardarNombre2.setOnAction(botonEnviarEventHandler2);
+        nombreJugador2.setOnKeyPressed(textoEventHandler2);
         
         
         escenario.setTitle("AlgoChess");
         escenario.setMinHeight(250);
         escenario.setMinWidth(250);
         escenario.setScene(escena1);
-        //escenario.setScene(escena2);
-        
         escenario.show();
     }
 }
