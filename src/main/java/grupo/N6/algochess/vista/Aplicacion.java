@@ -37,7 +37,7 @@ public class Aplicacion extends Application {
         Jugador jugador1 = new Jugador();
         Jugador jugador2 = new Jugador();
         Partida partida = new Partida(jugador1, jugador2);
-        DibujadorDeTablero vistaTablero = new DibujadorDeTablero(partida,tablero);
+        DibujadorDeTablero(tablero);
         
         guardarNombre1 = new Button("Guardar Nombre Jugador 1");
         guardarNombre2 = new Button("Guardar Nombre Jugador 2");
@@ -51,7 +51,7 @@ public class Aplicacion extends Application {
         
         escena1 = new Scene(contenedorNombre1, 350, 300);
         escena2 = new Scene(contenedorNombre2, 350, 300);
-        escena3 = new Scene(tablero, 350, 350);
+        escena3 = new Scene(tablero, 370, 522);
         
         botonEnviarEventHandler1 = new BotonGuardarEventHandler(nombreJugador1, lbljugador1, jugador1, escenario, escena2);
         textoEventHandler1 = new TextoEventHandler(guardarNombre1);
@@ -77,5 +77,24 @@ public class Aplicacion extends Application {
         escenario.setMinWidth(250);
         escenario.setScene(escena1);
         escenario.show();
+    }
+
+    public void DibujadorDeTablero(GridPane tablero) {
+
+    	int base = 20; //pedirlo a Partida
+        int altura = 20; //pedirlo a Partida
+
+        for (int i = 0; i < altura; i++) {
+        	for (int j = 0; j < base; j++) {
+        		Button botonCasillero = new Button("");
+                if ((i%2==0 && j%2==0) || (i%2==1 && j%2==1)) {
+                	//color de fondo del boton negro
+                	botonCasillero.setStyle("-fx-background-color: #a9a9a9");
+                }else {
+                	//color de fondo del boton blanco
+                }
+                tablero.add(botonCasillero, j, i, 1, 1);
+            }
+        }
     }
 }
