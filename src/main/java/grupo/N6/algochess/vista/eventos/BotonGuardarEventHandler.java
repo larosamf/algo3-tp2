@@ -15,14 +15,14 @@ public class BotonGuardarEventHandler implements EventHandler<ActionEvent> {
     private Label label;
     private Jugador jugador;
     private Stage escenario;
-	private Scene escena;
+	private Scene escenaSiguiente;
 
-    public BotonGuardarEventHandler(TextField textField, Label label, Jugador jugador, Stage escenario, Scene escena) {
+    public BotonGuardarEventHandler(TextField textField, Label label, Jugador jugador, Stage escenario, Scene escenaSiguiente) {
         this.textField = textField;
         this.label = label;
         this.jugador = jugador;
         this.escenario = escenario;
-		this.escena = escena;
+		this.escenaSiguiente = escenaSiguiente;
     }
 
     @Override
@@ -35,11 +35,10 @@ public class BotonGuardarEventHandler implements EventHandler<ActionEvent> {
 
         } else {
         	
-			escenario.setScene(escena);
             this.label.setText(this.textField.getText());
             this.label.setTextFill(Color.web("#336600"));
             this.jugador.setNombre(this.textField.getText());
-            //mostrar tablero para colocar unidades
+            escenario.setScene(escenaSiguiente);
             
         }
     }

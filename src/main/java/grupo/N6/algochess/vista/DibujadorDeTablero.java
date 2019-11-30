@@ -21,7 +21,7 @@ public class DibujadorDeTablero {
         this.partida = partida;
     }
 
-    public void dibujarMapaConCasilleroHandler(VBox contenedor) {
+    public void dibujarConCasilleroHandler() {
         int base = 20; //pedirlo a Partida
         int altura = 20; //pedirlo a Partida
 
@@ -30,6 +30,7 @@ public class DibujadorDeTablero {
                 Button botonCasillero = new Button("");
                 if ((i%2==0 && j%2==0) || (i%2==1 && j%2==1)) {
                 	//color de fondo del boton negro
+                	botonCasillero.setStyle("-fx-background-color: #a9a9a9");
                 }else {
                 	//color de fondo del boton blanc
                 }
