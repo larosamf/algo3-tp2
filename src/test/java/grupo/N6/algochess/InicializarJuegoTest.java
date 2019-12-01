@@ -9,6 +9,7 @@ import org.junit.Test;
 
 public class InicializarJuegoTest {
 
+/*
     @Test(expected = PuntosInsuficientesParaAgregarUnidadException.class)
     public void test01PonerUnidadesGastaPuntosDelJugador() {
 
@@ -28,4 +29,5 @@ public class InicializarJuegoTest {
         partida.jugar(new Posicionar(jugador2.crearCurandero(), new Coordenada(8,8)));
         partida.jugar(new Posicionar(jugador1.crearCatapulta(), new Coordenada(1,6)));
         }
+*/
 }
