@@ -1,12 +1,14 @@
 package grupo.N6.algochess.accionesDePartida;
 
 import grupo.N6.algochess.Casillero;
+import grupo.N6.algochess.Partida;
+import grupo.N6.algochess.Tablero;
 import grupo.N6.algochess.exepciones.CasilleroAlQueSeQuiereMoverEstaOcupadoException;
 import grupo.N6.algochess.exepciones.CasilleroVacioException;
 import grupo.N6.algochess.posicionables.unidades.Batallon;
 import grupo.N6.algochess.posicionables.unidades.Unidad;
 
-public class MoverBatallon {
+public class MoverBatallon implements Accion {
 
     Unidad soldadoDelMedio;
     Casillero casilleroDelSoldadoDelMedio;
@@ -22,6 +24,10 @@ public class MoverBatallon {
         this.tipoDeBatalllon = batallon.getTipo();
     }
 
+    public void ejecutarSobre(Partida partida, Tablero tablero) {
+    	this.mover();
+    }
+    
     public void mover() {
 
            if (casilleroFin == casilleroInicio.obtenerAdyacenteDerecha()) {

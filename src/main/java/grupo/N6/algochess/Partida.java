@@ -2,6 +2,8 @@ package grupo.N6.algochess;
 
 import grupo.N6.algochess.accionesDePartida.Accion;
 import grupo.N6.algochess.exepciones.JuegoNoEstaActivoException;
+import grupo.N6.algochess.posicionables.unidades.Batallon;
+import grupo.N6.algochess.posicionables.unidades.Unidad;
 
 public class Partida {
 
@@ -54,19 +56,27 @@ public class Partida {
 		this.jugando = false;
 	}
     
-
-	private boolean hayGanador() {
+	public boolean hayGanador() {
         return (!this.jugador1.sigueParticipando() || !this.jugador2.sigueParticipando());
-    }
-
-    public Tablero getTablero(){
-        return(this.tablero);
     }
 
     public void actualizarEstadoDeUnidades() {
     	tablero.actualizarEstadoDeUnidades();
     }
 
+	public Unidad obtenerUnidadDePosicion(Coordenada ubicacion) {
+		return tablero.unidadEnCasillero(ubicacion);
+	}
+
+	public Casillero obtenerCasillero(int x, int y) {
+		return tablero.localizarCasillero(new Coordenada(x,y));
+	}
+
+	public Batallon obtenerBatallon(int x, int y) {
+		return tablero.unidadEnCasillero(new Coordenada(x,y)).obtenerBatallon();
+	}
+	
+	
 
 
 }

@@ -46,5 +46,9 @@ public class Catapulta extends Unidad {
     public void actualizarEstado(ArrayList<Unidad> aliadosACortaDistancia, ArrayList<Unidad> enemigosACortaDistancia, ArrayList<Unidad> batallon) {
     	
     }
+    
+    public boolean esCatapulta() {
+    	return true;
+    }
 
 }

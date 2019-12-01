@@ -96,9 +96,8 @@ public class Casillero implements Atacable, Curable {
     }
 
     public Unidad obtenerUnidad() {
-        if (this.unidad == null) {
-            throw new CasilleroVacioException();
-        }
+    	if (unidad == null) 
+    		throw new CasilleroVacioException();
         return this.unidad;
     }
 
@@ -172,6 +171,8 @@ public class Casillero implements Atacable, Curable {
     }
     
     public void actualizarEstadoDeUnidad() {
+    	if (unidad == null) return; 
+    	
     	ArrayList<Unidad> unidadesAliadas = buscarUnidadesAliadasADistanciaCortaDelBando(this.bando);
     	ArrayList<Unidad> unidadesEnemigas = buscarUnidadesEnemigasADistanciaCortaDelBando(this.bando);
     	ArrayList<Unidad> soldadosContiguos = buscarBatallon(this.bando);

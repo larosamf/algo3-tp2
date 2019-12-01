@@ -123,13 +123,17 @@ public class AtacarTest {
         Jinete jinete4 = new Jinete();
         Jinete jinete5 = new Jinete();
         SoldadoDeInfanteria soldado = new SoldadoDeInfanteria();
+        
         tablero.ponerUnidad(jinete1, new Coordenada(1,2));
         tablero.ponerUnidad(jinete2, new Coordenada(2,1));
         tablero.ponerUnidad(jinete3, new Coordenada(3,1));
         tablero.ponerUnidad(jinete5, new Coordenada(1,3));
         tablero.ponerUnidad(jinete4, new Coordenada(4,4));
+        
         AtaqueExpansivo ataque = new AtaqueExpansivo(20);
+        
         tablero.localizarCasillero(new Coordenada(1,2)).recibirAtaque(ataque);
+        
         Assert.assertEquals(tablero.unidadEnCasillero(new Coordenada(1,2)).getVida(), 80);
         Assert.assertEquals(tablero.unidadEnCasillero(new Coordenada(2,1)).getVida(), 80);
         Assert.assertEquals(tablero.unidadEnCasillero(new Coordenada(3,1)).getVida(), 80);

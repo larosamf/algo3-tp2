@@ -64,4 +64,8 @@ public class Jinete extends Unidad {
     	}
     }
 
+    public boolean esJinete() {
+    	return true;
+    }
+    
 }

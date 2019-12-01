@@ -56,6 +56,18 @@ public abstract class Unidad implements Posicionable, Atacable {
     public boolean esSoldado() {
     	return false;
     }
+    
+    public boolean esCatapulta() {
+    	return false;
+    }
+    
+    public boolean esCurandero() {
+    	return false;
+    }
+    
+    public boolean esJinete() {
+    	return false;
+    }
 
     @Override
     public void recibirDano(int dmg){
@@ -64,6 +76,14 @@ public abstract class Unidad implements Posicionable, Atacable {
         else
             vida = vida - dmg;
     }
+
+	public Batallon obtenerBatallon() {
+		return null;
+	}
+
+	public int getDaño() {
+		return dano;
+	}
 
 
 }

@@ -60,6 +60,10 @@ public class SoldadoDeInfanteria extends Unidad {
     	    casilleroInicio.moverUnidadA(casilleroFin);
         }
     }
+    
+    public Batallon obtenerBatallon() {
+		return batallon;
+	}
 
 
 }

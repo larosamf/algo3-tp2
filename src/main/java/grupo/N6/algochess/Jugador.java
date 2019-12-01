@@ -69,4 +69,8 @@ public class Jugador {
         }
         return false;
     }
+
+	public String nombre() {
+		return nombre;
+	}
 }
