@@ -1,8 +1,10 @@
 package grupo.N6.algochess;
 
-import grupo.N6.algochess.exepciones.CasilleroOcupadoException;
-import grupo.N6.algochess.exepciones.NoSePuedeColocarUnaUnidadEnElSectorEnemigoException;
-import grupo.N6.algochess.posicionables.unidades.SoldadoDeInfanteria;
+import grupo.N6.algochess.modelo.exepciones.CasilleroOcupadoException;
+import grupo.N6.algochess.modelo.exepciones.NoSePuedeColocarUnaUnidadEnElSectorEnemigoException;
+import grupo.N6.algochess.modelo.Coordenada;
+import grupo.N6.algochess.modelo.Tablero;
+import grupo.N6.algochess.modelo.posicionables.unidades.SoldadoDeInfanteria;
 
 import static org.junit.jupiter.api.Assertions.assertThrows;
 

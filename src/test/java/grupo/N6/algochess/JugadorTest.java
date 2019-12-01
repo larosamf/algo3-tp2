@@ -4,10 +4,11 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-import grupo.N6.algochess.exepciones.FinalException;
-import grupo.N6.algochess.exepciones.PuntosInsuficientesParaAgregarUnidadException;
-import grupo.N6.algochess.posicionables.unidades.Catapulta;
-import grupo.N6.algochess.posicionables.unidades.SoldadoDeInfanteria;
+import grupo.N6.algochess.modelo.exepciones.FinalException;
+import grupo.N6.algochess.modelo.exepciones.PuntosInsuficientesParaAgregarUnidadException;
+import grupo.N6.algochess.modelo.Jugador;
+import grupo.N6.algochess.modelo.posicionables.unidades.Catapulta;
+import grupo.N6.algochess.modelo.posicionables.unidades.SoldadoDeInfanteria;
 import org.junit.Test;
 
 public class JugadorTest {
