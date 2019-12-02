@@ -16,7 +16,7 @@ public class CasilleroVista extends Rectangle {
 
     public CasilleroVista(int x, int y) {
 
-        Image img = new Image("file:GrassTexture.jpg", 50, 50, false, false);
+        Image img = new Image("file:GrassTexture.jpg", 100, 100, false, false);
         setFill(new ImagePattern(img));
 
         setStroke(Color.BLACK);

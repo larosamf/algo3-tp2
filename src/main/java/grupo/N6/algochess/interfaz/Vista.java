@@ -21,7 +21,7 @@ import javafx.stage.Stage;
 
 public class Vista extends Application {
 
-    public static final int TAM_CASILLERO = 60;
+    public static final int TAM_CASILLERO = 100;
     public static final int ANCHO = 10;
     public static final int ALTO = 10;
 
@@ -41,7 +41,6 @@ public class Vista extends Application {
         Jugador jugador1 = new Jugador();
         Jugador jugador2 = new Jugador();
         partida = new PartidaSample(jugador1, jugador2);
-
         Scene scene = new Scene(crearContenido());
         primaryStage.setTitle("AlgoChess");
         primaryStage.setScene(scene);

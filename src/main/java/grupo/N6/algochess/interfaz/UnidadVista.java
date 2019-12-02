@@ -24,7 +24,7 @@ public class UnidadVista extends StackPane {
         imagen = null;
         if (nombre != null) {
             imagen = "file:".concat(nombre.concat(".png"));
-            icon = new Image(imagen, 60, 60, false, false);
+            icon = new Image(imagen, 100, 100, false, false);
             mover(x,y);
             setAlignment(Pos.CENTER);
             getChildren().add(new ImageView(icon));
