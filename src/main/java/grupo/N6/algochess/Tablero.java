@@ -31,6 +31,12 @@ public class Tablero {
         bandoAliado = "Bando1";
         bandoEnemigo = "Bando2";
     }
+    
+    public void cambiarTurno() {
+    	String aux = bandoAliado;
+    	bandoAliado = bandoEnemigo;
+    	bandoEnemigo = aux;
+    }
 
     private void asignarAdyacencias() {
         for (Casillero casillero : casilleros)
@@ -98,7 +104,11 @@ public class Tablero {
     public void efectuarAtaque(Coordenada inicio, Coordenada fin) {
         Unidad atacante = unidadEnCasillero(inicio);
         Unidad atacado = unidadEnCasillero(fin);
+        boolean atacadoEstaEnTerritorioEnemigo = this.localizarCasillero(fin).estaEnTerritorioEnemigo(bandoAliado);        
         atacante.atacar(atacado, inicio.distanciaHasta(fin));
+        if (atacadoEstaEnTerritorioEnemigo) {
+        	atacado.recibirMasAtaque(atacante.getDaño()*0.05);
+        }
     }
 
     public void efectuarCuracion(Coordenada inicio, Coordenada fin) {

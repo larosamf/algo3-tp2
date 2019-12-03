@@ -85,5 +85,9 @@ public abstract class Unidad implements Posicionable, Atacable {
 		return dano;
 	}
 
+	public void recibirMasAtaque(double puntosARestar) {
+		this.vida = this.vida - (int)puntosARestar;
+	}
+
 
 }

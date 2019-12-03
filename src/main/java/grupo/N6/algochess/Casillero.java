@@ -23,6 +23,7 @@ public class Casillero implements Atacable, Curable {
         this.unidad = null;
         this.bando = bando;
     }
+    
 
     public Casillero obtenerAdyacenteDerecha(){
         Casillero casilleroBuscado = null;
@@ -201,5 +202,10 @@ public class Casillero implements Atacable, Curable {
     public void recibirCuracion(Cura cura) {
 
     }
+
+
+	public boolean estaEnTerritorioEnemigo(String bandoAliado) {
+		return (bandoAliado != bando);
+	}
 }
 

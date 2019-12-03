@@ -50,6 +50,7 @@ public class Partida {
         this.actualizarEstadoDeUnidades();
         this.jugador1.cambiarTurno();
         this.jugador2.cambiarTurno();
+        this.tablero.cambiarTurno();
     }
 
     private void terminarJuego() {
