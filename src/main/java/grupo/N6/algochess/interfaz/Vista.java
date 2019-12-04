@@ -1,14 +1,12 @@
 package grupo.N6.algochess.interfaz;
 
-import grupo.N6.algochess.modelo.Coordenada;
-import grupo.N6.algochess.modelo.Jugador;
-import grupo.N6.algochess.modelo.Partida;
-import grupo.N6.algochess.modelo.PartidaSample;
-import grupo.N6.algochess.modelo.accionesDePartida.Atacar;
-import grupo.N6.algochess.modelo.accionesDePartida.Mover;
-import grupo.N6.algochess.modelo.exepciones.FinalException;
-import grupo.N6.algochess.modelo.exepciones.MovimientoInvalidoException;
-import grupo.N6.algochess.modelo.posicionables.unidades.Unidad;
+import grupo.N6.algochess.Coordenada;
+import grupo.N6.algochess.Jugador;
+import grupo.N6.algochess.PartidaSample;
+import grupo.N6.algochess.accionesDePartida.Atacar;
+import grupo.N6.algochess.accionesDePartida.Mover;
+import grupo.N6.algochess.exepciones.FinalException;
+import grupo.N6.algochess.exepciones.MovimientoInvalidoException;
 import javafx.application.Application;
 import javafx.scene.Group;
 import javafx.scene.Parent;
@@ -18,8 +16,6 @@ import javafx.scene.image.Image;
 import javafx.scene.input.MouseButton;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
-
-import java.awt.font.ImageGraphicAttribute;
 
 public class Vista extends Application {
 

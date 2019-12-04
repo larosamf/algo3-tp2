@@ -1,7 +1,5 @@
 package grupo.N6.algochess;
 
-import grupo.N6.algochess.modelo.Casillero;
-import grupo.N6.algochess.modelo.Coordenada;
 import org.junit.Assert;
 import org.junit.Test;
 

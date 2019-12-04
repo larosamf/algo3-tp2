@@ -1,11 +1,10 @@
 package grupo.N6.algochess;
 
-import grupo.N6.algochess.modelo.*;
-import grupo.N6.algochess.modelo.accionesDeJuego.AtaqueExpansivo;
-import grupo.N6.algochess.modelo.accionesDePartida.Atacar;
-import grupo.N6.algochess.modelo.exepciones.DistanciaInvalidaExepcion;
-import grupo.N6.algochess.modelo.posicionables.unidades.Jinete;
-import grupo.N6.algochess.modelo.posicionables.unidades.SoldadoDeInfanteria;
+import grupo.N6.algochess.accionesDeJuego.AtaqueExpansivo;
+import grupo.N6.algochess.accionesDePartida.Atacar;
+import grupo.N6.algochess.exepciones.DistanciaInvalidaExepcion;
+import grupo.N6.algochess.posicionables.unidades.Jinete;
+import grupo.N6.algochess.posicionables.unidades.SoldadoDeInfanteria;
 import org.junit.Assert;
 import org.junit.Test;
 

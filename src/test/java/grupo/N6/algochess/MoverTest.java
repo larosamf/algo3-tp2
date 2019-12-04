@@ -1,11 +1,10 @@
 package grupo.N6.algochess;
 
-import grupo.N6.algochess.modelo.accionesDePartida.Mover;
-import grupo.N6.algochess.modelo.exepciones.CasilleroVacioException;
-import grupo.N6.algochess.modelo.exepciones.MovimientoInvalidoException;
-import grupo.N6.algochess.modelo.*;
-import grupo.N6.algochess.modelo.posicionables.unidades.SoldadoDeInfanteria;
-import grupo.N6.algochess.modelo.posicionables.unidades.Unidad;
+import grupo.N6.algochess.accionesDePartida.Mover;
+import grupo.N6.algochess.exepciones.CasilleroVacioException;
+import grupo.N6.algochess.exepciones.MovimientoInvalidoException;
+import grupo.N6.algochess.posicionables.unidades.SoldadoDeInfanteria;
+import grupo.N6.algochess.posicionables.unidades.Unidad;
 import org.junit.Assert;
 import org.junit.Test;
 

@@ -1,12 +1,5 @@
 package grupo.N6.algochess;
 
-import grupo.N6.algochess.modelo.accionesDePartida.Posicionar;
-import grupo.N6.algochess.modelo.exepciones.PuntosInsuficientesParaAgregarUnidadException;
-import grupo.N6.algochess.modelo.Coordenada;
-import grupo.N6.algochess.modelo.Jugador;
-import grupo.N6.algochess.modelo.Partida;
-import org.junit.Test;
-
 public class InicializarJuegoTest {
 
 /*
