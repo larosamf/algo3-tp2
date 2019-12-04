@@ -1,12 +1,9 @@
 package grupo.N6.algochess;
 
+import grupo.N6.algochess.modelo.*;
 import grupo.N6.algochess.modelo.accionesDeJuego.AtaqueExpansivo;
 import grupo.N6.algochess.modelo.accionesDePartida.Atacar;
 import grupo.N6.algochess.modelo.exepciones.DistanciaInvalidaExepcion;
-import grupo.N6.algochess.modelo.Coordenada;
-import grupo.N6.algochess.modelo.Jugador;
-import grupo.N6.algochess.modelo.Partida;
-import grupo.N6.algochess.modelo.Tablero;
 import grupo.N6.algochess.modelo.posicionables.unidades.Jinete;
 import grupo.N6.algochess.modelo.posicionables.unidades.SoldadoDeInfanteria;
 import org.junit.Assert;
@@ -141,6 +138,15 @@ public class AtacarTest {
         Assert.assertEquals(tablero.unidadEnCasillero(new Coordenada(4,4)).getVida(), 100);
     }
 
+    @Test
+    public void test07CatapultaAtaca() {
+
+        PartidaSample partidaSample = new PartidaSample(new Jugador(),new Jugador());
+        partidaSample.jugar(new Atacar(new Coordenada(1,1),new Coordenada(9,8)));
+        Assert.assertEquals(partidaSample.getTablero().unidadEnCasillero(new Coordenada(9,8)).getVida(), 80);
+        Assert.assertEquals(partidaSample.getTablero().unidadEnCasillero(new Coordenada(8,8)).getVida(), 55);
+        Assert.assertEquals(partidaSample.getTablero().unidadEnCasillero(new Coordenada(7,8)).getVida(), 80);
+    }
 
 
 }

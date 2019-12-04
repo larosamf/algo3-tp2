@@ -23,17 +23,17 @@ public class UnidadVista extends StackPane {
         this.posY = y;
         imagen = null;
         if (nombre != null) {
-            imagen = "file:".concat(nombre.concat(".png"));
-            icon = new Image(imagen, 100, 100, false, false);
+            imagen = "file:".concat(nombre.concat(".jpg"));
+            icon = new Image(imagen, 100, 100, true, true);
             mover(x,y);
-            setAlignment(Pos.CENTER);
+            setAlignment(Pos.CENTER_RIGHT);
             getChildren().add(new ImageView(icon));
 
         }
 
         setOnMouseDragged(e -> {
 
-            relocate(e.getSceneX() - mouseX + oldX, e.getSceneY() - mouseY + oldY);
+            relocate(e.getSceneX(), e.getSceneY());
 
         });
 

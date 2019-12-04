@@ -11,7 +11,6 @@ import grupo.N6.algochess.modelo.posicionables.Posicionable;
 
 
 public abstract class Unidad implements Posicionable, Atacable {
-
     protected int distanciaAccion;
 	protected int vida;
     protected int _VIDAMAXIMA_;
@@ -28,7 +27,7 @@ public abstract class Unidad implements Posicionable, Atacable {
         return costo;
     }
 
-    public abstract void atacar(Atacable atacable, int distancia) ;
+    public abstract void atacar(Atacable atacable, int distancia, Atacable casillero) ;
     
     public void recibirCuracion(int cura) {
         if (vida+cura > _VIDAMAXIMA_)
@@ -39,7 +38,7 @@ public abstract class Unidad implements Posicionable, Atacable {
     @Override
     public void recibirAtaque(AtaqueNormal unAtaque) { unAtaque.efectuarSobre(this); }
     @Override
-    public void recibirAtaque(AtaqueExpansivo unAtaque) { unAtaque.efectuarSobre(this); }
+    public void recibirAtaque(AtaqueExpansivo unAtaque) { }
 
     public boolean perteneceA(Owner owner1){
         return owner.equals(owner1);

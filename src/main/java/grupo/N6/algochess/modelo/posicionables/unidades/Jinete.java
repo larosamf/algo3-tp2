@@ -27,7 +27,7 @@ public class Jinete extends Unidad {
     }
 
     @Override
-    public void atacar(Atacable atacable, int distancia) {
+    public void atacar(Atacable atacable, int distancia, Atacable casillero) {
         this.modoActivo.atacar(atacable,distancia);
     }
 

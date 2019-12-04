@@ -11,7 +11,8 @@ import grupo.N6.algochess.modelo.posicionables.Atacable;
 
 
 public class Catapulta extends Unidad {
-	
+
+
 	public Catapulta() {
 		distanciaAccion = 6;
 		vida = 50;
@@ -21,12 +22,12 @@ public class Catapulta extends Unidad {
 	}
 
 	@Override
-	public void atacar(Atacable atacado, int distancia) {
+	public void atacar(Atacable atacado, int distancia, Atacable casillero) {
 		if(distancia<distanciaAccion) {
 			throw new DistanciaInvalidaExepcion("No ataca a corta distancia");
 		}
 		AtaqueExpansivo ataque = new AtaqueExpansivo(dano);
-		atacado.recibirAtaque(ataque);
+		casillero.recibirAtaque(ataque);
 	}
 
 	@Override

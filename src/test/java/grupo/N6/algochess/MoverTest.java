@@ -1,6 +1,7 @@
 package grupo.N6.algochess;
 
 import grupo.N6.algochess.modelo.accionesDePartida.Mover;
+import grupo.N6.algochess.modelo.exepciones.CasilleroVacioException;
 import grupo.N6.algochess.modelo.exepciones.MovimientoInvalidoException;
 import grupo.N6.algochess.modelo.*;
 import grupo.N6.algochess.modelo.posicionables.unidades.SoldadoDeInfanteria;
@@ -31,6 +32,23 @@ public class MoverTest {
         Assert.assertEquals(tablero.unidadEnCasillero(ubicacionFinal),soldado);
     }
 
+    @Test (expected = CasilleroVacioException.class)
+    public void test02UnidadAlMoverseDejaElcasilleroinicial() {
+
+        //Arrange:
+        Tablero tablero = new Tablero(10, 10);
+        SoldadoDeInfanteria soldado = new SoldadoDeInfanteria();
+        Coordenada ubicacionInicial = new Coordenada(1, 1);
+        Coordenada ubicacionFinal = new Coordenada(1, 2);
+        tablero.ponerUnidad(soldado, ubicacionInicial);
+
+        //Act:
+        Mover mover = new Mover(ubicacionInicial, ubicacionFinal);
+        mover.ejecutarSobre(new Partida(new Jugador(), new Jugador()), tablero);
+
+        //Assert:
+        tablero.unidadEnCasillero(ubicacionInicial);
+    }
     @Test
     public void test02MoverBatallonArriba(){
         

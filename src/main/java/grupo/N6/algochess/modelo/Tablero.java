@@ -94,7 +94,7 @@ public class Tablero {
     public void efectuarAtaque(Coordenada inicio, Coordenada fin) {
         Unidad atacante = unidadEnCasillero(inicio);
         Unidad atacado = unidadEnCasillero(fin);
-        atacante.atacar(atacado, inicio.distanciaHasta(fin));
+        atacante.atacar(atacado, inicio.distanciaHasta(fin), localizarCasillero(fin));
     }
 
     public void efectuarCuracion(Coordenada inicio, Coordenada fin) {

@@ -14,10 +14,12 @@ import javafx.scene.Group;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
 import javafx.scene.input.MouseButton;
-import javafx.scene.layout.Pane;
-import javafx.scene.layout.VBox;
+import javafx.scene.layout.*;
 import javafx.stage.Stage;
+
+import java.awt.font.ImageGraphicAttribute;
 
 public class Vista extends Application {
 
@@ -33,6 +35,9 @@ public class Vista extends Application {
 
     public static PartidaSample partida;
 
+    private long diff;
+    private long time1;
+    private long time2;
 
 
     @Override
@@ -70,10 +75,10 @@ public class Vista extends Application {
         Label etiqueta = new Label(nombre);
 
         Label ptosVida = new Label("Puntos de Vida: ".concat(strVida));
-        Label ptosAtaque   = new Label("Capacidad de Ataque: ".concat(strAtaque));
-        Label ptosVelocidad = new Label("Velocidad: ".concat(strDistancia));
+        Label ptosAtaque   = new Label("Ataque: ".concat(strAtaque));
+        Label ptosDistancia = new Label("Distancia: ".concat(strDistancia));
 
-        VBox contenedorPrincipal = new VBox(etiqueta, ptosVida, ptosAtaque, ptosVelocidad);
+        VBox contenedorPrincipal = new VBox(etiqueta, ptosVida, ptosAtaque, ptosDistancia);
 
         root.getChildren().addAll(contenedorPrincipal);
 
@@ -84,8 +89,10 @@ public class Vista extends Application {
         int x;
         int y;
         String nombreUnidad;
-
+        Image img = new Image("file:TableroTexture.jpg", ANCHO*TAM_CASILLERO, ALTO*TAM_CASILLERO, true, true);
+        BackgroundImage myBI= new BackgroundImage(img, BackgroundRepeat.REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT);
         Pane root = new Pane();
+        root.setBackground(new Background(myBI));
         root.setPrefSize(ANCHO * TAM_CASILLERO, ALTO * TAM_CASILLERO);
         root.getChildren().addAll(casilleros, unidades);
 
@@ -139,6 +146,7 @@ public class Vista extends Application {
             secondStage.close();
         });
 
+
         unidadVista.setOnMouseReleased(e -> {
             int newX = posTablero(unidadVista.getLayoutX());
             int newY = posTablero(unidadVista.getLayoutY());
@@ -162,32 +170,32 @@ public class Vista extends Application {
                 catch (Exception c){
                     unidadVista.mover(unidadVista.posX, unidadVista.posY);
                 }
-            }else if (e.getButton()==MouseButton.SECONDARY){
-                Coordenada coordAtaque = new Coordenada (unidadVista.posX+1, unidadVista.posY+1);
-                Coordenada coordDefensor = new Coordenada (newX+1, newY+1);
-                Atacar atacar = new Atacar(coordAtaque, coordDefensor);
-                try {
-                    int vida = partida.obtenerVidaDeUnidad(coordDefensor);
-                    int ataque = partida.obtenerAtaqueDeUnidad(coordAtaque);
-                    partida.jugar(atacar);
-                    unidadVista.mover(unidadVista.posX, unidadVista.posY);
-                    if (vida<= ataque){
-                        CasilleroVista casillero = tablero[newX][newY];
-                        unidades.getChildren().remove(casillero.obtenerUnidad());
-                        casillero.borrarUnidad();
-                    }
-
-                }	catch (FinalException a){
-                    //termina el Juego
-                }
-                catch (Exception s){
-                    unidadVista.mover(unidadVista.posX, unidadVista.posY);
-                }
-
             }
+            else
+                if (e.getButton()==MouseButton.SECONDARY){
+                    Coordenada coordAtaque = new Coordenada (unidadVista.posX+1, unidadVista.posY+1);
+                    Coordenada coordDefensor = new Coordenada (newX+1, newY+1);
+                    Atacar atacar = new Atacar(coordAtaque, coordDefensor);
+                    try {
+                        int vida = partida.obtenerVidaDeUnidad(coordDefensor);
+                        int ataque = partida.obtenerAtaqueDeUnidad(coordAtaque);
+                        partida.jugar(atacar);
+                        unidadVista.mover(unidadVista.posX, unidadVista.posY);
+                        if (vida<= ataque){
+                            CasilleroVista casillero = tablero[newX][newY];
+                            unidades.getChildren().remove(casillero.obtenerUnidad());
+                            casillero.borrarUnidad();
+                        }
+                        }	catch (FinalException a){
+                            //termina el Juego
+                            }
+                            catch (Exception s){
+                                unidadVista.mover(unidadVista.posX, unidadVista.posY);
+                            }
+
+                }
 
         });
-
 
         return unidadVista;
     }

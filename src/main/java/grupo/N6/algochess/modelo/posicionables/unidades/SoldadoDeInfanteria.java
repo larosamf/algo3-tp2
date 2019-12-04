@@ -24,7 +24,7 @@ public class SoldadoDeInfanteria extends Unidad {
 	}
 
 	@Override
-	public void atacar(Atacable atacado, int distancia) {
+	public void atacar(Atacable atacado, int distancia, Atacable casillero) {
 		if(distancia>distanciaAccion) {
             throw new DistanciaInvalidaExepcion("maximo de 1");
         }

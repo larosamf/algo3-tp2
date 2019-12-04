@@ -21,8 +21,8 @@ public class AtaqueExpansivo extends Ataque {
     }
 
     @Override
-    public void efectuarSobre(Unidad unidad) {
-        unidad.recibirDano(DMG);
+    void efectuarSobre(Unidad unidad) {
+
     }
 
 
@@ -30,7 +30,7 @@ public class AtaqueExpansivo extends Ataque {
         if (afectados.contains(casillero))
             return;
         try {
-            casillero.obtenerUnidad().recibirDano(DMG);
+            casillero.recibirDano(DMG);
         } catch (CasilleroVacioException e) {
             return;
         }

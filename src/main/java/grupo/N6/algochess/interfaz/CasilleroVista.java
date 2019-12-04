@@ -16,10 +16,13 @@ public class CasilleroVista extends Rectangle {
 
     public CasilleroVista(int x, int y) {
 
-        Image img = new Image("file:GrassTexture.jpg", 100, 100, false, false);
-        setFill(new ImagePattern(img));
+        setFill(Color.TRANSPARENT);
+        if (y>4){
+            setFill(Color.rgb(200, 200, 200, 0.4));
+        }
+        setStroke(Color.DARKRED);
+        setStrokeWidth(10);
 
-        setStroke(Color.BLACK);
 
         setWidth(Vista.TAM_CASILLERO);
         setHeight(Vista.TAM_CASILLERO);
@@ -39,5 +42,6 @@ public class CasilleroVista extends Rectangle {
     public void borrarUnidad(){
         this.unidadVista = null;
     }
+
 
 }

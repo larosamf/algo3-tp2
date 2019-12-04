@@ -12,7 +12,7 @@ public class PartidaSample extends Partida implements PartidaInterface{
     public void inicializarPartida(Tablero tablero, Jugador jugador1, Jugador jugador2) {
         this.tablero.ponerUnidad(jugador1.crearSoldado(),new Coordenada(2,3));
         this.tablero.ponerUnidad(jugador2.crearSoldado(),new Coordenada(7,8));
-        this.tablero.ponerUnidad(jugador1.crearCatapulta(),new Coordenada(5,5));
+        this.tablero.ponerUnidad(jugador1.crearCatapulta(),new Coordenada(1,1));
         this.tablero.ponerUnidad(jugador2.crearJinete(),new Coordenada(9,8));
         this.tablero.ponerUnidad(jugador2.crearCurandero(),new Coordenada(8,8));
     }
