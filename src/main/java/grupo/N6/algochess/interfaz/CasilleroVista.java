@@ -17,11 +17,11 @@ public class CasilleroVista extends Rectangle {
     public CasilleroVista(int x, int y) {
 
         setFill(Color.TRANSPARENT);
-        if (y>4){
+        if (y>=(Vista.ALTO/2)){
             setFill(Color.rgb(200, 200, 200, 0.4));
         }
         setStroke(Color.DARKRED);
-        setStrokeWidth(10);
+        setStrokeWidth(5);
 
 
         setWidth(Vista.TAM_CASILLERO);

@@ -20,13 +20,12 @@ public class Algochess {
 	private static final int TAMAÑO_TABLERO = 20;
 	Jugador jugador1;
 	Jugador jugador2;
-	Partida partida;
+	PartidaSample partida;
 	
     public Algochess() {
     	jugador1 = new Jugador();
     	jugador2 = new Jugador();
-    	partida = new Partida(jugador1, jugador2);
-    	this.inicializarPartida(partida,jugador1,jugador2);
+    	partida = new PartidaSample(jugador1, jugador2);
     }
     
     public int tamañoDeTablero() {
@@ -111,7 +110,7 @@ public class Algochess {
     		return "curandero";
     	if (unidad.esJinete())
     		return "jinete";
-    	return "solado";
+    	return "soldado";
     }
     
     public int vidaDeUnidadEnCasillero(int x, int y) {
@@ -153,33 +152,6 @@ public class Algochess {
     public String nombreJugadorActivo() {
     	/*Devuelve el nombre del jugador del cual es el turno para jugar*/
     	return partida.obtenerJugadorActivo().nombre();
-    }
-
-	public void inicializarPartida(Partida partida, Jugador jugador1, Jugador jugador2) {
-		colocarUnidad("catapulta",1,1);
-		terminarTurno();
-        colocarUnidad("catapulta",19,19);
-        terminarTurno();
-        colocarUnidad("soldado",11,9);
-        terminarTurno();
-        colocarUnidad("soldado",10,9);
-        terminarTurno();
-        colocarUnidad("soldado",9,9);
-        terminarTurno();
-        colocarUnidad("soldado",9,12);
-        terminarTurno();
-        colocarUnidad("soldado",10,12);
-        terminarTurno();
-        colocarUnidad("soldado",11,12);
-        terminarTurno();
-        colocarUnidad("jinete",18,18);
-        terminarTurno();
-        colocarUnidad("jinete",2,2);
-        terminarTurno();
-        colocarUnidad("curandero",1,9);
-        terminarTurno();
-        colocarUnidad("curandero",19,12);
-        terminarTurno();
     }
 
     public int obtenerDistanciaDeAtaque(int x, int y){

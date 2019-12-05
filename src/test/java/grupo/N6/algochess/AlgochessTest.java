@@ -81,7 +81,20 @@ public class AlgochessTest {
         Algochess juego = new Algochess();
 
         //Assert
-        Assert.assertEquals(juego.tipoUnidadEnCasillero(3, 3), null);
+        Assert.assertEquals(juego.tipoUnidadEnCasillero(14, 3), null);
     }
-    
+    @Test
+    public void test05AlgochessSeInicializaConPartidaSample() {
+
+        //Arrange:
+        Algochess juego = new Algochess();
+
+        //Assert
+        Assert.assertEquals(juego.tipoUnidadEnCasillero(10, 20), "catapulta");
+        Assert.assertEquals(juego.tipoUnidadEnCasillero(10, 1), "catapulta");
+        Assert.assertEquals(juego.tipoUnidadEnCasillero(15, 16), "jinete");
+        Assert.assertEquals(juego.tipoUnidadEnCasillero(15, 4), "jinete");
+    }
+
+
 }

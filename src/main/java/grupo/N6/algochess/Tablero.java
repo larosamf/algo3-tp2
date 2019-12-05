@@ -21,11 +21,11 @@ public class Tablero {
         casilleros = new ArrayList<Casillero>(largoX * largoY);
         
         for (int i = 1; i <= largoX; i++) {
-        	String bando = "Bando1";
-    		if (i > largoX / 2) {	
-    			bando = "Bando2";
-    		}
             for (int j = 1; j <= largoX; j++) {
+                String bando = "Bando1";
+                if (j > largoY / 2) {
+                    bando = "Bando2";
+                }
                 casilleros.add(new Casillero(new Coordenada(i, j), bando));
             }
         }

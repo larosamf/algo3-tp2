@@ -25,4 +25,18 @@ public class PartidaTest {
 		assertEquals(partida.obtenerGanador(), jugador1);
 	}
 
+	@Test
+	public void test02PartidaSampleSeInicializaCorrectamente() {
+
+		Jugador jugador1 = new Jugador();
+		Jugador jugador2 = new Jugador();
+		PartidaSample partida = new PartidaSample(jugador1, jugador2);
+
+		assertTrue(partida.obtenerUnidadDePosicion(new Coordenada(10,1)).esCatapulta());
+		assertTrue(partida.obtenerUnidadDePosicion(new Coordenada(9,3)).esSoldado());
+		assertTrue(partida.obtenerUnidadDePosicion(new Coordenada(13,5)).esSoldado());
+		assertTrue(partida.obtenerUnidadDePosicion(new Coordenada(10,17)).esCurandero());
+
+	}
+
 }

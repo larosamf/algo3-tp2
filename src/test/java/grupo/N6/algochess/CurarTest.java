@@ -61,7 +61,7 @@ public class CurarTest {
         SoldadoDeInfanteria soldado = new SoldadoDeInfanteria();
         Curandero curandero = new Curandero();
         Coordenada ubicacionInicial = new Coordenada(1, 1);
-        Coordenada ubicacionFinal = new Coordenada(1, 7);
+        Coordenada ubicacionFinal = new Coordenada(1, 5);
         tablero.ponerUnidad(curandero, ubicacionInicial);
         tablero.ponerUnidad(soldado, ubicacionFinal);
 

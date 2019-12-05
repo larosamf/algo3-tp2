@@ -1,25 +1,24 @@
 package grupo.N6.algochess.interfaz;
 
 import grupo.N6.algochess.Algochess;
-import grupo.N6.algochess.Coordenada;
-import grupo.N6.algochess.Jugador;
-import grupo.N6.algochess.accionesDePartida.Atacar;
-import grupo.N6.algochess.accionesDePartida.Mover;
 import grupo.N6.algochess.exepciones.FinalException;
 import grupo.N6.algochess.exepciones.MovimientoInvalidoException;
+import grupo.N6.algochess.interfaz.eventos.AtaqueMoverHandler;
 import javafx.application.Application;
+import javafx.event.EventHandler;
 import javafx.scene.Group;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.input.MouseButton;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
 
 public class Vista extends Application {
 
-    public static final int TAM_CASILLERO = 100;
+    public static final int TAM_CASILLERO = 50;
     public static final int ANCHO = 20;
     public static final int ALTO = 20;
 
@@ -39,9 +38,7 @@ public class Vista extends Application {
     @Override
     public void start(Stage primaryStage) {
 
-        Jugador jugador1 = new Jugador();
-        Jugador jugador2 = new Jugador();
-        Algochess partida = new Algochess();
+        partida = new Algochess();
         Scene scene = new Scene(crearContenido());
         primaryStage.setTitle("AlgoChess");
         primaryStage.setScene(scene);
@@ -54,12 +51,9 @@ public class Vista extends Application {
 
     private Parent crearContenidoVentana(int unX, int unY, UnidadVista unidad) {
         Pane root = new Pane();
-        root.setPrefSize(205, 100);
+        root.setPrefSize(100, 100);
         root.setBorder(null);
-        Coordenada coord = new Coordenada (unX+1, unY+1);
         String nombre = partida.tipoUnidadEnCasillero(unX +1,unY+1);;
-
-
         int vida = partida.vidaDeUnidadEnCasillero(unX +1,unY+1);
         String strVida = "" + vida;
         int ataque = partida.dañoDeUnidadEnCasillero(unX +1,unY+1);
@@ -70,7 +64,7 @@ public class Vista extends Application {
 
         Label etiqueta = new Label(nombre);
 
-        Label ptosVida = new Label("Puntos de Vida: ".concat(strVida));
+        Label ptosVida = new Label("Vida: ".concat(strVida));
         Label ptosAtaque   = new Label("Ataque: ".concat(strAtaque));
         Label ptosDistancia = new Label("Distancia: ".concat(strDistancia));
 
@@ -85,7 +79,7 @@ public class Vista extends Application {
         int x;
         int y;
         String nombreUnidad;
-        Image img = new Image("file:TableroTexture.jpg", ANCHO*TAM_CASILLERO, ALTO*TAM_CASILLERO, true, true);
+        Image img = new Image("file:TableroTexture.jpg", ANCHO*TAM_CASILLERO, ALTO*TAM_CASILLERO, false, true);
         BackgroundImage myBI= new BackgroundImage(img, BackgroundRepeat.REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT);
         Pane root = new Pane();
         root.setBackground(new Background(myBI));
@@ -94,15 +88,12 @@ public class Vista extends Application {
 
         for (y = 0; y < ALTO; y++) {
             for (x = 0; x < ANCHO; x++) {
-                Coordenada coordenada = new Coordenada(x+1,y+1);
-
                 CasilleroVista casillero = new CasilleroVista(x, y);
                 tablero[x][y] = casillero;
                 casilleros.getChildren().add(casillero);
-
                 UnidadVista unidad = null;
 
-                //Agregar Unidad
+               //Agregar Unidad
                 try {
                     nombreUnidad = partida.tipoUnidadEnCasillero(x+1,y+1);
                     unidad = crearUnidad(x, y, nombreUnidad);
@@ -143,52 +134,7 @@ public class Vista extends Application {
         });
 
 
-        unidadVista.setOnMouseReleased(e -> {
-            int newX = posTablero(unidadVista.getLayoutX());
-            int newY = posTablero(unidadVista.getLayoutY());
-            if (e.getButton()== MouseButton.PRIMARY){
-                try {
-                    partida.mover(x+1,y+1,newX+1, newY+1);
-                    unidadVista.mover(newX, newY);
-                    CasilleroVista casillero = tablero[unidadVista.posX][unidadVista.posY];
-                    casillero.borrarUnidad();
-                    casillero = tablero[newX][newY];
-                    casillero.agregarUnidad(unidadVista);
-                } 	catch (MovimientoInvalidoException cve) {
-                    unidadVista.mover(unidadVista.posX, unidadVista.posY);
-
-                }
-                catch (FinalException a){
-                    //termina el Juego
-
-                }
-                catch (Exception c){
-                    unidadVista.mover(unidadVista.posX, unidadVista.posY);
-                }
-            }
-            else
-                if (e.getButton()==MouseButton.SECONDARY){
-                      try {
-                        int vida = partida.vidaDeUnidadEnCasillero(newX+1, newY+1);
-                        int ataque = partida.dañoDeUnidadEnCasillero(unidadVista.posX+1, unidadVista.posY+1);
-                        partida.atacar(newX+1, newY+1,unidadVista.posX+1, unidadVista.posY+1);
-                        unidadVista.mover(unidadVista.posX, unidadVista.posY);
-                        if (vida<= ataque){
-                            CasilleroVista casillero = tablero[newX][newY];
-                            unidades.getChildren().remove(casillero.obtenerUnidad());
-                            casillero.borrarUnidad();
-                        }
-                        }	catch (FinalException a){
-                            //termina el Juego
-                            }
-                            catch (Exception s){
-                                unidadVista.mover(unidadVista.posX, unidadVista.posY);
-                            }
-
-                }
-
-        });
-
+        unidadVista.setOnMouseReleased(new AtaqueMoverHandler(unidadVista,partida,tablero,x,y));
         return unidadVista;
     }
 
