@@ -1,13 +1,11 @@
 package grupo.N6.algochess;
 
-import grupo.N6.algochess.accionesDeJuego.AtaqueExpansivo;
 import grupo.N6.algochess.accionesDePartida.Atacar;
 import grupo.N6.algochess.accionesDePartida.Curar;
 import grupo.N6.algochess.accionesDePartida.Mover;
 import grupo.N6.algochess.accionesDePartida.MoverBatallon;
 import grupo.N6.algochess.accionesDePartida.Posicionar;
 import grupo.N6.algochess.exepciones.CasilleroVacioException;
-import grupo.N6.algochess.posicionables.Atacable;
 import grupo.N6.algochess.posicionables.unidades.Batallon;
 import grupo.N6.algochess.posicionables.unidades.Catapulta;
 import grupo.N6.algochess.posicionables.unidades.Curandero;
@@ -38,9 +36,7 @@ public class Algochess {
     }
     
     public void atacar(int desdeX, int desdeY, int hastaX, int hastaY) {
-    	Unidad atacante = partida.obtenerCasillero(desdeX, desdeY).obtenerUnidad();
-    	
-    	Coordenada desde = new Coordenada(desdeX, desdeY);
+       	Coordenada desde = new Coordenada(desdeX, desdeY);
     	Coordenada hasta = new Coordenada(hastaX, hastaY);
     	Atacar atacar = new Atacar(desde, hasta);
     	partida.jugar(atacar);
