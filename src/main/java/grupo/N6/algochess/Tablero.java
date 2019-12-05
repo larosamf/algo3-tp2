@@ -1,5 +1,8 @@
 package grupo.N6.algochess;
 
+import grupo.N6.algochess.exepciones.PosicionInvalidaExeption;
+import grupo.N6.algochess.posicionables.unidades.Unidad;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -31,7 +34,7 @@ public class Tablero {
         bandoAliado = "Bando1";
         bandoEnemigo = "Bando2";
     }
-    
+
     public void cambiarTurno() {
     	String aux = bandoAliado;
     	bandoAliado = bandoEnemigo;
@@ -104,8 +107,8 @@ public class Tablero {
     public void efectuarAtaque(Coordenada inicio, Coordenada fin) {
         Unidad atacante = unidadEnCasillero(inicio);
         Unidad atacado = unidadEnCasillero(fin);
-        boolean atacadoEstaEnTerritorioEnemigo = this.localizarCasillero(fin).estaEnTerritorioEnemigo(bandoAliado);        
-        atacante.atacar(atacado, inicio.distanciaHasta(fin));
+        boolean atacadoEstaEnTerritorioEnemigo = this.localizarCasillero(fin).estaEnTerritorioEnemigo(bandoAliado);
+        atacante.atacar(atacado, inicio.distanciaHasta(fin), localizarCasillero(fin));
         if (atacadoEstaEnTerritorioEnemigo) {
         	atacado.recibirMasAtaque(atacante.getDaño()*0.05);
         }

@@ -8,7 +8,6 @@ import grupo.N6.algochess.accionesDePartida.MoverBatallon;
 import grupo.N6.algochess.exepciones.DistanciaInvalidaExepcion;
 import grupo.N6.algochess.exepciones.JugadaInvalidaExepcion;
 import grupo.N6.algochess.posicionables.Atacable;
-import grupo.N6.algochess.posicionables.unidades.Unidad;
 
 public class SoldadoDeInfanteria extends Unidad {
 	
@@ -24,7 +23,7 @@ public class SoldadoDeInfanteria extends Unidad {
 	}
 
 	@Override
-	public void atacar(Atacable atacado, int distancia) {
+	public void atacar(Atacable atacado, int distancia, Atacable casillero) {
 		if(distancia>distanciaAccion) {
             throw new DistanciaInvalidaExepcion("maximo de 1");
         }

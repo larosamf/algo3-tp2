@@ -1,6 +1,6 @@
 package grupo.N6.algochess;
 import grupo.N6.algochess.exepciones.PuntosInsuficientesParaAgregarUnidadException;
-import grupo.N6.algochess.posicionables.unidades.Unidad;
+import grupo.N6.algochess.posicionables.unidades.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,6 +9,7 @@ public class Jugador {
 	
 	private int puntos;
 	protected String nombre;
+	private int cantidadDeUnidades;
     private boolean estaJugando;
     protected List<Unidad> equipo;
 
@@ -61,7 +62,7 @@ public class Jugador {
 	public void terminarTurno() {
 		this.estaJugando = false;
 	}
-	
+
     public boolean sigueParticipando() {
         for (Unidad unidad : equipo) {
             if (unidad.estaVivo())
@@ -73,4 +74,32 @@ public class Jugador {
 	public String nombre() {
 		return nombre;
 	}
+
+    public SoldadoDeInfanteria crearSoldado(){
+        SoldadoDeInfanteria soldado = new SoldadoDeInfanteria();
+        soldado.asignarOwnner(nombre);
+        agregarUnidad(soldado);
+        return soldado;
+    }
+
+    public Curandero crearCurandero(){
+        Curandero curandero = new Curandero();
+        curandero.asignarOwnner(nombre);
+        agregarUnidad(curandero);
+        return curandero;
+    }
+
+    public Catapulta crearCatapulta(){
+        Catapulta catapulta = new Catapulta();
+        catapulta.asignarOwnner(nombre);
+        agregarUnidad(catapulta);
+        return catapulta;
+    }
+
+    public Jinete crearJinete(){
+        Jinete jinete = new Jinete();
+        jinete.asignarOwnner(nombre);
+        agregarUnidad(jinete);
+        return jinete;
+    }
 }

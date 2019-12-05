@@ -26,7 +26,7 @@ public abstract class Unidad implements Posicionable, Atacable {
         return costo;
     }
 
-    public abstract void atacar(Atacable atacable, int distancia) ;
+    public abstract void atacar(Atacable atacable, int distancia, Atacable casillero) ;
     
     public void recibirCuracion(int cura) {
         if (vida+cura > _VIDAMAXIMA_)
@@ -37,7 +37,7 @@ public abstract class Unidad implements Posicionable, Atacable {
     @Override
     public void recibirAtaque(AtaqueNormal unAtaque) { unAtaque.efectuarSobre(this); }
     @Override
-    public void recibirAtaque(AtaqueExpansivo unAtaque) { unAtaque.efectuarSobre(this); }
+    public void recibirAtaque(AtaqueExpansivo unAtaque) { }
 
     public boolean perteneceA(String nombre){
         return nombre == owner;
@@ -51,20 +51,20 @@ public abstract class Unidad implements Posicionable, Atacable {
 
     public abstract void mover(Casillero casilleroInicio, Casillero casilleroFin);
         
-    public abstract void actualizarEstado(ArrayList<Unidad> aliadosACortaDistancia, ArrayList<Unidad> enemigosACortaDistancia, ArrayList<Unidad> batallon);
+    public abstract void actualizarEstado(ArrayList<Unidad> aliadosACortaDistancia, ArrayList<Unidad> enemigosACortaDistancia, ArrayList<Unidad> batallon); 
     
     public boolean esSoldado() {
     	return false;
     }
-    
+
     public boolean esCatapulta() {
     	return false;
     }
-    
+
     public boolean esCurandero() {
     	return false;
     }
-    
+
     public boolean esJinete() {
     	return false;
     }
@@ -90,4 +90,11 @@ public abstract class Unidad implements Posicionable, Atacable {
 	}
 
 
+    public void asignarOwnner(String nombre) {
+        owner = nombre;
+    }
+
+    public int getDistancia() {
+        return distanciaAccion;
+    }
 }

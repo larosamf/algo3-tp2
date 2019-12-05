@@ -1,11 +1,13 @@
 package grupo.N6.algochess;
 
+import grupo.N6.algochess.accionesDeJuego.AtaqueExpansivo;
 import grupo.N6.algochess.accionesDePartida.Atacar;
 import grupo.N6.algochess.accionesDePartida.Curar;
 import grupo.N6.algochess.accionesDePartida.Mover;
 import grupo.N6.algochess.accionesDePartida.MoverBatallon;
 import grupo.N6.algochess.accionesDePartida.Posicionar;
 import grupo.N6.algochess.exepciones.CasilleroVacioException;
+import grupo.N6.algochess.posicionables.Atacable;
 import grupo.N6.algochess.posicionables.unidades.Batallon;
 import grupo.N6.algochess.posicionables.unidades.Catapulta;
 import grupo.N6.algochess.posicionables.unidades.Curandero;
@@ -24,6 +26,7 @@ public class Algochess {
     	jugador1 = new Jugador();
     	jugador2 = new Jugador();
     	partida = new Partida(jugador1, jugador2);
+    	this.inicializarPartida(partida,jugador1,jugador2);
     }
     
     public int tamañoDeTablero() {
@@ -36,6 +39,8 @@ public class Algochess {
     }
     
     public void atacar(int desdeX, int desdeY, int hastaX, int hastaY) {
+    	Unidad atacante = partida.obtenerCasillero(desdeX, desdeY).obtenerUnidad();
+    	
     	Coordenada desde = new Coordenada(desdeX, desdeY);
     	Coordenada hasta = new Coordenada(hastaX, hastaY);
     	Atacar atacar = new Atacar(desde, hasta);
@@ -149,5 +154,44 @@ public class Algochess {
     	/*Devuelve el nombre del jugador del cual es el turno para jugar*/
     	return partida.obtenerJugadorActivo().nombre();
     }
-    
+
+	public void inicializarPartida(Partida partida, Jugador jugador1, Jugador jugador2) {
+		colocarUnidad("catapulta",1,1);
+		terminarTurno();
+        colocarUnidad("catapulta",19,19);
+        terminarTurno();
+        colocarUnidad("soldado",11,9);
+        terminarTurno();
+        colocarUnidad("soldado",10,9);
+        terminarTurno();
+        colocarUnidad("soldado",9,9);
+        terminarTurno();
+        colocarUnidad("soldado",9,12);
+        terminarTurno();
+        colocarUnidad("soldado",10,12);
+        terminarTurno();
+        colocarUnidad("soldado",11,12);
+        terminarTurno();
+        colocarUnidad("jinete",18,18);
+        terminarTurno();
+        colocarUnidad("jinete",2,2);
+        terminarTurno();
+        colocarUnidad("curandero",1,9);
+        terminarTurno();
+        colocarUnidad("curandero",19,12);
+        terminarTurno();
+    }
+
+    public int obtenerDistanciaDeAtaque(int x, int y){
+        /*En caso de estar vacío o que la unidad no esté más viva devuelve 0*/
+        Coordenada ubicacion = new Coordenada(x,y);
+        Unidad unidad;
+        try {
+            unidad = partida.obtenerUnidadDePosicion(ubicacion);
+        } catch (CasilleroVacioException e) {
+            return 0;
+        }
+        return unidad.getDistancia();
+    }
+
 }

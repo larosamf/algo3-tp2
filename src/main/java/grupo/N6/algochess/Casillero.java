@@ -1,6 +1,5 @@
 package grupo.N6.algochess;
 
-import grupo.N6.algochess.accionesDeJuego.Ataque;
 import grupo.N6.algochess.accionesDeJuego.AtaqueExpansivo;
 import grupo.N6.algochess.accionesDeJuego.AtaqueNormal;
 import grupo.N6.algochess.accionesDeJuego.Cura;
@@ -186,11 +185,15 @@ public class Casillero implements Atacable, Curable {
 
     @Override
     public void recibirAtaque(AtaqueNormal ataqueNormal) {
+        ataqueNormal.efectuarSobre(unidad);
     }
 
     @Override
     public void recibirDano(int dmg) {
-
+        if (this.unidad == null) {
+            throw new CasilleroVacioException();
+        }
+        unidad.recibirDano(dmg);
     }
 
     @Override

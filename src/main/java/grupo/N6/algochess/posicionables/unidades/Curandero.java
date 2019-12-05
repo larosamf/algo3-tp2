@@ -19,7 +19,7 @@ public class Curandero extends Unidad {
 		distanciaAccion = 2;
 	}
 	@Override
-	public void atacar(Atacable atacable, int distancia) {
+	public void atacar(Atacable atacable, int distancia, Atacable casillero) {
 			throw new JugadaInvalidaExepcion("La unidad no ataca");
 	}
 

@@ -7,16 +7,15 @@ import grupo.N6.algochess.posicionables.unidades.Unidad;
 
 public class Partida {
 
-    private Tablero tablero;
-    private Jugador jugador1;
-    private Jugador jugador2;
-    private boolean jugando;
+    protected Tablero tablero;
+    protected Jugador jugador1;
+    protected Jugador jugador2;
+    protected boolean jugando;
 
     public Partida(Jugador jugador1, Jugador jugador2) {
         (this.jugador1 = jugador1).inicializarTurno();
         this.jugador2 = jugador2;
         this.tablero = new Tablero(20, 20);
-
         this.jugando = true;
     }
 
@@ -33,7 +32,7 @@ public class Partida {
             return this.jugador1;
         return this.jugador2;
     }
-    
+
     public Jugador obtenerGanador() {
     	if (this.hayGanador()) {
     		if (jugador1.sigueParticipando())
@@ -42,7 +41,7 @@ public class Partida {
     	}
     	return null;
     }
-    
+
     public void terminarTurno() {
         if (this.hayGanador()) {
         	this.terminarJuego();
@@ -56,7 +55,7 @@ public class Partida {
     private void terminarJuego() {
 		this.jugando = false;
 	}
-    
+
 	public boolean hayGanador() {
         return (!this.jugador1.sigueParticipando() || !this.jugador2.sigueParticipando());
     }
@@ -76,8 +75,6 @@ public class Partida {
 	public Batallon obtenerBatallon(int x, int y) {
 		return tablero.unidadEnCasillero(new Coordenada(x,y)).obtenerBatallon();
 	}
-	
-	
 
 
 }

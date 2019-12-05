@@ -3,7 +3,6 @@ package grupo.N6.algochess.modos;
 import grupo.N6.algochess.accionesDeJuego.AtaqueNormal;
 import grupo.N6.algochess.exepciones.DistanciaInvalidaExepcion;
 import grupo.N6.algochess.posicionables.Atacable;
-import grupo.N6.algochess.posicionables.unidades.Unidad;
 
 public abstract class ModoJinete {
 

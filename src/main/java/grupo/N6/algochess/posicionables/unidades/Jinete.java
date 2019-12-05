@@ -6,7 +6,6 @@ import grupo.N6.algochess.Casillero;
 import grupo.N6.algochess.modos.JineteArco;
 import grupo.N6.algochess.modos.JineteEspada;
 import grupo.N6.algochess.modos.ModoJinete;
-import grupo.N6.algochess.posicionables.unidades.Unidad;
 import grupo.N6.algochess.posicionables.Atacable;
 
 public class Jinete extends Unidad {
@@ -27,7 +26,7 @@ public class Jinete extends Unidad {
     }
 
     @Override
-    public void atacar(Atacable atacable, int distancia) {
+    public void atacar(Atacable atacable, int distancia, Atacable casillero) {
         this.modoActivo.atacar(atacable,distancia);
     }
 

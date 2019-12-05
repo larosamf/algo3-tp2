@@ -2,7 +2,6 @@ package grupo.N6.algochess.accionesDeJuego;
 
 import grupo.N6.algochess.Casillero;
 import grupo.N6.algochess.exepciones.CasilleroVacioException;
-import grupo.N6.algochess.exepciones.UnidadAfectadaExeption;
 import grupo.N6.algochess.posicionables.unidades.Unidad;
 
 import java.util.ArrayList;
@@ -22,8 +21,8 @@ public class AtaqueExpansivo extends Ataque {
     }
 
     @Override
-    public void efectuarSobre(Unidad unidad) {
-        unidad.recibirDano(DMG);
+    void efectuarSobre(Unidad unidad) {
+
     }
 
 
@@ -31,7 +30,7 @@ public class AtaqueExpansivo extends Ataque {
         if (afectados.contains(casillero))
             return;
         try {
-            casillero.obtenerUnidad().recibirDano(DMG);
+            casillero.recibirDano(DMG);
         } catch (CasilleroVacioException e) {
             return;
         }
